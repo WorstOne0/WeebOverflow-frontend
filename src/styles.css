@@ -1,5 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Cairo&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
   box-sizing: border-box;
+}
+
+body,
+button,
+input {
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #fff;
 }
