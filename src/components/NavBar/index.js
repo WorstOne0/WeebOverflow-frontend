@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 
-import { Container } from "./styles";
+import {
+  Container,
+  LogoContainer,
+  IconShelter,
+  LogoImg,
+  LogoText,
+} from "./styles";
+
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default class Card extends Component {
   constructor(props) {
@@ -8,6 +16,20 @@ export default class Card extends Component {
     this.state = {};
   }
   render() {
-    return <Container></Container>;
+    const { isOpenNavBar, handleToggleNavBar } = this.props;
+
+    return (
+      <Container isOpenNavBar={isOpenNavBar}>
+        <LogoContainer isOpenNavBar={isOpenNavBar}>
+          <IconShelter>
+            <GiHamburgerMenu onClick={handleToggleNavBar} />
+          </IconShelter>
+
+          <LogoText isOpenNavBar={isOpenNavBar}>Dollars</LogoText>
+
+          <LogoImg />
+        </LogoContainer>
+      </Container>
+    );
   }
 }

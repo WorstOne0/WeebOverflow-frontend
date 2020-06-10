@@ -9,12 +9,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  position: relative;
 `;
 
 export const Content = styled.div`
   height: auto;
   width: 100%;
-  margin-left: 320px;
+  margin-left: ${(props) => (props.isOpenNavBar ? "320px" : "80px")};
 
   padding: 15px 15px 15px 0;
   background: ${Theme.colors.darkColor0p};
@@ -22,11 +24,17 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  transition: all 0.3s ease-out;
 `;
 
 export const Article = styled.div`
-  width: 75%;
+  width: 100%;
   margin-left: 15px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const SpotlightContainer = styled.div`
@@ -77,7 +85,7 @@ export const SpotlightList = styled.div`
 
 export const PostContainer = styled.div`
   width: 100%;
-  padding: 15px 0;
+  padding: 15px 5px;
   margin-top: 15px;
   background: ${Theme.colors.darkColor1p};
 `;
@@ -97,14 +105,16 @@ export const PostList = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 10px;
-  grid-row-gap: 20px;
+  grid-row-gap: 10px;
 `;
 
 export const TEMP_SideBarRight = styled.div`
   height: 100vh;
-  width: 25%;
   margin-left: 15px;
   background: ${Theme.colors.darkColor1p};
+
+  display: flex;
+  flex: 0 0 230px;
 `;

@@ -3,7 +3,7 @@ import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   height: auto;
-  width: 320px;
+  width: 300px;
   background: ${Theme.colors.darkColor1p};
 
   display: flex;

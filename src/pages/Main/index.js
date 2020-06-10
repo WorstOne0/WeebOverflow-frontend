@@ -22,16 +22,27 @@ import SmallCard from "../../components/Small Card";
 export default class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isOpenNavBar: true,
+    };
   }
 
+  handleToggleNavBar = () => {
+    this.setState({ isOpenNavBar: !this.state.isOpenNavBar });
+  };
+
   render() {
+    const { isOpenNavBar } = this.state;
+
     return (
       <>
-        <NavBar />
-
         <Container>
-          <Content>
+          <NavBar
+            isOpenNavBar={isOpenNavBar}
+            handleToggleNavBar={this.handleToggleNavBar}
+          />
+
+          <Content isOpenNavBar={isOpenNavBar}>
             <Article>
               <SpotlightContainer>
                 <SpotlightHeader>
