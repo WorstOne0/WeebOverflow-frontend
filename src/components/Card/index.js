@@ -12,7 +12,6 @@ export default class Card extends Component {
 
     return (
       <Container>
-        <Type>Anime</Type>
         <Image src={tempImg} />
         <Title>Title that is Big, what will happen if i keep, shit...</Title>
         <Date>January 4th, 2020</Date>

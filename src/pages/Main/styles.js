@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: auto;
   width: 100%;
-  margin-left: ${(props) => (props.isOpenNavBar ? "320px" : "80px")};
+  margin-left: ${(props) => (props.isOpenNavBar ? "300px" : "70px")};
 
   padding: 15px 15px 15px 0;
   background: ${Theme.colors.darkColor0p};
@@ -31,7 +31,7 @@ export const Content = styled.div`
 export const Article = styled.div`
   width: 100%;
   margin-left: 15px;
-
+ 
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -41,6 +41,7 @@ export const SpotlightContainer = styled.div`
   width: 100%;
   padding: 15px 0;
   background: ${Theme.colors.darkColor1p};
+  border-radius: 5px;
 
   .Buttons {
     width: 70px;
@@ -88,6 +89,7 @@ export const PostContainer = styled.div`
   padding: 15px 5px;
   margin-top: 15px;
   background: ${Theme.colors.darkColor1p};
+  border-radius: 5px;
 `;
 
 export const PostTitle = styled.h1`
@@ -107,7 +109,7 @@ export const PostList = styled.div`
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 10px;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
 `;
 
 export const TEMP_SideBarRight = styled.div`
