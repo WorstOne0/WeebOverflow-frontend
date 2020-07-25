@@ -4,7 +4,6 @@ import { Theme } from "../../theme.js";
 export const Container = styled.div`
   height: auto;
   width: 100%;
-  background: #f5f5f5;
 
   display: flex;
   justify-content: center;
@@ -16,7 +15,6 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: auto;
   width: 100%;
-  margin-left: ${(props) => (props.isOpenNavBar ? "300px" : "70px")};
 
   padding: 15px 15px 15px 0;
   background: ${Theme.colors.darkColor0p};
@@ -31,7 +29,7 @@ export const Content = styled.div`
 export const Article = styled.div`
   width: 100%;
   margin-left: 15px;
- 
+
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -102,13 +100,13 @@ export const PostTitle = styled.h1`
 
 export const PostList = styled.div`
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 10px;
 
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 20px;
   grid-row-gap: 20px;
 `;
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
@@ -34,82 +34,80 @@ import {
 import { IoMdPaper } from "react-icons/io";
 import { DiJsBadge, DiPython, DiReact } from "react-icons/di";
 
-export default class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLogged: true,
-    };
+const NavBar = () => {
+  const [isLogged, setIsLogged] = useState(true);
+  const [isOpenNavBar, setOpenNavBar] = useState(true);
+
+  function handleToggleNavBar() {
+    setOpenNavBar(!isOpenNavBar);
   }
-  render() {
-    const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
-    const { isOpenNavBar, handleToggleNavBar } = this.props;
-    const { isLogged } = this.state;
+  const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
-    return (
-      <Container isOpenNavBar={isOpenNavBar}>
-        <LogoContainer isOpenNavBar={isOpenNavBar}>
-          <IconShelter>
-            <GiHamburgerMenu onClick={handleToggleNavBar} />
-          </IconShelter>
+  return (
+    <Container isOpenNavBar={isOpenNavBar}>
+      <LogoContainer isOpenNavBar={isOpenNavBar}>
+        <IconShelter>
+          <GiHamburgerMenu onClick={handleToggleNavBar} />
+        </IconShelter>
 
-          <LogoText isOpenNavBar={isOpenNavBar}>Dollars</LogoText>
+        <LogoText isOpenNavBar={isOpenNavBar}>Dollars</LogoText>
 
-          <LogoImg />
-        </LogoContainer>
+        <LogoImg />
+      </LogoContainer>
 
-        {isLogged ? (
-          <User>
-            <UserImg url={UserImgTemp} />
+      {isLogged ? (
+        <User>
+          <UserImg url={UserImgTemp} />
 
-            <UserHeader isOpenNavBar={isOpenNavBar}>
-              <UserNameDisplay>Worst One</UserNameDisplay>
-              <UserName>@worstone</UserName>
-            </UserHeader>
+          <UserHeader isOpenNavBar={isOpenNavBar}>
+            <UserNameDisplay>Worst One</UserNameDisplay>
+            <UserName>@worstone</UserName>
+          </UserHeader>
 
-            <UserStats isOpenNavBar={isOpenNavBar}>
-              <UserStatsBox>
-                <AiOutlineUser className="Icon" /> 200
-              </UserStatsBox>
-              <UserStatsBox>
-                <AiOutlineHeart className="Icon" /> 75
-              </UserStatsBox>
-              <UserStatsBox>
-                <IoMdPaper className="Icon" /> 21
-              </UserStatsBox>
-            </UserStats>
+          <UserStats isOpenNavBar={isOpenNavBar}>
+            <UserStatsBox>
+              <AiOutlineUser className="Icon" /> 200
+            </UserStatsBox>
+            <UserStatsBox>
+              <AiOutlineHeart className="Icon" /> 75
+            </UserStatsBox>
+            <UserStatsBox>
+              <IoMdPaper className="Icon" /> 21
+            </UserStatsBox>
+          </UserStats>
 
-            <BadgesContainer isOpenNavBar={isOpenNavBar}>
-              <DiJsBadge className="Icon" />
-              <DiPython className="Icon" />
-              <DiReact className="Icon" />
-            </BadgesContainer>
-          </User>
-        ) : (
-          <Login></Login>
-        )}
+          <BadgesContainer isOpenNavBar={isOpenNavBar}>
+            <DiJsBadge className="Icon" />
+            <DiPython className="Icon" />
+            <DiReact className="Icon" />
+          </BadgesContainer>
+        </User>
+      ) : (
+        <Login></Login>
+      )}
 
-        <OptionsContainer>
-          <Options isOpenNavBar={isOpenNavBar}>
-            <AiOutlineHome className="Icon" />
-            <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
-          </Options>
-          <Options isOpenNavBar={isOpenNavBar}>
-            <AiOutlineSearch className="Icon" />
-            <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
-          </Options>
-          <Options isOpenNavBar={isOpenNavBar}>
-            <IoMdPaper className="Icon" />
-            <OptionsText isOpenNavBar={isOpenNavBar}>Posts</OptionsText>
-          </Options>
-        </OptionsContainer>
+      <OptionsContainer>
+        <Options isOpenNavBar={isOpenNavBar}>
+          <AiOutlineHome className="Icon" />
+          <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
+        </Options>
+        <Options isOpenNavBar={isOpenNavBar}>
+          <AiOutlineSearch className="Icon" />
+          <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
+        </Options>
+        <Options isOpenNavBar={isOpenNavBar}>
+          <IoMdPaper className="Icon" />
+          <OptionsText isOpenNavBar={isOpenNavBar}>Posts</OptionsText>
+        </Options>
+      </OptionsContainer>
 
-        <BottomBar>
-          <AiOutlinePlus className="Icon" />
-          <AiOutlineSetting className="Icon" />
-        </BottomBar>
-      </Container>
-    );
-  }
-}
+      <BottomBar>
+        <AiOutlinePlus className="Icon" />
+        <AiOutlineSetting className="Icon" />
+      </BottomBar>
+    </Container>
+  );
+};
+
+export default NavBar;

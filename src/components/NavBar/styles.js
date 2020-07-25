@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 0;

@@ -3,7 +3,8 @@ import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   height: auto;
-  width: 300px;
+  width: 100%;
+  padding: 5px 0;
   background: ${Theme.colors.darkColor1p};
 
   display: flex;
@@ -42,6 +43,38 @@ export const Title = styled.h1`
   font-size: 18px;
   font-weight: bold;
   text-align: justify;
+`;
+
+export const DetailsContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const AuthorContainer = styled.div`
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+`;
+
+export const AuthorImg = styled.div`
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  background-image: url(${(props) => props.url});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const AuthorName = styled.h1`
+  color: #fff;
+  font-size: 14px;
 `;
 
 export const Date = styled.h1`

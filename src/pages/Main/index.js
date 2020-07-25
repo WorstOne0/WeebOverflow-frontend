@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import {
   Container,
+  NavBarContainer,
   Content,
   Article,
   SpotlightContainer,
@@ -15,69 +16,49 @@ import {
   TEMP_SideBarRight,
 } from "./styles";
 
-import NavBar from "../../components/NavBar";
-import Card from "../../components/Card";
-import SmallCard from "../../components/Small Card";
+import { NavBar, Card, SmallCard } from "../../components";
 
-export default class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpenNavBar: true,
-    };
-  }
+const Main = () => {
+  return (
+    <Container>
+      <NavBar />
 
-  handleToggleNavBar = () => {
-    this.setState({ isOpenNavBar: !this.state.isOpenNavBar });
-  };
+      <Content>
+        <Article>
+          <SpotlightContainer>
+            <SpotlightHeader>
+              <SpotlightTitle>Destaques</SpotlightTitle>
 
-  render() {
-    const { isOpenNavBar } = this.state;
+              <div className="Buttons">
+                <TEMP_Buttons />
+                <TEMP_Buttons />
+              </div>
+            </SpotlightHeader>
 
-    return (
-      <>
-        <Container>
-          <NavBar
-            isOpenNavBar={isOpenNavBar}
-            handleToggleNavBar={this.handleToggleNavBar}
-          />
+            <SpotlightList>
+              <SmallCard />
+              <SmallCard />
+              <SmallCard />
+            </SpotlightList>
+          </SpotlightContainer>
+          <PostContainer>
+            <PostTitle>Posts</PostTitle>
 
-          <Content isOpenNavBar={isOpenNavBar}>
-            <Article>
-              <SpotlightContainer>
-                <SpotlightHeader>
-                  <SpotlightTitle>Destaques</SpotlightTitle>
+            <PostList>
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+            </PostList>
+          </PostContainer>
+        </Article>
 
-                  <div className="Buttons">
-                    <TEMP_Buttons />
-                    <TEMP_Buttons />
-                  </div>
-                </SpotlightHeader>
+        <TEMP_SideBarRight />
+      </Content>
+    </Container>
+  );
+};
 
-                <SpotlightList>
-                  <SmallCard />
-                  <SmallCard />
-                  <SmallCard />
-                </SpotlightList>
-              </SpotlightContainer>
-              <PostContainer>
-                <PostTitle>Posts</PostTitle>
-
-                <PostList>
-                  <Card />
-                  <Card />
-                  <Card />
-                  <Card />
-                  <Card />
-                  <Card />
-                </PostList>
-              </PostContainer>
-            </Article>
-
-            <TEMP_SideBarRight />
-          </Content>
-        </Container>
-      </>
-    );
-  }
-}
+export default Main;
