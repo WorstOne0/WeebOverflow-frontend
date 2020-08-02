@@ -27,46 +27,15 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { FiAlignCenter, FiAlignRight, FiAlignJustify } from "react-icons/fi";
 
 const LIST_TYPES = ["numbered-list", "bulleted-list"];
+const initialState = [
+  {
+    type: "paragraph",
+    children: [{ text: "This is editable " }],
+  },
+];
 
-const RichText = () => {
+const RichText = ({ value = initialState, setValue }) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
-
-  const [value, setValue] = useState([
-    {
-      type: "paragraph",
-      children: [
-        { text: "This is editable " },
-        { text: "rich", bold: true },
-        { text: " text, " },
-        { text: "much", italic: true },
-        { text: " better than a " },
-        { text: "<textarea>", code: true },
-        { text: "!" },
-      ],
-    },
-    {
-      type: "paragraph",
-      children: [
-        {
-          text:
-            "Since it's rich text, you can do things like turn a selection of text ",
-        },
-        { text: "bold", bold: true },
-        {
-          text:
-            ", or add a semantically rendered block quote in the middle of the page, like this:",
-        },
-      ],
-    },
-    {
-      type: "quote",
-      children: [{ text: "A wise quote." }],
-    },
-    {
-      type: "paragraph",
-      children: [{ text: "Try it out for yourself!" }],
-    },
-  ]);
 
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
@@ -131,48 +100,48 @@ const RichText = () => {
         onChange={(value) => setValue(value)}
       >
         <Toolbar>
-          <MarkButton editor={editor} format="bold">
+          <MarkButton format="bold">
             <Icon>
               <AiOutlineBold />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="italic">
+          <MarkButton format="italic">
             <Icon>
               <AiOutlineItalic />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="underline">
+          <MarkButton format="underline">
             <Icon>
               <AiOutlineUnderline />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="title">
+          <MarkButton format="title">
             <Icon>1</Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="subTitle">
+          <MarkButton format="subTitle">
             <Icon>2</Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="bulletedList">
+          <MarkButton format="bulletedList">
             <Icon>
               <AiOutlineUnorderedList />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="quote">
+          <MarkButton format="quote">
             <Icon>
               <FaQuoteLeft />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="alignCenter">
+          <MarkButton format="alignCenter">
             <Icon>
               <FiAlignCenter />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="alignRight">
+          <MarkButton format="alignRight">
             <Icon>
               <FiAlignRight />
             </Icon>
           </MarkButton>
-          <MarkButton editor={editor} format="justify">
+          <MarkButton format="justify">
             <Icon>
               <FiAlignJustify />
             </Icon>

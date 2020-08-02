@@ -20,7 +20,6 @@ export const Content = styled.div`
 `;
 
 export const PostContainer = styled.div`
-  height: 100vh;
   margin-left: 15px;
   padding: 20px;
   border-radius: 5px;
