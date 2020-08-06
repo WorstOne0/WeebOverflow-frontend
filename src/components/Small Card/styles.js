@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   width: 215px;
   padding: 10px;
   margin-left: 15px;
-  background: ${Theme.colors.darkColor2p};
+  background: var(--color-darker);
 
   display: flex;
   justify-content: center;
@@ -17,7 +16,7 @@ export const Image = styled.div`
   height: 180px;
   width: 100%;
   border-radius: 5px;
-  background: ${Theme.colors.primaryColor2p};
+  background: var(--color-primary-darker);
 `;
 
 export const Title = styled.h1`
@@ -33,7 +32,7 @@ export const Title = styled.h1`
 export const Date = styled.h1`
   padding: 0 5px;
 
-  color: ${Theme.colors.primaryColor2p};
+  color: var(--color-primary-darker);
   font-size: 14px;
   font-weight: normal;
 `;

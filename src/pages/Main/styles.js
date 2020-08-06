@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   height: auto;
@@ -17,7 +16,7 @@ export const Content = styled.div`
   width: 100%;
 
   padding: 15px 15px 15px 0;
-  background: ${Theme.colors.darkColor0p};
+  background: var(--color-background-dark);
 
   display: flex;
   justify-content: center;
@@ -38,7 +37,7 @@ export const Article = styled.div`
 export const SpotlightContainer = styled.div`
   width: 100%;
   padding: 15px 0;
-  background: ${Theme.colors.darkColor1p};
+  background: var(--color-dark);
   border-radius: 5px;
 
   .Buttons {
@@ -70,7 +69,7 @@ export const TEMP_Buttons = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: ${Theme.colors.primaryColor2p};
+  background: var(--color-primary-darker);
 `;
 
 export const SpotlightList = styled.div`
@@ -86,7 +85,7 @@ export const PostContainer = styled.div`
   width: 100%;
   padding: 15px 5px;
   margin-top: 15px;
-  background: ${Theme.colors.darkColor1p};
+  background: var(--color-dark);
   border-radius: 5px;
 `;
 
@@ -113,7 +112,7 @@ export const PostList = styled.div`
 export const TEMP_SideBarRight = styled.div`
   height: 100vh;
   margin-left: 15px;
-  background: ${Theme.colors.darkColor1p};
+  background: var(--color-dark);
 
   display: flex;
   flex: 0 0 230px;

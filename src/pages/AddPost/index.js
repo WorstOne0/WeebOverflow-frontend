@@ -14,9 +14,9 @@ import {
   SideBar,
 } from "./styles";
 
-import { uniqueId, set } from "lodash";
+import { uniqueId } from "lodash";
 
-import { NavBar, RichText, Image } from "../../components";
+import { NavBar, RichText, Image, PostInput } from "../../components";
 
 const AddPost = () => {
   const [post, setPost] = useState([
@@ -27,12 +27,7 @@ const AddPost = () => {
     },
     {
       id: uniqueId(),
-      type: "Image",
-      ref: useRef(null),
-    },
-    {
-      id: uniqueId(),
-      type: "Rich-Text",
+      type: "Single Image",
       ref: useRef(null),
     },
   ]);
@@ -50,7 +45,7 @@ const AddPost = () => {
               case "Rich-Text":
                 return <RichTextTemplate key={post.id} ref={post.ref} />;
 
-              case "Image":
+              case "Single Image":
                 return <ImagemTemplate key={post.id} ref={post.ref} />;
 
               default:
@@ -63,8 +58,12 @@ const AddPost = () => {
               post.map((post) => console.log(post.ref.current.getValue()))
             }
           >
-            Click me
+            Clicl me
           </button>
+
+          {console.log(post)}
+
+          <PostInput post={post} setPost={setPost} />
         </PostContainer>
         <SideBar></SideBar>
       </Content>

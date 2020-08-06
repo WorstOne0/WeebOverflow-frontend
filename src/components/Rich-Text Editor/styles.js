@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   width: 100%;
@@ -14,7 +13,7 @@ export const Container = styled.div`
 export const RichTextContainer = styled.div`
   width: 100%;
   padding: calc(20px - 1em) 20px 20px 20px;
-  background: ${Theme.colors.darkColor2p};
+  background: var(--color-darker);
 `;
 
 export const Toolbar = styled.div`
@@ -22,7 +21,7 @@ export const Toolbar = styled.div`
   width: 100%;
   margin-bottom: 3px;
   padding: 0 15px;
-  background: ${Theme.colors.darkColor2p};
+  background: var(--color-darker);
 
   display: flex;
   justify-content: flex-start;
@@ -72,8 +71,8 @@ export const StyledBulletedList = styled.ul`
 export const StyledQuote = styled.div`
   margin-top: 1em;
   padding: 20px;
-  border-left: 5px solid ${Theme.colors.primaryColor};
-  background: ${Theme.colors.darkColor3p};
+  border-left: 5px solid var(--color-primary);
+  background: #3b86ba;
 
   font-weight: 100;
   text-align: justify;

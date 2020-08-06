@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   height: auto;
   width: 100%;
   padding: 5px 0;
-  background: ${Theme.colors.darkColor1p};
+  background: var(--color-dark);
 
   display: flex;
   align-items: flex-end;
@@ -17,7 +16,7 @@ export const Container = styled.div`
 export const Type = styled.div`
   padding: 8px;
   border-radius: 5px;
-  background: ${Theme.colors.primaryColor2p};
+  background: var(--color-primary-darker);
 
   position: absolute;
   top: 10px;
@@ -32,7 +31,7 @@ export const Image = styled.img`
   width: 100%;
   border: none;
   border-radius: 5px;
-  background: ${Theme.colors.primaryColor2p};
+  background: var(--color-primary-darker);
 `;
 
 export const Title = styled.h1`
@@ -80,7 +79,7 @@ export const AuthorName = styled.h1`
 export const Date = styled.h1`
   padding: 0 15px;
 
-  color: ${Theme.colors.primaryColor2p};
+  color: var(--color-primary-darker);
   font-size: 14px;
   font-weight: normal;
 `;

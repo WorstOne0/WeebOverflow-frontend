@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components";
-import { Theme } from "../../theme.js";
 
 export const Container = styled.div`
   height: 100vh;
   width: ${(props) => (props.isOpenNavBar ? "300px" : "70px")};
-  background: ${Theme.colors.primaryColor2p};
+  background: var(--color-primary-darker);
 
   display: flex;
   justify-content: space-between;
@@ -51,7 +50,7 @@ export const LogoImg = styled.img`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: ${Theme.colors.darkColor1p};
+  background: var(--color-dark);
 `;
 
 export const LogoText = styled.p`
@@ -213,7 +212,7 @@ export const Options = styled.div`
   cursor: pointer;
 
   :hover {
-    background: ${Theme.colors.primaryColor3p};
+    background: var(--color-hover-primary-darker);
   }
 
   .Icon {
