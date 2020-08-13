@@ -4,5 +4,6 @@ import NavBar from "./NavBar";
 import RichText from "./Rich-Text Editor";
 import Image from "./Image";
 import PostInput from "./PostInput";
+import VsCodeEditor from "./VsCode Editor";
 
-export { Card, SmallCard, NavBar, RichText, Image, PostInput };
+export { Card, SmallCard, NavBar, RichText, Image, PostInput, VsCodeEditor };

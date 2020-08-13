@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: auto;
   width: 100%;
-  padding: 5px 0;
+  padding: 0.5rem 0;
   background: var(--color-dark);
 
   display: flex;
@@ -14,32 +14,32 @@ export const Container = styled.div`
 `;
 
 export const Type = styled.div`
-  padding: 8px;
-  border-radius: 5px;
-  background: var(--color-primary-darker);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  background: var(--color-primary);
 
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1rem;
+  right: 1rem;
 
   color: #fff;
-  font-size: 14px;
+  font-size: 1.4rem;
 `;
 
 export const Image = styled.img`
-  height: 254px;
+  height: 25.4rem;
   width: 100%;
   border: none;
-  border-radius: 5px;
-  background: var(--color-primary-darker);
+  border-radius: 0.5rem;
+  background: var(--color-primary);
 `;
 
 export const Title = styled.h1`
   width: 100%;
-  padding: 15px;
+  padding: 1.5rem;
 
   color: #fff;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: justify;
 `;
@@ -53,17 +53,17 @@ export const DetailsContainer = styled.div`
 `;
 
 export const AuthorContainer = styled.div`
-  padding: 0 15px;
+  padding: 0 1.5rem;
 
   display: flex;
   align-items: center;
 `;
 
 export const AuthorImg = styled.div`
-  height: 20px;
-  width: 20px;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 1rem;
 
   background-image: url(${(props) => props.url});
   background-repeat: no-repeat;
@@ -73,13 +73,13 @@ export const AuthorImg = styled.div`
 
 export const AuthorName = styled.h1`
   color: #fff;
-  font-size: 14px;
+  font-size: 1.4rem;
 `;
 
 export const Date = styled.h1`
-  padding: 0 15px;
+  padding: 0 1.5rem;
 
-  color: var(--color-primary-darker);
-  font-size: 14px;
+  color: var(--color-primary);
+  font-size: 1.4rem;
   font-weight: normal;
 `;

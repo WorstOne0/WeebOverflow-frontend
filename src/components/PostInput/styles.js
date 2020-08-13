@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 230px;
+  height: 25rem;
   width: 100%;
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 5px;
-  background: var(--color-darker);
+  margin-top: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-darker);
+  background: var(--color-dark);
 
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
 `;
@@ -17,23 +17,23 @@ export const Container = styled.div`
 export const Type = styled.div`
   height: 100%;
   width: 100%;
-  border-radius: 5px;
-  border: 1px solid var(--color-hover-darker);
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--color-darker);
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  color: var(--color-primary);
-  font-size: 14px;
+  color: var(--color-primary-light);
+  font-size: 1.4rem;
   font-weight: 500;
 
   transition: all 0.3s;
   cursor: pointer;
 
   :hover {
-    background: var(--color-hover-darker);
+    background: var(--color-darker);
 
     p {
       opacity: 1;
@@ -49,16 +49,18 @@ export const Type = styled.div`
   p {
     opacity: 0;
 
+    font-weight: bold;
+
     transition: all 0.3s;
-    transform: translateY(-10px);
+    transform: translateY(-1rem);
   }
 
   .Icon {
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
 
-    font-size: 34px;
+    font-size: 3.4rem;
 
     transition: all 0.3s;
-    transform: translateY(15px);
+    transform: translateY(1.5rem);
   }
 `;

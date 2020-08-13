@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: auto;
   width: 100%;
-  padding: 15px 15px 15px 0;
+  padding: 1.5rem 1.5rem 1.5rem 0;
   background: var(--color-background-dark);
 
   display: flex;
@@ -20,8 +20,8 @@ export const Content = styled.div`
 
 export const PostContainer = styled.div`
   height: 100vh;
-  margin-left: 15px;
-  border-radius: 5px;
+  margin-left: 1.5rem;
+  border-radius: 0.5rem;
   background: var(--color-dark);
 
   display: flex;
@@ -29,10 +29,10 @@ export const PostContainer = styled.div`
 `;
 
 export const SideBar = styled.div`
-  margin-left: 15px;
-  border-radius: 5px;
+  margin-left: 1.5rem;
+  border-radius: 0.5rem;
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 230px;
+  flex: 0 0 23rem;
 `;

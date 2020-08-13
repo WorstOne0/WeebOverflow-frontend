@@ -15,7 +15,7 @@ export const Content = styled.div`
   height: auto;
   width: 100%;
 
-  padding: 15px 15px 15px 0;
+  padding: 1.5rem 1.5rem 1.5rem 0;
   background: var(--color-background-dark);
 
   display: flex;
@@ -27,7 +27,7 @@ export const Content = styled.div`
 
 export const Article = styled.div`
   width: 100%;
-  margin-left: 15px;
+  margin-left: 1.5rem;
 
   display: flex;
   flex-direction: column;
@@ -36,12 +36,12 @@ export const Article = styled.div`
 
 export const SpotlightContainer = styled.div`
   width: 100%;
-  padding: 15px 0;
+  padding: 1.5rem 0;
   background: var(--color-dark);
-  border-radius: 5px;
+  border-radius: 0.5rem;
 
   .Buttons {
-    width: 70px;
+    width: 7rem;
 
     display: flex;
     justify-content: space-between;
@@ -50,7 +50,7 @@ export const SpotlightContainer = styled.div`
 
 export const SpotlightHeader = styled.div`
   width: 100%;
-  padding-right: 15px;
+  padding-right: 1.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -58,23 +58,23 @@ export const SpotlightHeader = styled.div`
 `;
 
 export const SpotlightTitle = styled.h1`
-  padding: 0 20px;
+  padding: 0 2rem;
 
   color: #fff;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: bold;
 `;
 
 export const TEMP_Buttons = styled.div`
-  height: 30px;
-  width: 30px;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
-  background: var(--color-primary-darker);
+  background: var(--color-primary);
 `;
 
 export const SpotlightList = styled.div`
   width: 100%;
-  padding: 15px 0;
+  padding: 1.5rem 0;
 
   display: flex;
   justify-content: flex-start;
@@ -83,37 +83,37 @@ export const SpotlightList = styled.div`
 
 export const PostContainer = styled.div`
   width: 100%;
-  padding: 15px 5px;
-  margin-top: 15px;
+  padding: 1.5rem 0.5rem;
+  margin-top: 1.5rem;
   background: var(--color-dark);
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 export const PostTitle = styled.h1`
-  padding: 0 20px;
+  padding: 0 2rem;
 
   color: #fff;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: bold;
 `;
 
 export const PostList = styled.div`
   width: 100%;
-  padding: 20px 10px;
+  padding: 2rem 1rem;
 
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 20px;
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  grid-gap: 2rem;
+  grid-row-gap: 2rem;
 `;
 
 export const TEMP_SideBarRight = styled.div`
   height: 100vh;
-  margin-left: 15px;
+  margin-left: 1.5rem;
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 230px;
+  flex: 0 0 23rem;
 `;

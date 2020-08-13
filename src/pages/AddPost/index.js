@@ -1,22 +1,23 @@
 import React, {
   useState,
-  useEffect,
   useRef,
   forwardRef,
   useImperativeHandle,
 } from "react";
 
-import {
-  Container,
-  Content,
-  PostContainer,
-  PostTitle,
-  SideBar,
-} from "./styles";
+import * as S from "./styles";
+
+import { TiDeleteOutline } from "react-icons/ti";
 
 import { uniqueId } from "lodash";
 
-import { NavBar, RichText, Image, PostInput } from "../../components";
+import {
+  NavBar,
+  RichText,
+  Image,
+  PostInput,
+  VsCodeEditor,
+} from "../../components";
 
 const AddPost = () => {
   const [post, setPost] = useState([
@@ -25,49 +26,70 @@ const AddPost = () => {
       type: "Rich-Text",
       ref: useRef(null),
     },
-    {
-      id: uniqueId(),
-      type: "Single Image",
-      ref: useRef(null),
-    },
   ]);
 
+  const handleRemovePost = (id) => {
+    setPost(post.filter((item) => item.id !== id));
+  };
+
   return (
-    <Container>
+    <S.Container>
       <NavBar />
 
-      <Content>
-        <PostContainer>
-          <PostTitle>Criar um Post</PostTitle>
+      <S.Content>
+        <S.PostContainer>
+          <S.PostTitle>Criar um Post</S.PostTitle>
 
           {post.map((post) => {
             switch (post.type) {
               case "Rich-Text":
-                return <RichTextTemplate key={post.id} ref={post.ref} />;
+                return (
+                  <S.PostBlock key={post.id}>
+                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                      <TiDeleteOutline />
+                    </S.PostDelete>
+                    <RichTextTemplate ref={post.ref} />
+                  </S.PostBlock>
+                );
 
               case "Single Image":
-                return <ImagemTemplate key={post.id} ref={post.ref} />;
+                return (
+                  <S.PostBlock key={post.id}>
+                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                      <TiDeleteOutline />
+                    </S.PostDelete>
+                    <ImagemTemplate ref={post.ref} />
+                  </S.PostBlock>
+                );
+
+              case "Code":
+                return (
+                  <S.PostBlock key={post.id}>
+                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                      <TiDeleteOutline />
+                    </S.PostDelete>
+                    <CodeTemplate ref={post.ref} />
+                  </S.PostBlock>
+                );
 
               default:
                 break;
             }
           })}
 
-          <button
+          {/*<button
             onClick={() =>
               post.map((post) => console.log(post.ref.current.getValue()))
             }
           >
             Clicl me
-          </button>
-
-          {console.log(post)}
+          </button>*/}
 
           <PostInput post={post} setPost={setPost} />
-        </PostContainer>
-        <SideBar></SideBar>
-      </Content>
-    </Container>
+        </S.PostContainer>
+        <S.SideBar></S.SideBar>
+      </S.Content>
+    </S.Container>
   );
 };
 
@@ -119,6 +141,29 @@ const ImagemTemplate = forwardRef((props, ref) => {
       subtitles={subtitles}
       setSubtitles={setSubtitles}
     />
+  );
+});
+
+const CodeTemplate = forwardRef((props, ref) => {
+  const [value, setValue] = useState(null);
+
+  const getValue = () => {
+    return {
+      type: "Code",
+      value: value,
+    };
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      getValue,
+    };
+  });
+
+  return (
+    <S.CodeContaiener>
+      <VsCodeEditor />
+    </S.CodeContaiener>
   );
 });
 

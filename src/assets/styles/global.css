@@ -1,21 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 :root {
-  --color-background: #f0f0f7;
-  /*--color-primary-lighter: #9871f5;
-  --color-primary-light: #916bea;*/
-  --color-primary: #4bb2f9;
-  --color-primary-dark: #46a3e4;
-  --color-primary-darker: #4195cf;
-  --color-hover-primary-darker: #3b86ba;
+  --color-hover-primary-lighter: #4987da;
+  --color-primary-lighter: #3479d6;
+  --color-primary-light: #206cd1;
+  --color-primary: #0b5ecd;
+  --color-primary-dark: #0c57bc;
+  --color-primary-darker: #0c50ab;
+  --color-hover-primary-darker: #0d499a;
   --color-background-dark: #121212;
-  --color-dark: #172127;
-  --color-darker: #1c2f3c;
-  --color-hover-darker: #223e51;
-  /*--color-secundary: ;
-  --color-secundary-dark: ;*/
-  --color-title-in-primary: #ffffff;
-  --color-text-in-primary: #d4c2ff;
+  --color-dark: #111923;
+  --color-darker: #112034;
+  --color-hover-darker: #102745;
+  --color-secundary-light: none;
+  --color-secundary: none;
+  --color-secundary-dark: none;
+  --color-white: #fff;
+  --color-black: #111;
+
+  font-size: 62.5%;
 }
 
 * {
@@ -36,5 +39,5 @@ button,
 input,
 textarea {
   color: #fff;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
+  font: 500 1.6rem Nunito;
 }

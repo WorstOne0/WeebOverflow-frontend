@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 215px;
-  padding: 10px;
-  margin-left: 15px;
+  width: 21.5rem;
+  padding: 1rem;
+  margin-left: 1.5rem;
   background: var(--color-darker);
 
   display: flex;
@@ -13,26 +13,26 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.div`
-  height: 180px;
+  height: 18rem;
   width: 100%;
-  border-radius: 5px;
-  background: var(--color-primary-darker);
+  border-radius: 0.5rem;
+  background: var(--color-primary);
 `;
 
 export const Title = styled.h1`
   width: 100%;
-  padding: 5px;
+  padding: 0.5rem;
 
   color: #fff;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   text-align: justify;
 `;
 
 export const Date = styled.h1`
-  padding: 0 5px;
+  padding: 0 0.5rem;
 
-  color: var(--color-primary-darker);
-  font-size: 14px;
+  color: var(--color-primary);
+  font-size: 1.4rem;
   font-weight: normal;
 `;

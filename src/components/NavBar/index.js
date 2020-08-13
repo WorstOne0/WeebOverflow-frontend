@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Container,
@@ -88,18 +89,24 @@ const NavBar = () => {
       )}
 
       <OptionsContainer>
-        <Options isOpenNavBar={isOpenNavBar}>
-          <AiOutlineHome className="Icon" />
-          <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
-        </Options>
-        <Options isOpenNavBar={isOpenNavBar}>
-          <AiOutlineSearch className="Icon" />
-          <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
-        </Options>
-        <Options isOpenNavBar={isOpenNavBar}>
-          <IoMdPaper className="Icon" />
-          <OptionsText isOpenNavBar={isOpenNavBar}>Posts</OptionsText>
-        </Options>
+        <Link to="/" style={{ width: "100%", textDecoration: "none" }}>
+          <Options isOpenNavBar={isOpenNavBar}>
+            <AiOutlineHome className="Icon" />
+            <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
+          </Options>
+        </Link>
+        <Link to="/addPost" style={{ width: "100%", textDecoration: "none" }}>
+          <Options isOpenNavBar={isOpenNavBar}>
+            <AiOutlineSearch className="Icon" />
+            <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
+          </Options>
+        </Link>
+        <Link to="/post" style={{ width: "100%", textDecoration: "none" }}>
+          <Options isOpenNavBar={isOpenNavBar}>
+            <IoMdPaper className="Icon" />
+            <OptionsText isOpenNavBar={isOpenNavBar}>Posts</OptionsText>
+          </Options>
+        </Link>
       </OptionsContainer>
 
       <BottomBar>

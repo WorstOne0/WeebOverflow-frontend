@@ -34,7 +34,12 @@ const initialState = [
   },
 ];
 
-const RichText = ({ value = initialState, setValue }) => {
+const RichText = ({
+  value = initialState,
+  setValue,
+  toolbar = true,
+  background = "--color-darker",
+}) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const renderElement = useCallback((props) => {
@@ -67,22 +72,24 @@ const RichText = ({ value = initialState, setValue }) => {
   function onKeyDown(event) {
     if (!event.ctrlKey) return;
 
-    event.preventDefault();
-
     switch (event.key) {
       case "'": {
+        event.preventDefault();
         return CustomEditor.toggleCodeBlock(editor);
       }
 
       case "b": {
+        event.preventDefault();
         return CustomEditor.toggleBoldMark(editor);
       }
 
       case "i": {
+        event.preventDefault();
         return CustomEditor.toggleItalicMark(editor);
       }
 
       case "u": {
+        event.preventDefault();
         return CustomEditor.toggleUnderlineMark(editor);
       }
 
@@ -99,62 +106,63 @@ const RichText = ({ value = initialState, setValue }) => {
         value={value}
         onChange={(value) => setValue(value)}
       >
-        <Toolbar>
-          <MarkButton format="bold">
-            <Icon>
-              <AiOutlineBold />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="italic">
-            <Icon>
-              <AiOutlineItalic />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="underline">
-            <Icon>
-              <AiOutlineUnderline />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="title">
-            <Icon>1</Icon>
-          </MarkButton>
-          <MarkButton format="subTitle">
-            <Icon>2</Icon>
-          </MarkButton>
-          <MarkButton format="bulletedList">
-            <Icon>
-              <AiOutlineUnorderedList />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="quote">
-            <Icon>
-              <FaQuoteLeft />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="alignCenter">
-            <Icon>
-              <FiAlignCenter />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="alignRight">
-            <Icon>
-              <FiAlignRight />
-            </Icon>
-          </MarkButton>
-          <MarkButton format="justify">
-            <Icon>
-              <FiAlignJustify />
-            </Icon>
-          </MarkButton>
-        </Toolbar>
+        {toolbar && (
+          <Toolbar>
+            <MarkButton format="bold">
+              <Icon>
+                <AiOutlineBold />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="italic">
+              <Icon>
+                <AiOutlineItalic />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="underline">
+              <Icon>
+                <AiOutlineUnderline />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="title">
+              <Icon>1</Icon>
+            </MarkButton>
+            <MarkButton format="subTitle">
+              <Icon>2</Icon>
+            </MarkButton>
+            <MarkButton format="bulletedList">
+              <Icon>
+                <AiOutlineUnorderedList />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="quote">
+              <Icon>
+                <FaQuoteLeft />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="alignCenter">
+              <Icon>
+                <FiAlignCenter />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="alignRight">
+              <Icon>
+                <FiAlignRight />
+              </Icon>
+            </MarkButton>
+            <MarkButton format="justify">
+              <Icon>
+                <FiAlignJustify />
+              </Icon>
+            </MarkButton>
+          </Toolbar>
+        )}
 
-        <RichTextContainer>
+        <RichTextContainer background={background}>
           <Editable
             renderElement={renderElement}
             renderLeaf={renderLeaf}
             onKeyDown={onKeyDown}
             placeholder="Enter some rich text…"
-            spellCheck
             autoFocus
           />
         </RichTextContainer>
@@ -521,7 +529,7 @@ const QuoteElement = (props) => {
 
 const CodeElement = (props) => {
   return (
-    <pre {...props.attributes} style={{ marginTop: "1em" }}>
+    <pre {...props.attributes} style={{ marginTop: "2rem" }}>
       <code>{props.children}</code>
     </pre>
   );
@@ -529,7 +537,7 @@ const CodeElement = (props) => {
 
 const AlignCenterElemement = (props) => {
   return (
-    <p {...props.attributes} style={{ marginTop: "1em", textAlign: "center" }}>
+    <p {...props.attributes} style={{ marginTop: "2rem", textAlign: "center" }}>
       {props.children}
     </p>
   );
@@ -537,7 +545,7 @@ const AlignCenterElemement = (props) => {
 
 const AlignRightElement = (props) => {
   return (
-    <p {...props.attributes} style={{ marginTop: "1em", textAlign: "right" }}>
+    <p {...props.attributes} style={{ marginTop: "2rem", textAlign: "right" }}>
       {props.children}
     </p>
   );
@@ -545,7 +553,10 @@ const AlignRightElement = (props) => {
 
 const JustfyElement = (props) => {
   return (
-    <p {...props.attributes} style={{ marginTop: "1em", textAlign: "justify" }}>
+    <p
+      {...props.attributes}
+      style={{ marginTop: "1rem", textAlign: "justify" }}
+    >
       {props.children}
     </p>
   );
@@ -553,7 +564,7 @@ const JustfyElement = (props) => {
 
 const DefaultElement = (props) => {
   return (
-    <p {...props.attributes} style={{ marginTop: "1em" }}>
+    <p {...props.attributes} style={{ marginTop: "2rem" }}>
       {props.children}
     </p>
   );
