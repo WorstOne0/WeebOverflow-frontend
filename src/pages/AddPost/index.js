@@ -40,6 +40,20 @@ const AddPost = () => {
         <S.PostContainer>
           <S.PostTitle>Criar um Post</S.PostTitle>
 
+          <S.PostBlock>
+            <S.ImgLabel>
+              <p>Drag{"&"}Drop Files Here</p>
+              <p>or</p>
+              <S.BrowseButton htmlFor="file">Browse Files</S.BrowseButton>
+            </S.ImgLabel>
+            <input
+              style={{ display: "none" }}
+              id="file"
+              type="file"
+              onChange={() => {}}
+            />
+          </S.PostBlock>
+
           {post.map((post) => {
             switch (post.type) {
               case "Rich-Text":
@@ -73,7 +87,7 @@ const AddPost = () => {
                 );
 
               default:
-                break;
+                return;
             }
           })}
 
@@ -118,13 +132,16 @@ const RichTextTemplate = forwardRef((props, ref) => {
 });
 
 const ImagemTemplate = forwardRef((props, ref) => {
-  const [src, setSrc] = useState("https://wallpapercave.com/wp/wp4051790.jpg");
+  const [file, setFile] = useState([]);
   const [subtitles, setSubtitles] = useState("Imagem Legal");
+  const [uploaded, setUpload] = useState(false);
+
+  console.log(file);
 
   const getValue = () => {
     return {
       type: "Single Image",
-      value: src,
+      value: file,
     };
   };
 
@@ -134,13 +151,26 @@ const ImagemTemplate = forwardRef((props, ref) => {
     };
   });
 
-  return (
-    <Image
-      src={src}
-      setSrc={setSrc}
-      subtitles={subtitles}
-      setSubtitles={setSubtitles}
-    />
+  const handleInputChange = (event) => {
+    setFile(event.target.files);
+    setUpload(true);
+  };
+
+  return uploaded ? (
+    <Image src={URL.createObjectURL(file[0])} subtitles={subtitles} />
+  ) : (
+    <S.ImgLabel>
+      <p>Drag{"&"}Drop Files Here</p>
+      <p>or</p>
+      <S.BrowseButton htmlFor="fileUpload">Browse Files</S.BrowseButton>
+      <input
+        style={{ display: "none" }}
+        id="fileUpload"
+        name="file"
+        type="file"
+        onChange={handleInputChange}
+      />
+    </S.ImgLabel>
   );
 });
 
