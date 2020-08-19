@@ -7,7 +7,7 @@ import React, {
 
 import * as S from "./styles";
 
-import { TiDeleteOutline } from "react-icons/ti";
+import { FiDelete } from "react-icons/fi";
 
 import { uniqueId } from "lodash";
 
@@ -17,19 +17,28 @@ import {
   Image,
   PostInput,
   VsCodeEditor,
+  DropZone,
 } from "../../components";
 
 const AddPost = () => {
-  const [post, setPost] = useState([
-    {
-      id: uniqueId(),
-      type: "Rich-Text",
-      ref: useRef(null),
-    },
-  ]);
+  const [post, setPost] = useState({
+    title: "",
+    thumbnail: "",
+    content: [
+      {
+        id: uniqueId(),
+        type: "Rich-Text",
+        ref: useRef(null),
+      },
+    ],
+    tags: "",
+  });
 
   const handleRemovePost = (id) => {
-    setPost(post.filter((item) => item.id !== id));
+    setPost({
+      ...post,
+      content: post.content.filter((item) => item.id !== id),
+    });
   };
 
   return (
@@ -41,26 +50,17 @@ const AddPost = () => {
           <S.PostTitle>Criar um Post</S.PostTitle>
 
           <S.PostBlock>
-            <S.ImgLabel>
-              <p>Drag{"&"}Drop Files Here</p>
-              <p>or</p>
-              <S.BrowseButton htmlFor="file">Browse Files</S.BrowseButton>
-            </S.ImgLabel>
-            <input
-              style={{ display: "none" }}
-              id="file"
-              type="file"
-              onChange={() => {}}
-            />
+            <DropZone />
+            <S.PostInputTitle />
           </S.PostBlock>
 
-          {post.map((post) => {
+          {post.content.map((post) => {
             switch (post.type) {
               case "Rich-Text":
                 return (
                   <S.PostBlock key={post.id}>
                     <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <TiDeleteOutline />
+                      <FiDelete />
                     </S.PostDelete>
                     <RichTextTemplate ref={post.ref} />
                   </S.PostBlock>
@@ -70,9 +70,9 @@ const AddPost = () => {
                 return (
                   <S.PostBlock key={post.id}>
                     <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <TiDeleteOutline />
+                      <FiDelete />
                     </S.PostDelete>
-                    <ImagemTemplate ref={post.ref} />
+                    <ImagemTemplate ref={post.ref} id={post.id} />
                   </S.PostBlock>
                 );
 
@@ -80,7 +80,7 @@ const AddPost = () => {
                 return (
                   <S.PostBlock key={post.id}>
                     <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <TiDeleteOutline />
+                      <FiDelete />
                     </S.PostDelete>
                     <CodeTemplate ref={post.ref} />
                   </S.PostBlock>
@@ -131,7 +131,7 @@ const RichTextTemplate = forwardRef((props, ref) => {
   return <RichText value={value} setValue={setValue} />;
 });
 
-const ImagemTemplate = forwardRef((props, ref) => {
+const ImagemTemplate = forwardRef(({ id }, ref) => {
   const [file, setFile] = useState([]);
   const [subtitles, setSubtitles] = useState("Imagem Legal");
   const [uploaded, setUpload] = useState(false);
@@ -151,26 +151,10 @@ const ImagemTemplate = forwardRef((props, ref) => {
     };
   });
 
-  const handleInputChange = (event) => {
-    setFile(event.target.files);
-    setUpload(true);
-  };
-
   return uploaded ? (
     <Image src={URL.createObjectURL(file[0])} subtitles={subtitles} />
   ) : (
-    <S.ImgLabel>
-      <p>Drag{"&"}Drop Files Here</p>
-      <p>or</p>
-      <S.BrowseButton htmlFor="fileUpload">Browse Files</S.BrowseButton>
-      <input
-        style={{ display: "none" }}
-        id="fileUpload"
-        name="file"
-        type="file"
-        onChange={handleInputChange}
-      />
-    </S.ImgLabel>
+    <DropZone setFile={setFile} setUpload={setUpload} id={id} />
   );
 });
 

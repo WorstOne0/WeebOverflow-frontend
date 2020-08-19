@@ -6,6 +6,7 @@ const VsCodeEditor = () => {
   return (
     <Editor
       language="javascript"
+      width="100%"
       theme="dark"
       options={{ minimap: { enable: false } }}
     />

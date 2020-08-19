@@ -18,14 +18,17 @@ const PostInput = ({ post, setPost }) => {
     <S.Container>
       <S.Type
         onClick={() =>
-          setPost([
+          setPost({
             ...post,
-            {
-              id: uniqueId(),
-              type: "Rich-Text",
-              ref: createRef(),
-            },
-          ])
+            content: [
+              ...post.content,
+              {
+                id: uniqueId(),
+                type: "Rich-Text",
+                ref: createRef(),
+              },
+            ],
+          })
         }
       >
         <AiOutlineFileText className="Icon" />
@@ -33,14 +36,17 @@ const PostInput = ({ post, setPost }) => {
       </S.Type>
       <S.Type
         onClick={() =>
-          setPost([
+          setPost({
             ...post,
-            {
-              id: uniqueId(),
-              type: "Single Image",
-              ref: createRef(),
-            },
-          ])
+            content: [
+              ...post.content,
+              {
+                id: uniqueId(),
+                type: "Single Image",
+                ref: createRef(),
+              },
+            ],
+          })
         }
       >
         <BsImage className="Icon" />
@@ -52,14 +58,17 @@ const PostInput = ({ post, setPost }) => {
       </S.Type>
       <S.Type
         onClick={() =>
-          setPost([
+          setPost({
             ...post,
-            {
-              id: uniqueId(),
-              type: "Code",
-              ref: createRef(),
-            },
-          ])
+            content: [
+              ...post.content,
+              {
+                id: uniqueId(),
+                type: "Code",
+                ref: createRef(),
+              },
+            ],
+          })
         }
       >
         <BsCodeSlash className="Icon" />

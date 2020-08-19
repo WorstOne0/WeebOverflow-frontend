@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Type = styled.div`
   height: 100%;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   border: 0.1rem solid var(--color-darker);
 
   display: flex;
