@@ -54,6 +54,6 @@ export const BrowseButton = styled.label`
 `;
 
 export const Img = styled.img`
-  height: 10rem;
-  width: 10rem;
+  height: 15rem;
+  width: 15rem;
 `;

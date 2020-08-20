@@ -6,6 +6,7 @@ import Image from "./Image";
 import PostInput from "./PostInput";
 import VsCodeEditor from "./VsCode Editor";
 import DropZone from "./DropZone";
+import InputText from "./InputText";
 
 export {
   Card,
@@ -16,4 +17,5 @@ export {
   PostInput,
   VsCodeEditor,
   DropZone,
+  InputText,
 };

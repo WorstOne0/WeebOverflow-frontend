@@ -18,6 +18,7 @@ import {
   PostInput,
   VsCodeEditor,
   DropZone,
+  InputText,
 } from "../../components";
 
 const AddPost = () => {
@@ -51,7 +52,7 @@ const AddPost = () => {
 
           <S.PostBlock>
             <DropZone />
-            <S.PostInputTitle />
+            <InputText margin="3rem 0" name="Titulo" />
           </S.PostBlock>
 
           {post.content.map((post) => {

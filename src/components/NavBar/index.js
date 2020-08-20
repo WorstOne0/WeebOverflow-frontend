@@ -39,9 +39,9 @@ const NavBar = () => {
   const [isLogged, setIsLogged] = useState(true);
   const [isOpenNavBar, setOpenNavBar] = useState(true);
 
-  function handleToggleNavBar() {
+  const handleToggleNavBar = () => {
     setOpenNavBar(!isOpenNavBar);
-  }
+  };
 
   const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
@@ -52,7 +52,7 @@ const NavBar = () => {
           <GiHamburgerMenu onClick={handleToggleNavBar} />
         </IconShelter>
 
-        <LogoText isOpenNavBar={isOpenNavBar}>Dollars</LogoText>
+        <LogoText isOpenNavBar={isOpenNavBar}>Weeb Overflow</LogoText>
 
         <LogoImg />
       </LogoContainer>
