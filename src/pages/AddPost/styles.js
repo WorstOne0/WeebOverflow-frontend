@@ -12,14 +12,28 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: auto;
   width: 100%;
-  padding: 1.5rem 1.5rem 1.5rem 0;
+  padding: 1.5rem;
   background: var(--color-background-dark);
 
   display: flex;
+  flex-direction: column;
+
+  .Split {
+    width: 100%;
+
+    display: flex;
+  }
+`;
+
+export const Hero = styled.div`
+  height: 70vh;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-dark);
 `;
 
 export const PostContainer = styled.div`
-  margin-left: 1.5rem;
   padding: 2rem;
   border-radius: 0.5rem;
   background: var(--color-dark);

@@ -29,7 +29,7 @@ export const Input = styled.input`
   font-size: 1.6rem;
 
   :focus {
-    border-color: var(--color-hover-darker);
+    border-color: var(--color-primary);
   }
 `;
 

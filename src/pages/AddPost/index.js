@@ -19,6 +19,7 @@ import {
   VsCodeEditor,
   DropZone,
   InputText,
+  Loading,
 } from "../../components";
 
 const AddPost = () => {
@@ -47,52 +48,54 @@ const AddPost = () => {
       <NavBar />
 
       <S.Content>
-        <S.PostContainer>
-          <S.PostTitle>Criar um Post</S.PostTitle>
+        <S.Hero />
+        <div className="Split">
+          <S.PostContainer>
+            <S.PostTitle>Criar um Post</S.PostTitle>
 
-          <S.PostBlock>
-            <DropZone />
-            <InputText margin="3rem 0" name="Titulo" />
-          </S.PostBlock>
+            <S.PostBlock>
+              <DropZone />
+              <InputText margin="3rem 0" name="Titulo" />
+            </S.PostBlock>
 
-          {post.content.map((post) => {
-            switch (post.type) {
-              case "Rich-Text":
-                return (
-                  <S.PostBlock key={post.id}>
-                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <FiDelete />
-                    </S.PostDelete>
-                    <RichTextTemplate ref={post.ref} />
-                  </S.PostBlock>
-                );
+            {post.content.map((post) => {
+              switch (post.type) {
+                case "Rich-Text":
+                  return (
+                    <S.PostBlock key={post.id}>
+                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                        <FiDelete />
+                      </S.PostDelete>
+                      <RichTextTemplate ref={post.ref} />
+                    </S.PostBlock>
+                  );
 
-              case "Single Image":
-                return (
-                  <S.PostBlock key={post.id}>
-                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <FiDelete />
-                    </S.PostDelete>
-                    <ImagemTemplate ref={post.ref} id={post.id} />
-                  </S.PostBlock>
-                );
+                case "Single Image":
+                  return (
+                    <S.PostBlock key={post.id}>
+                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                        <FiDelete />
+                      </S.PostDelete>
+                      <ImagemTemplate ref={post.ref} id={post.id} />
+                    </S.PostBlock>
+                  );
 
-              case "Code":
-                return (
-                  <S.PostBlock key={post.id}>
-                    <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                      <FiDelete />
-                    </S.PostDelete>
-                    <CodeTemplate ref={post.ref} />
-                  </S.PostBlock>
-                );
+                case "Code":
+                  return (
+                    <S.PostBlock key={post.id}>
+                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                        <FiDelete />
+                      </S.PostDelete>
+                      <CodeTemplate ref={post.ref} />
+                    </S.PostBlock>
+                  );
 
-              default:
-                return;
-            }
-          })}
+                default:
+                  return;
+              }
+            })}
 
-          {/*<button
+            {/*<button
             onClick={() =>
               post.map((post) => console.log(post.ref.current.getValue()))
             }
@@ -100,9 +103,10 @@ const AddPost = () => {
             Clicl me
           </button>*/}
 
-          <PostInput post={post} setPost={setPost} />
-        </S.PostContainer>
-        <S.SideBar></S.SideBar>
+            <PostInput post={post} setPost={setPost} />
+          </S.PostContainer>
+          <S.SideBar></S.SideBar>
+        </div>
       </S.Content>
     </S.Container>
   );
