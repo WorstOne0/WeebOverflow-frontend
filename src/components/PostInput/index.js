@@ -52,7 +52,21 @@ const PostInput = ({ post, setPost }) => {
         <BsImage className="Icon" />
         <p>Imagem Única</p>
       </S.Type>
-      <S.Type>
+      <S.Type
+        onClick={() =>
+          setPost({
+            ...post,
+            content: [
+              ...post.content,
+              {
+                id: uniqueId(),
+                type: "Gallery",
+                ref: createRef(),
+              },
+            ],
+          })
+        }
+      >
         <BsImages className="Icon" />
         <p>Imagens</p>
       </S.Type>

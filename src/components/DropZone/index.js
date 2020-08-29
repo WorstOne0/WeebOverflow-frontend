@@ -10,7 +10,7 @@ import imgReject from "../../assets/unnamed-removebg-preview.png";
 
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
-const DropZone = ({ setFile, setUpload, id }) => {
+const DropZone = ({ setFile, setUpload, id, multiple = false }) => {
   const handleInputChange = (event) => {
     setFile(event.target.files);
     setUpload(true);
@@ -32,7 +32,7 @@ const DropZone = ({ setFile, setUpload, id }) => {
   } = useDropzone({
     onDrop,
     accept: "image/*",
-    multiple: false,
+    multiple,
   });
 
   return (
@@ -66,6 +66,7 @@ const DropZone = ({ setFile, setUpload, id }) => {
           name="file"
           type="file"
           onChange={handleInputChange}
+          multiple={multiple}
         />
       </Content>
     </Container>

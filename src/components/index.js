@@ -8,6 +8,7 @@ import VsCodeEditor from "./VsCode Editor";
 import DropZone from "./DropZone";
 import InputText from "./InputText";
 import Loading from "./Loading";
+import Gallery from "./Gallery";
 
 export {
   Card,
@@ -20,4 +21,5 @@ export {
   DropZone,
   InputText,
   Loading,
+  Gallery,
 };
