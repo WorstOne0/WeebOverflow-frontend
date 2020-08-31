@@ -12,26 +12,48 @@ export const Container = styled.div`
     .Arrow {
       opacity: 1;
     }
+
+    .Dots {
+      opacity: 1;
+    }
   }
+`;
+
+export const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
 `;
 
 export const SliderContent = styled.div`
   height: 100%;
-  width: ${(props) => `${props.width}px`};
+  width: calc(${(props) => `100% * ${props.width}`});
 
   display: flex;
   flex-direction: row;
 
-  position: absolute;
-  top: 0;
+  position: relative;
 
-  transform: translateX(${(props) => `-${props.translate}px`});
+  transform: translateX(${(props) => `calc(-${props.translate}%)`});
+
   transition: transform ease-out 0.2s;
+`;
+
+export const ImageContainer = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Image = styled.img`
   height: 100%;
-  width: ${(props) => `${props.width}px`};
+  width: ${(props) => (props.cover ? "100%" : "auto")};
+  max-width: 100%;
 `;
 
 export const Counter = styled.div`
@@ -96,6 +118,7 @@ export const DotsContainer = styled.div`
   height: 5rem;
   width: 100%;
   max-width: 70rem;
+  opacity: 0;
 
   display: flex;
   justify-content: center;
@@ -106,6 +129,7 @@ export const DotsContainer = styled.div`
   bottom: 0;
   z-index: 1;
 
+  transition: opacity 0.2s;
   transform: translate(-50%);
 `;
 

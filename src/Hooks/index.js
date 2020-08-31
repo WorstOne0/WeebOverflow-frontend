@@ -1,3 +1,5 @@
 import useRouter from "./useRouter";
+import useEffectUpdate from "./useEffectUpdate";
+import useForceUpdate from "./useForceUpdate";
 
-export { useRouter };
+export { useRouter, useEffectUpdate, useForceUpdate };

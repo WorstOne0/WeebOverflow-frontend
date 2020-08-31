@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { toggleNavBar } from "../../Store/actions/NavBar";
+
 import {
   Container,
   LogoContainer,
@@ -37,10 +40,12 @@ import { DiJsBadge, DiPython, DiReact } from "react-icons/di";
 
 const NavBar = () => {
   const [isLogged, setIsLogged] = useState(true);
-  const [isOpenNavBar, setOpenNavBar] = useState(true);
+
+  const isOpenNavBar = useSelector((state) => state.NavBar.isOpenNavBar);
+  const dispatch = useDispatch();
 
   const handleToggleNavBar = () => {
-    setOpenNavBar(!isOpenNavBar);
+    dispatch(toggleNavBar());
   };
 
   const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");

@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
-
+import React, { useState } from "react";
 import {
   Container,
+  Wrapper,
   SliderContent,
+  ImageContainer,
   Image,
   Counter,
   ArrowLeft,
@@ -15,39 +16,37 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function Gallery({ height = "40rem", width = "100%", images = [] }) {
   const [index, setIndex] = useState(0);
-  const [translate, setTranslate] = useState(0);
-  const [offsetWidth, setOffsetWidth] = useState();
-
-  const ref = useRef(null);
-
-  useEffect(() => {
-    setOffsetWidth(ref.current.offsetWidth);
-    window.addEventListener("resize", () =>
-      setOffsetWidth(ref.current.offsetWidth)
-    );
-  }, []);
 
   const prevPage = () => {
     if (index == 0) return;
 
     setIndex(index - 1);
-    setTranslate((index - 1) * offsetWidth);
   };
 
   const nextPage = () => {
     if (index == images.length - 1) return;
 
     setIndex(index + 1);
-    setTranslate((index + 1) * offsetWidth);
+  };
+
+  const goToPage = (number) => {
+    setIndex(number);
   };
 
   return (
-    <Container height={height} width={width} ref={ref}>
-      <SliderContent translate={translate} width={offsetWidth * images.length}>
-        {images.map((image) => (
-          <Image src={image} width={offsetWidth} />
-        ))}
-      </SliderContent>
+    <Container height={height} width={width}>
+      <Wrapper>
+        <SliderContent
+          translate={index * (100 / images.length)}
+          width={images.length}
+        >
+          {images.map((image) => (
+            <ImageContainer>
+              <Image src={image} />
+            </ImageContainer>
+          ))}
+        </SliderContent>
+      </Wrapper>
 
       <Counter>
         {index + 1} / {images.length}
@@ -58,9 +57,12 @@ function Gallery({ height = "40rem", width = "100%", images = [] }) {
       <ArrowRight className="Arrow" onClick={nextPage}>
         <BsChevronCompactRight />
       </ArrowRight>
-      <DotsContainer>
+      <DotsContainer className="Dots">
         {images.map((image, indexImg) => (
-          <Dots active={index == indexImg ? true : false} />
+          <Dots
+            active={index == indexImg ? true : false}
+            onClick={() => goToPage(indexImg)}
+          />
         ))}
       </DotsContainer>
     </Container>
