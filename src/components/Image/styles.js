@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  padding: 2.5rem 0;
 
   display: flex;
   justify-content: center;
@@ -11,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 30rem;
+  height: 40rem;
   max-height: 80rem;
   width: ${(props) => (props.cover ? "100%" : "auto")};
   max-width: 100%;

@@ -35,6 +35,16 @@ export const Content = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const BrowseButton = styled.label`
   height: 5rem;
   width: 17rem;

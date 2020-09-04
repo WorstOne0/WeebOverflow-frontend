@@ -85,6 +85,18 @@ export const PostDelete = styled.div`
   cursor: pointer;
 `;
 
+export const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  position: relative;
+`;
+
 export const CodeContaiener = styled.div`
   height: 30rem;
   width: 100%;

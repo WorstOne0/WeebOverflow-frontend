@@ -11,6 +11,7 @@ import * as S from "./styles";
 import { FiDelete } from "react-icons/fi";
 
 import { uniqueId } from "lodash";
+import { filesize } from "filesize";
 
 import {
   NavBar,
@@ -60,7 +61,7 @@ const AddPost = () => {
             <S.PostTitle>Criar um Post</S.PostTitle>
 
             <S.PostBlock>
-              <DropZone />
+              <DropZone text="Arraste sua imagem aqui" />
               <InputText margin="3rem 0" name="Titulo" />
             </S.PostBlock>
 
@@ -153,14 +154,14 @@ const RichTextTemplate = forwardRef((props, ref) => {
 });
 
 const ImagemTemplate = forwardRef(({ id }, ref) => {
-  const [file, setFile] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   const [subtitles, setSubtitles] = useState("Imagem Legal");
   const [uploaded, setUpload] = useState(false);
 
   const getValue = () => {
     return {
       type: "Single Image",
-      value: file,
+      value: uploadedFiles,
     };
   };
 
@@ -171,21 +172,31 @@ const ImagemTemplate = forwardRef(({ id }, ref) => {
   });
 
   return uploaded ? (
-    <Image src={URL.createObjectURL(file[0])} subtitles={subtitles} />
+    <S.Wrapper>
+      <Image
+        src={uploadedFiles.map((file) => file.preview)}
+        subtitles={subtitles}
+      />
+    </S.Wrapper>
   ) : (
-    <DropZone setFile={setFile} setUpload={setUpload} id={id} />
+    <DropZone
+      uploadedFiles={uploadedFiles}
+      setUploadedFiles={setUploadedFiles}
+      setUpload={setUpload}
+      id={id}
+      text="Arraste sua imagem aqui"
+    />
   );
 });
 
 const GalleryTemplate = forwardRef(({ id }, ref) => {
-  const [files, setFiles] = useState([]);
   const [uploaded, setUpload] = useState(false);
-  const images = Array.from(files).map((file) => URL.createObjectURL(file));
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const getValue = () => {
     return {
       type: "Gallery",
-      value: files,
+      value: uploadedFiles,
     };
   };
 
@@ -196,13 +207,20 @@ const GalleryTemplate = forwardRef(({ id }, ref) => {
   });
 
   return uploaded ? (
-    <Gallery images={images} />
+    <S.Wrapper>
+      <Gallery
+        uploadedFiles={uploadedFiles}
+        setUploadedFiles={setUploadedFiles}
+      />
+    </S.Wrapper>
   ) : (
     <DropZone
-      setFile={setFiles}
+      uploadedFiles={uploadedFiles}
+      setUploadedFiles={setUploadedFiles}
       setUpload={setUpload}
       id={id}
       multiple={true}
+      text="Arraste suas imagens aqui"
     />
   );
 });
