@@ -25,6 +25,10 @@ export const Toolbar = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 `;
 
 export const Icon = styled.div`

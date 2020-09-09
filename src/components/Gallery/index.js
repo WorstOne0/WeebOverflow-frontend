@@ -9,6 +9,7 @@ function Gallery({
   width = "100%",
   uploadedFiles,
   setUploadedFiles,
+  readOnly = false,
 }) {
   const [index, setIndex] = useState(0);
 
@@ -44,9 +45,11 @@ function Gallery({
           {uploadedFiles.map((image) => (
             <S.ImageContainer>
               <S.WrapperImg>
-                <S.DeleteImg onClick={() => handleDeleteImg(image.id)}>
-                  <AiFillDelete />
-                </S.DeleteImg>
+                {!readOnly && (
+                  <S.DeleteImg onClick={() => handleDeleteImg(image.id)}>
+                    <AiFillDelete />
+                  </S.DeleteImg>
+                )}
                 <S.Image src={image.preview} />
               </S.WrapperImg>
             </S.ImageContainer>

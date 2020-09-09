@@ -12,6 +12,15 @@ export const Container = styled.div`
   grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media (max-width: 380px) {
+    height: 20rem;
+  }
 `;
 
 export const Type = styled.div`
@@ -53,6 +62,10 @@ export const Type = styled.div`
 
     transition: all 0.3s;
     transform: translateY(-1rem);
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 
   .Icon {
@@ -62,5 +75,13 @@ export const Type = styled.div`
 
     transition: all 0.3s;
     transform: translateY(1.5rem);
+
+    @media (max-width: 500px) {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 380px) {
+      font-size: 2.8rem;
+    }
   }
 `;

@@ -6,14 +6,14 @@ import { NavBar } from "../../components";
 
 const Post = () => {
   return (
-    <Container>
-      <NavBar />
-
-      <Content>
-        <PostContainer></PostContainer>
-        <SideBar></SideBar>
-      </Content>
-    </Container>
+    <NavBar>
+      <Container>
+        <Content>
+          <PostContainer></PostContainer>
+          <SideBar></SideBar>
+        </Content>
+      </Container>
+    </NavBar>
   );
 };
 

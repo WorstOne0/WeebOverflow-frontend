@@ -41,6 +41,10 @@ export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export const PostTitle = styled.h1`
@@ -109,4 +113,8 @@ export const SideBar = styled.div`
 
   display: flex;
   flex: 0 0 23rem;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;

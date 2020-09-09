@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 25rem;
+  height: 32vh;
   width: 100%;
   border-radius: 0.8rem;
   border: 0.2rem dashed
@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
 
 export const BrowseButton = styled.label`
   height: 5rem;
-  width: 17rem;
+  width: 20rem;
   margin-top: 1.5rem;
   border-radius: 0.8rem;
   border: 1px solid var(--color-primary);

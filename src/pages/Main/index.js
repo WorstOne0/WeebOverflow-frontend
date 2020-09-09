@@ -20,44 +20,44 @@ import { NavBar, Card, SmallCard } from "../../components";
 
 const Main = () => {
   return (
-    <Container>
-      <NavBar />
+    <NavBar>
+      <Container>
+        <Content>
+          <Article>
+            <SpotlightContainer>
+              <SpotlightHeader>
+                <SpotlightTitle>Destaques</SpotlightTitle>
 
-      <Content>
-        <Article>
-          <SpotlightContainer>
-            <SpotlightHeader>
-              <SpotlightTitle>Destaques</SpotlightTitle>
+                <div className="Buttons">
+                  <TEMP_Buttons />
+                  <TEMP_Buttons />
+                </div>
+              </SpotlightHeader>
 
-              <div className="Buttons">
-                <TEMP_Buttons />
-                <TEMP_Buttons />
-              </div>
-            </SpotlightHeader>
+              <SpotlightList>
+                <SmallCard />
+                <SmallCard />
+                <SmallCard />
+              </SpotlightList>
+            </SpotlightContainer>
+            <PostContainer>
+              <PostTitle>Posts</PostTitle>
 
-            <SpotlightList>
-              <SmallCard />
-              <SmallCard />
-              <SmallCard />
-            </SpotlightList>
-          </SpotlightContainer>
-          <PostContainer>
-            <PostTitle>Posts</PostTitle>
+              <PostList>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+              </PostList>
+            </PostContainer>
+          </Article>
 
-            <PostList>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-            </PostList>
-          </PostContainer>
-        </Article>
-
-        <TEMP_SideBarRight />
-      </Content>
-    </Container>
+          <TEMP_SideBarRight />
+        </Content>
+      </Container>
+    </NavBar>
   );
 };
 

@@ -51,81 +51,81 @@ const AddPost = () => {
   };
 
   return (
-    <S.Container>
-      <NavBar />
+    <NavBar>
+      <S.Container>
+        <S.Content>
+          <S.Hero />
+          <div className="Split">
+            <S.PostContainer>
+              <S.PostTitle>Criar um Post</S.PostTitle>
 
-      <S.Content>
-        <S.Hero />
-        <div className="Split">
-          <S.PostContainer>
-            <S.PostTitle>Criar um Post</S.PostTitle>
+              <S.PostBlock>
+                <DropZone text="Arraste sua imagem aqui" />
+                <InputText margin="3rem 0" name="Titulo" />
+              </S.PostBlock>
 
-            <S.PostBlock>
-              <DropZone text="Arraste sua imagem aqui" />
-              <InputText margin="3rem 0" name="Titulo" />
-            </S.PostBlock>
+              {post.content.map((post) => {
+                switch (post.type) {
+                  case "Rich-Text":
+                    return (
+                      <S.PostBlock key={post.id}>
+                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                          <FiDelete />
+                        </S.PostDelete>
+                        <RichTextTemplate ref={post.ref} />
+                      </S.PostBlock>
+                    );
 
-            {post.content.map((post) => {
-              switch (post.type) {
-                case "Rich-Text":
-                  return (
-                    <S.PostBlock key={post.id}>
-                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                        <FiDelete />
-                      </S.PostDelete>
-                      <RichTextTemplate ref={post.ref} />
-                    </S.PostBlock>
-                  );
+                  case "Single Image":
+                    return (
+                      <S.PostBlock key={post.id}>
+                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                          <FiDelete />
+                        </S.PostDelete>
+                        <ImagemTemplate ref={post.ref} id={post.id} />
+                      </S.PostBlock>
+                    );
 
-                case "Single Image":
-                  return (
-                    <S.PostBlock key={post.id}>
-                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                        <FiDelete />
-                      </S.PostDelete>
-                      <ImagemTemplate ref={post.ref} id={post.id} />
-                    </S.PostBlock>
-                  );
+                  case "Gallery":
+                    return (
+                      <S.PostBlock key={post.id}>
+                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                          <FiDelete />
+                        </S.PostDelete>
+                        <GalleryTemplate ref={post.ref} id={post.id} />
+                      </S.PostBlock>
+                    );
 
-                case "Gallery":
-                  return (
-                    <S.PostBlock key={post.id}>
-                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                        <FiDelete />
-                      </S.PostDelete>
-                      <GalleryTemplate ref={post.ref} id={post.id} />
-                    </S.PostBlock>
-                  );
+                  case "Code":
+                    return (
+                      <S.PostBlock key={post.id}>
+                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                          <FiDelete />
+                        </S.PostDelete>
+                        <CodeTemplate ref={post.ref} />
+                      </S.PostBlock>
+                    );
 
-                case "Code":
-                  return (
-                    <S.PostBlock key={post.id}>
-                      <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                        <FiDelete />
-                      </S.PostDelete>
-                      <CodeTemplate ref={post.ref} />
-                    </S.PostBlock>
-                  );
+                  default:
+                    return;
+                }
+              })}
 
-                default:
-                  return;
-              }
-            })}
+              {/*<button
+          onClick={() =>
+            post.map((post) => console.log(post.ref.current.getValue()))
+          }
+        >
+          Clicl me
+        </button>*/}
 
-            {/*<button
-            onClick={() =>
-              post.map((post) => console.log(post.ref.current.getValue()))
-            }
-          >
-            Clicl me
-          </button>*/}
-
-            <PostInput post={post} setPost={setPost} />
-          </S.PostContainer>
-          <S.SideBar></S.SideBar>
-        </div>
-      </S.Content>
-    </S.Container>
+              <PostInput post={post} setPost={setPost} />
+            </S.PostContainer>
+            <S.SideBar></S.SideBar>
+          </div>
+        </S.Content>
+      </S.Container>
+    </NavBar>
   );
 };
 
