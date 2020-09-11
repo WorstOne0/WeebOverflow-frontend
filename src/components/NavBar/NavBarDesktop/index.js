@@ -103,13 +103,13 @@ const NavBarDesktop = ({ children }) => {
               <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
             </Options>
           </Link>
-          <Link to="/addPost" style={{ width: "100%", textDecoration: "none" }}>
+          <Link to="/search" style={{ width: "100%", textDecoration: "none" }}>
             <Options isOpenNavBar={isOpenNavBar}>
               <AiOutlineSearch className="Icon" />
               <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
             </Options>
           </Link>
-          <Link to="/post" style={{ width: "100%", textDecoration: "none" }}>
+          <Link to="/friends" style={{ width: "100%", textDecoration: "none" }}>
             <Options isOpenNavBar={isOpenNavBar}>
               <FaUserFriends className="Icon" />
               <OptionsText isOpenNavBar={isOpenNavBar}>Chat</OptionsText>
@@ -118,8 +118,15 @@ const NavBarDesktop = ({ children }) => {
         </OptionsContainer>
 
         <BottomBar>
-          <AiOutlinePlus className="Icon" />
-          <AiOutlineSetting className="Icon" />
+          <Link to="/addPost" style={{ width: "auto", textDecoration: "none" }}>
+            <AiOutlinePlus className="Icon" />
+          </Link>
+          <Link
+            to="/settings"
+            style={{ width: "auto", textDecoration: "none" }}
+          >
+            <AiOutlineSetting className="Icon" />
+          </Link>
         </BottomBar>
       </NavBarContainer>
       {children}

@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const NavBarContainerTop = styled.div`
-  height: 3rem;
+  height: 5rem;
   width: 100%;
   padding: 0 2rem;
   background: var(--color-primary);
@@ -51,8 +51,8 @@ export const LogoText = styled.p`
 `;
 
 export const UserImg = styled.div`
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
   border-radius: 50%;
 
   background-image: url(${(props) => props.url});
@@ -64,7 +64,7 @@ export const UserImg = styled.div`
 `;
 
 export const NavBarContainer = styled.div`
-  height: 4rem;
+  height: 5rem;
   width: 100%;
   background: var(--color-primary);
 
@@ -106,7 +106,7 @@ export const Options = styled.div`
     margin-right: 1rem;
 
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   ${(props) =>

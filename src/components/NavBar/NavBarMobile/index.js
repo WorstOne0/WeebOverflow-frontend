@@ -35,7 +35,12 @@ function NavBarMobile({ children }) {
           <LogoImg />
           <LogoText>Weeb Overflow</LogoText>
         </LogoContainer>
-        <UserImg url={UserImgTemp} />
+        <Link
+          to="/profile"
+          style={{ height: "auto", width: "auto", textDecoration: "none" }}
+        >
+          <UserImg url={UserImgTemp} />
+        </Link>
       </NavBarContainerTop>
 
       {children}
@@ -51,7 +56,7 @@ function NavBarMobile({ children }) {
             </Options>
           </Link>
           <Link
-            to="/addPost"
+            to="/search"
             style={{ height: "100%", width: "100%", textDecoration: "none" }}
           >
             <Options>
@@ -59,7 +64,7 @@ function NavBarMobile({ children }) {
             </Options>
           </Link>
           <Link
-            to="/post"
+            to="/addPost"
             style={{ height: "100%", width: "100%", textDecoration: "none" }}
           >
             <Options>
@@ -67,7 +72,7 @@ function NavBarMobile({ children }) {
             </Options>
           </Link>
           <Link
-            to="/post"
+            to="/friends"
             style={{ height: "100%", width: "100%", textDecoration: "none" }}
           >
             <Options>
@@ -75,7 +80,7 @@ function NavBarMobile({ children }) {
             </Options>
           </Link>
           <Link
-            to="/"
+            to="/settings"
             style={{ height: "100%", width: "100%", textDecoration: "none" }}
           >
             <Options>

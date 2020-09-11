@@ -189,6 +189,8 @@ export const BadgesContainer = styled.div`
 
   .Icon {
     margin-right: 0.5rem;
+
+    color: #d4d4d4;
   }
 
   ${(props) =>
@@ -262,6 +264,8 @@ export const BottomBar = styled.div`
   font-size: 1.8rem;
 
   .Icon {
+    color: #fff;
+
     cursor: pointer;
   }
 `;

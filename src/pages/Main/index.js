@@ -1,62 +1,48 @@
 import React, { useState } from "react";
 
-import {
-  Container,
-  NavBarContainer,
-  Content,
-  Article,
-  SpotlightContainer,
-  SpotlightHeader,
-  SpotlightTitle,
-  TEMP_Buttons,
-  SpotlightList,
-  PostContainer,
-  PostTitle,
-  PostList,
-  TEMP_SideBarRight,
-} from "./styles";
+import * as S from "./styles";
 
 import { NavBar, Card, SmallCard } from "../../components";
 
 const Main = () => {
   return (
     <NavBar>
-      <Container>
-        <Content>
-          <Article>
-            <SpotlightContainer>
-              <SpotlightHeader>
-                <SpotlightTitle>Destaques</SpotlightTitle>
+      <S.Container>
+        <S.Content>
+          <S.Article>
+            <S.SpotlightContainer>
+              <S.SpotlightHeader>
+                <S.SpotlightTitle>Destaques</S.SpotlightTitle>
 
                 <div className="Buttons">
-                  <TEMP_Buttons />
-                  <TEMP_Buttons />
+                  <S.TEMP_Buttons />
+                  <S.TEMP_Buttons />
                 </div>
-              </SpotlightHeader>
+              </S.SpotlightHeader>
 
-              <SpotlightList>
+              <S.SpotlightList>
                 <SmallCard />
                 <SmallCard />
                 <SmallCard />
-              </SpotlightList>
-            </SpotlightContainer>
-            <PostContainer>
-              <PostTitle>Posts</PostTitle>
+              </S.SpotlightList>
+            </S.SpotlightContainer>
+            <S.PostContainer>
+              <S.PostTitle>Posts</S.PostTitle>
 
-              <PostList>
+              <S.PostList>
                 <Card />
                 <Card />
                 <Card />
                 <Card />
                 <Card />
                 <Card />
-              </PostList>
-            </PostContainer>
-          </Article>
+              </S.PostList>
+            </S.PostContainer>
+          </S.Article>
 
-          <TEMP_SideBarRight />
-        </Content>
-      </Container>
+          <S.TEMP_SideBarRight />
+        </S.Content>
+      </S.Container>
     </NavBar>
   );
 };
