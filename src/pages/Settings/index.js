@@ -4,7 +4,7 @@ import { Container } from "./styles";
 
 import { NavBar } from "../../components";
 
-function Profile() {
+function Settings() {
   return (
     <NavBar>
       <Container />
@@ -12,4 +12,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Settings;

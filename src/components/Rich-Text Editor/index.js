@@ -163,7 +163,6 @@ const RichText = ({
             renderLeaf={renderLeaf}
             onKeyDown={onKeyDown}
             placeholder="Enter some rich text…"
-            autoFocus
           />
         </RichTextContainer>
       </Slate>

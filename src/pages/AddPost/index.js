@@ -212,6 +212,14 @@ const GalleryTemplate = forwardRef(({ id }, ref) => {
         uploadedFiles={uploadedFiles}
         setUploadedFiles={setUploadedFiles}
       />
+      <DropZone
+        uploadedFiles={uploadedFiles}
+        setUploadedFiles={setUploadedFiles}
+        setUpload={setUpload}
+        id={id}
+        multiple={true}
+        light={true}
+      />
     </S.Wrapper>
   ) : (
     <DropZone

@@ -67,12 +67,16 @@ const NavBarDesktop = ({ children }) => {
 
         {isLogged ? (
           <User>
-            <UserImg url={UserImgTemp} />
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <UserImg url={UserImgTemp} />
+            </Link>
 
-            <UserHeader isOpenNavBar={isOpenNavBar}>
-              <UserNameDisplay>Worst One</UserNameDisplay>
-              <UserName>@worstone</UserName>
-            </UserHeader>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <UserHeader isOpenNavBar={isOpenNavBar}>
+                <UserNameDisplay>Worst One</UserNameDisplay>
+                <UserName>@worstone</UserName>
+              </UserHeader>
+            </Link>
 
             <UserStats isOpenNavBar={isOpenNavBar}>
               <UserStatsBox>
