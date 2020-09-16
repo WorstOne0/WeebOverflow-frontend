@@ -10,8 +10,14 @@ import {
   AiFillLinkedin,
   AiFillYoutube,
   AiFillRedditCircle,
+  AiOutlineHeart,
+  AiOutlineUser,
+  AiTwotoneCalendar,
 } from "react-icons/ai";
+import { IoMdPaper } from "react-icons/io";
 import { FaTwitch } from "react-icons/fa";
+import { RiCake3Line } from "react-icons/ri";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 import { NavBar } from "../../components";
 
@@ -28,27 +34,64 @@ function Profile() {
           <S.UserContainer>
             <S.UserContent>
               <S.UserImg url={UserImgTemp} />
+              <S.UserSvgWrapper>
+                <div class="Half-Circle"></div>
+              </S.UserSvgWrapper>
 
               <S.ContentTop>
                 <S.ContentTopLeft>
                   <S.SocialMediaContainer>
-                    <AiFillFacebook className="Icon" className="Facebook" />
-                    <AiOutlineTwitter className="Icon" className="Twitter" />
-                    <AiFillGithub className="Icon" className="Github" />
-                    <AiFillInstagram className="Icon" className="Instagram" />
-                    <AiFillLinkedin className="Icon" className="Linkedin" />
-                    <AiFillYoutube className="Icon" className="Youtube" />
-                    <AiFillRedditCircle className="Icon" className="Reddit" />
+                    <AiFillFacebook className="Facebook" />
+                    <AiOutlineTwitter className="Twitter" />
+                    <AiFillGithub className="Github" />
+                    <AiFillInstagram className="Instagram" />
+                    <AiFillLinkedin className="Linkedin" />
+                    <AiFillYoutube className="Youtube" />
+                    <AiFillRedditCircle className="Reddit" />
                     <FaTwitch className="Twitch" />
                   </S.SocialMediaContainer>
                 </S.ContentTopLeft>
-                <S.ContentTopRight></S.ContentTopRight>
+                <S.ContentTopRight>
+                  <S.OptionsContainer>
+                    <AiOutlineHeart className="Icon" />
+                    <BsThreeDotsVertical className="Icon" />
+                  </S.OptionsContainer>
+                </S.ContentTopRight>
               </S.ContentTop>
 
               <S.UserTitleContainer>
                 <S.UserNick>Worst One</S.UserNick>
                 <S.UserName>@worstone</S.UserName>
               </S.UserTitleContainer>
+
+              <S.ContentBottom>
+                <S.ContentBottomLeft>
+                  <S.InfoBottom>
+                    <AiTwotoneCalendar className="Icon" /> Joined Feb 18, 2016
+                  </S.InfoBottom>
+                </S.ContentBottomLeft>
+
+                <S.StatusContainer>
+                  <S.IconShelter>
+                    <AiOutlineUser className="Icon" />
+                    200
+                  </S.IconShelter>
+                  <S.IconShelter>
+                    <AiOutlineHeart className="Icon" />
+                    75
+                  </S.IconShelter>
+                  <S.IconShelter>
+                    <IoMdPaper className="Icon" />
+                    21
+                  </S.IconShelter>
+                </S.StatusContainer>
+
+                <S.ContentBottomRight>
+                  <S.InfoBottom padding>
+                    <RiCake3Line className="Icon" /> 21
+                  </S.InfoBottom>
+                </S.ContentBottomRight>
+              </S.ContentBottom>
             </S.UserContent>
           </S.UserContainer>
         </S.HeaderContainer>

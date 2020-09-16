@@ -54,31 +54,25 @@ const NavBarDesktop = ({ children }) => {
 
   return (
     <Container>
-      <NavBarContainer isOpenNavBar={isOpenNavBar}>
-        <LogoContainer isOpenNavBar={isOpenNavBar}>
-          <IconShelter>
-            <GiHamburgerMenu onClick={handleToggleNavBar} />
-          </IconShelter>
-
-          <LogoText isOpenNavBar={isOpenNavBar}>Weeb Overflow</LogoText>
-
-          <LogoImg />
-        </LogoContainer>
-
+      <NavBarContainer>
         {isLogged ? (
           <User>
+            <LogoContainer>
+              <LogoImg />
+            </LogoContainer>
+
             <Link to="/profile" style={{ textDecoration: "none" }}>
               <UserImg url={UserImgTemp} />
             </Link>
 
             <Link to="/profile" style={{ textDecoration: "none" }}>
-              <UserHeader isOpenNavBar={isOpenNavBar}>
+              <UserHeader>
                 <UserNameDisplay>Worst One</UserNameDisplay>
                 <UserName>@worstone</UserName>
               </UserHeader>
             </Link>
 
-            <UserStats isOpenNavBar={isOpenNavBar}>
+            <UserStats>
               <UserStatsBox>
                 <AiOutlineUser className="Icon" /> 200
               </UserStatsBox>
@@ -89,12 +83,6 @@ const NavBarDesktop = ({ children }) => {
                 <IoMdPaper className="Icon" /> 21
               </UserStatsBox>
             </UserStats>
-
-            <BadgesContainer isOpenNavBar={isOpenNavBar}>
-              <DiJsBadge className="Icon" />
-              <DiPython className="Icon" />
-              <DiReact className="Icon" />
-            </BadgesContainer>
           </User>
         ) : (
           <Login></Login>
@@ -102,36 +90,34 @@ const NavBarDesktop = ({ children }) => {
 
         <OptionsContainer>
           <Link to="/" style={{ width: "100%", textDecoration: "none" }}>
-            <Options isOpenNavBar={isOpenNavBar}>
+            <Options>
               <AiOutlineHome className="Icon" />
-              <OptionsText isOpenNavBar={isOpenNavBar}>Inicio</OptionsText>
             </Options>
           </Link>
           <Link to="/search" style={{ width: "100%", textDecoration: "none" }}>
-            <Options isOpenNavBar={isOpenNavBar}>
+            <Options>
               <AiOutlineSearch className="Icon" />
-              <OptionsText isOpenNavBar={isOpenNavBar}>Pesquisa</OptionsText>
+            </Options>
+          </Link>
+          <Link to="/addPost" style={{ width: "100%", textDecoration: "none" }}>
+            <Options>
+              <AiOutlinePlus className="Icon" />
             </Options>
           </Link>
           <Link to="/friends" style={{ width: "100%", textDecoration: "none" }}>
-            <Options isOpenNavBar={isOpenNavBar}>
+            <Options>
               <FaUserFriends className="Icon" />
-              <OptionsText isOpenNavBar={isOpenNavBar}>Chat</OptionsText>
             </Options>
-          </Link>
-        </OptionsContainer>
-
-        <BottomBar>
-          <Link to="/addPost" style={{ width: "auto", textDecoration: "none" }}>
-            <AiOutlinePlus className="Icon" />
           </Link>
           <Link
             to="/settings"
-            style={{ width: "auto", textDecoration: "none" }}
+            style={{ width: "100%", textDecoration: "none" }}
           >
-            <AiOutlineSetting className="Icon" />
+            <Options>
+              <AiOutlineSetting className="Icon" />
+            </Options>
           </Link>
-        </BottomBar>
+        </OptionsContainer>
       </NavBarContainer>
       {children}
     </Container>

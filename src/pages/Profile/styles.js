@@ -11,32 +11,45 @@ export const Container = styled.section`
 `;
 
 export const HeaderContainer = styled.div`
-  height: 100vh;
+  height: calc(60vh + 26rem);
   width: 100%;
 
   display: flex;
   flex-direction: column;
 
   position: relative;
+
+  @media (max-width: 1000px) {
+    height: calc(100vh - 5rem);
+  }
 `;
 
 export const HeaderImg = styled.img`
-  height: 60%;
+  height: 60vh;
   width: 100%;
   background: purple;
+
+  @media (max-width: 1000px) {
+    height: 50vh;
+  }
 `;
 
 export const UserContainer = styled.div`
-  height: 50%;
+  height: 45%;
+  max-height: 30rem;
   width: calc(100% - 3rem);
   border-radius: 0.8rem;
   background: var(--color-dark);
 
   position: absolute;
-  top: 73%;
+  bottom: 1.5rem;
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
+
+  @media (max-width: 1000px) {
+    bottom: 6.5rem;
+  }
 `;
 
 export const UserContent = styled.div`
@@ -49,6 +62,27 @@ export const UserContent = styled.div`
   flex-direction: column;
 
   position: relative;
+`;
+
+export const UserSvgWrapper = styled.div`
+  border-radius: 50%;
+  background: var(--color-primary);
+
+  position: absolute;
+  top: 0rem;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  .Half-Circle {
+    height: 18rem;
+    width: 18rem;
+
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
 `;
 
 export const UserImg = styled.div`
@@ -65,6 +99,7 @@ export const UserImg = styled.div`
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
 `;
 
 export const ContentTop = styled.div`
@@ -91,7 +126,7 @@ export const SocialMediaContainer = styled.div`
   align-items: center;
 
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: 2.4rem;
 
   .Facebook {
     margin-right: 1rem;
@@ -196,6 +231,24 @@ export const ContentTopRight = styled.div`
   padding: 0 2.5rem;
 
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+`;
+
+export const OptionsContainer = styled.div`
+  padding: 2.5rem 0;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--color-white);
+  font-size: 2.4rem;
+
+  .Icon {
+    margin-left: 1rem;
+
+    cursor: pointer;
+  }
 `;
 
 export const UserTitleContainer = styled.div`
@@ -215,6 +268,71 @@ export const UserName = styled.p`
   font-size: 1.6rem;
 `;
 
+export const ContentBottom = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 3rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
+export const ContentBottomLeft = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+`;
+
+export const StatusContainer = styled.div`
+  width: 100%;
+  max-width: 22rem;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const IconShelter = styled.div`
+  display: flex;
+
+  color: var(--color-white);
+  font-size: 1.6rem;
+
+  .Icon {
+    margin-right: 1rem;
+
+    color: var(--color-primary-lighter);
+    font-size: 2.4rem;
+  }
+`;
+
+export const ContentBottomRight = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+`;
+
+export const InfoBottom = styled.div`
+  display: flex;
+
+  color: var(--color-white);
+  font-size: 1.6rem;
+
+  .Icon {
+    margin-right: 1rem;
+
+    color: var(--color-primary-lighter);
+    font-size: 2rem;
+  }
+`;
+
 export const MainSection = styled.section`
   width: 100%;
   padding: 0 1.5rem;
@@ -226,17 +344,28 @@ export const MainSection = styled.section`
 export const Main = styled.main`
   height: 100vh;
   margin-right: 1.5rem;
+  border-radius: 0.8rem;
   background: var(--color-dark);
 
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    margin: 0%;
+  }
 `;
 
 export const SideBar = styled.div`
   height: 100vh;
+  border-radius: 0.8rem;
   background: var(--color-dark);
 
   display: flex;
   flex: 0 0 36rem;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;

@@ -1,4 +1,4 @@
-const initialState = { isOpenNavBar: true };
+const initialState = { isOpenNavBar: false };
 
 const NavBar = (state = initialState, action) => {
   switch (action.type) {

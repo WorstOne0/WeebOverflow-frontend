@@ -14,7 +14,7 @@ export const NavBarContainer = styled.div`
   background: var(--color-primary);
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
 
@@ -27,21 +27,12 @@ export const NavBarContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-  height: 4rem;
   width: 100%;
-  padding: 0 2rem;
+  padding: 4rem 0;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      height: 9rem;
-      padding: 1rem 2rem;
-      flex-direction: column;
-    `}
 `;
 
 export const IconShelter = styled.div`
@@ -143,22 +134,16 @@ export const UserName = styled.p`
 `;
 
 export const UserStats = styled.div`
-  height: 3rem;
+  height: auto;
   width: 100%;
   padding: 1rem 0;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   cursor: default;
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      height: auto;
-      flex-direction: column;
-    `}
 `;
 
 export const UserStatsBox = styled.div`
@@ -176,32 +161,7 @@ export const UserStatsBox = styled.div`
   }
 `;
 
-export const BadgesContainer = styled.div`
-  padding: 1rem 1.5rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 1.6rem;
-
-  cursor: default;
-
-  .Icon {
-    margin-right: 0.5rem;
-
-    color: #d4d4d4;
-  }
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      display: none;
-    `}
-`;
-
 export const OptionsContainer = styled.div`
-  height: 30rem;
   width: 100%;
 
   display: flex;
@@ -226,46 +186,7 @@ export const Options = styled.div`
   }
 
   .Icon {
-    margin-right: 1rem;
-
     color: #fff;
     font-size: 2.2rem;
-  }
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      .Icon {
-        margin: 0;
-      }
-    `}
-`;
-
-export const OptionsText = styled.p`
-  color: #fff;
-  font-size: 1.8rem;
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      display: none;
-    `}
-`;
-
-export const BottomBar = styled.div`
-  height: 4rem;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  color: #fff;
-  font-size: 1.8rem;
-
-  .Icon {
-    color: #fff;
-
-    cursor: pointer;
   }
 `;

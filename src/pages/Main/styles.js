@@ -119,7 +119,7 @@ export const TEMP_SideBarRight = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 23rem;
+  flex: 0 0 28rem;
 
   @media (max-width: 1000px) {
     display: none;
