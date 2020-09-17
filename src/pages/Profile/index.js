@@ -13,13 +13,14 @@ import {
   AiOutlineHeart,
   AiOutlineUser,
   AiTwotoneCalendar,
+  AiFillInfoCircle,
 } from "react-icons/ai";
 import { IoMdPaper } from "react-icons/io";
 import { FaTwitch } from "react-icons/fa";
 import { RiCake3Line } from "react-icons/ri";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { NavBar } from "../../components";
+import { NavBar, TabBar } from "../../components";
 
 function Profile() {
   const tempImg = require("../../assets/704387.png");
@@ -97,7 +98,20 @@ function Profile() {
         </S.HeaderContainer>
 
         <S.MainSection>
-          <S.Main></S.Main>
+          <S.Main>
+            <TabBar
+              options={[
+                {
+                  icon: <AiFillInfoCircle className="Icon" />,
+                  text: "Info",
+                },
+                {
+                  icon: <IoMdPaper className="Icon" />,
+                  text: "Posts",
+                },
+              ]}
+            />
+          </S.Main>
 
           <S.SideBar></S.SideBar>
         </S.MainSection>

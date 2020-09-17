@@ -19,7 +19,7 @@ export const HeaderContainer = styled.div`
 
   position: relative;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     height: calc(100vh - 5rem);
   }
 `;
@@ -47,7 +47,9 @@ export const UserContainer = styled.div`
 
   transform: translate(-50%);
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
+    width: 100%;
+
     bottom: 6.5rem;
   }
 `;
@@ -339,6 +341,10 @@ export const MainSection = styled.section`
   background: var(--color-background-dark);
 
   display: flex;
+
+  @media (max-width: 1100px) {
+    padding: 0;
+  }
 `;
 
 export const Main = styled.main`
@@ -351,7 +357,7 @@ export const Main = styled.main`
   flex-direction: column;
   flex: 1;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     width: 100%;
     margin: 0%;
   }
@@ -365,7 +371,7 @@ export const SideBar = styled.div`
   display: flex;
   flex: 0 0 36rem;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;

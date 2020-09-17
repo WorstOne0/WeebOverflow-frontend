@@ -8,7 +8,7 @@ const NavBar = ({ children }) => {
   const [isLogged, setIsLogged] = useState(true);
   const { width } = useWindowDimensions();
 
-  return width > 1000 ? (
+  return width > 1100 ? (
     <NavBarDesktop>{children}</NavBarDesktop>
   ) : (
     <NavBarMobile>{children}</NavBarMobile>

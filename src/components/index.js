@@ -9,6 +9,7 @@ import DropZone from "./DropZone";
 import InputText from "./InputText";
 import Loading from "./Loading";
 import Gallery from "./Gallery";
+import TabBar from "./TabBar";
 
 export {
   Card,
@@ -22,4 +23,5 @@ export {
   InputText,
   Loading,
   Gallery,
+  TabBar,
 };

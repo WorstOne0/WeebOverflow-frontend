@@ -33,7 +33,7 @@ export const Article = styled.div`
   flex-direction: column;
   flex: 1;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1050px) {
     width: 100%;
   }
 `;
@@ -121,7 +121,7 @@ export const TEMP_SideBarRight = styled.div`
   display: flex;
   flex: 0 0 28rem;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;

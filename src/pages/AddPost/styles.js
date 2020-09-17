@@ -42,7 +42,7 @@ export const PostContainer = styled.div`
   flex-direction: column;
   flex: 1;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     width: 100%;
   }
 `;
@@ -114,7 +114,7 @@ export const SideBar = styled.div`
   display: flex;
   flex: 0 0 28rem;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;
