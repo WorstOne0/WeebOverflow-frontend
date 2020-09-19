@@ -32,12 +32,11 @@ function Profile() {
         <S.HeaderContainer>
           <S.HeaderImg src={tempImg} />
 
+          <S.HalfCircle />
+
           <S.UserContainer>
             <S.UserContent>
               <S.UserImg url={UserImgTemp} />
-              <S.UserSvgWrapper>
-                <div class="Half-Circle"></div>
-              </S.UserSvgWrapper>
 
               <S.ContentTop>
                 <S.ContentTopLeft>

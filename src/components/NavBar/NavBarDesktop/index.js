@@ -55,38 +55,7 @@ const NavBarDesktop = ({ children }) => {
   return (
     <Container>
       <NavBarContainer>
-        {isLogged ? (
-          <User>
-            <LogoContainer>
-              <LogoImg />
-            </LogoContainer>
-
-            <Link to="/profile" style={{ textDecoration: "none" }}>
-              <UserImg url={UserImgTemp} />
-            </Link>
-
-            <Link to="/profile" style={{ textDecoration: "none" }}>
-              <UserHeader>
-                <UserNameDisplay>Worst One</UserNameDisplay>
-                <UserName>@worstone</UserName>
-              </UserHeader>
-            </Link>
-
-            <UserStats>
-              <UserStatsBox>
-                <AiOutlineUser className="Icon" /> 200
-              </UserStatsBox>
-              <UserStatsBox>
-                <AiOutlineHeart className="Icon" /> 75
-              </UserStatsBox>
-              <UserStatsBox>
-                <IoMdPaper className="Icon" /> 21
-              </UserStatsBox>
-            </UserStats>
-          </User>
-        ) : (
-          <Login></Login>
-        )}
+        <LogoImg />
 
         <OptionsContainer>
           <Link to="/" style={{ width: "100%", textDecoration: "none" }}>
@@ -118,6 +87,14 @@ const NavBarDesktop = ({ children }) => {
             </Options>
           </Link>
         </OptionsContainer>
+
+        {isLogged ? (
+          <Link to="/profile" style={{ width: "auto", textDecoration: "none" }}>
+            <UserImg url={UserImgTemp} />
+          </Link>
+        ) : (
+          <Login></Login>
+        )}
       </NavBarContainer>
       {children}
     </Container>

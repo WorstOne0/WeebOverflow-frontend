@@ -11,10 +11,11 @@ export const Container = styled.div`
 export const NavBarContainer = styled.div`
   height: 100vh;
   width: ${(props) => (props.isOpenNavBar ? "30rem" : "7rem")};
+  padding: 2rem 0;
   background: var(--color-primary);
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 
@@ -24,25 +25,6 @@ export const NavBarContainer = styled.div`
   z-index: 0;
 
   transition: width 0.3s ease-out;
-`;
-
-export const LogoContainer = styled.div`
-  width: 100%;
-  padding: 4rem 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const IconShelter = styled.div`
-  display: flex;
-  align-items: center;
-
-  color: #fff;
-  font-size: 2.2rem;
-
-  cursor: pointer;
 `;
 
 export const LogoImg = styled.img`

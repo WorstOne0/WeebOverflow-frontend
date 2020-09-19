@@ -11,7 +11,7 @@ export const Container = styled.section`
 `;
 
 export const HeaderContainer = styled.div`
-  height: calc(60vh + 26rem);
+  height: calc(68vh + 30rem - 10rem);
   width: 100%;
 
   display: flex;
@@ -20,17 +20,68 @@ export const HeaderContainer = styled.div`
   position: relative;
 
   @media (max-width: 1100px) {
-    height: calc(100vh - 5rem);
+    /*height: calc(100vh - 10rem);*/
+    height: calc(55vh + 41.5vh - 8rem);
+    margin-bottom: 1.5rem;
+
+    @media (min-height: 720px) {
+      height: calc(55vh + 26rem - 8rem);
+    }
   }
 `;
 
 export const HeaderImg = styled.img`
-  height: 60vh;
+  height: 68vh;
   width: 100%;
   background: purple;
 
-  @media (max-width: 1000px) {
-    height: 50vh;
+  @media (max-width: 1100px) {
+    height: 55vh;
+  }
+`;
+
+export const HalfCircle = styled.div`
+  height: 45%;
+  max-height: 30rem;
+  width: calc(100% - 3rem);
+  border-radius: 0.8rem;
+  background: -webkit-radial-gradient(
+    50% 0,
+    33rem,
+    transparent 30%,
+    var(--color-dark) 30%
+  );
+  background: radial-gradient(
+    33rem at 50% 0,
+    transparent 30%,
+    var(--color-dark) 30%
+  );
+
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+
+  transform: translate(-50%);
+
+  z-index: 1;
+
+  @media (max-width: 1100px) {
+    height: 41.5vh;
+    max-height: 26rem;
+    width: 100%;
+    background: -webkit-radial-gradient(
+      50% 0,
+      25rem,
+      transparent 30%,
+      var(--color-dark) 30%
+    );
+    background: radial-gradient(
+      25rem at 50% 0,
+      transparent 30%,
+      var(--color-dark) 30%
+    );
+
+    bottom: 0;
   }
 `;
 
@@ -39,18 +90,21 @@ export const UserContainer = styled.div`
   max-height: 30rem;
   width: calc(100% - 3rem);
   border-radius: 0.8rem;
-  background: var(--color-dark);
+  background: transparent;
 
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 1.2rem;
   left: 50%;
+  z-index: 2;
 
   transform: translate(-50%);
 
   @media (max-width: 1100px) {
+    height: 41.5vh;
+    max-height: 26rem;
     width: 100%;
 
-    bottom: 6.5rem;
+    bottom: 0;
   }
 `;
 
@@ -64,27 +118,6 @@ export const UserContent = styled.div`
   flex-direction: column;
 
   position: relative;
-`;
-
-export const UserSvgWrapper = styled.div`
-  border-radius: 50%;
-  background: var(--color-primary);
-
-  position: absolute;
-  top: 0rem;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  .Half-Circle {
-    height: 18rem;
-    width: 18rem;
-
-    fill: none;
-    stroke: var(--color-primary);
-    stroke-width: 3;
-    stroke-linecap: round;
-  }
 `;
 
 export const UserImg = styled.div`
@@ -102,6 +135,11 @@ export const UserImg = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+
+  @media (max-width: 1100px) {
+    height: 14rem;
+    width: 14rem;
+  }
 `;
 
 export const ContentTop = styled.div`
@@ -110,6 +148,10 @@ export const ContentTop = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1100px) {
+    height: 9rem;
+  }
 `;
 
 export const ContentTopLeft = styled.div`
@@ -119,6 +161,10 @@ export const ContentTopLeft = styled.div`
 
   display: flex;
   align-items: flex-start;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 export const SocialMediaContainer = styled.div`
@@ -235,6 +281,13 @@ export const ContentTopRight = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+
+  @media (max-width: 1100px) {
+    width: 100%;
+    padding: 0;
+
+    justify-content: space-between;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -251,6 +304,13 @@ export const OptionsContainer = styled.div`
 
     cursor: pointer;
   }
+
+  @media (max-width: 1100px) {
+    width: 100%;
+    padding: 1.5rem;
+
+    justify-content: space-between;
+  }
 `;
 
 export const UserTitleContainer = styled.div`
@@ -264,10 +324,18 @@ export const UserTitleContainer = styled.div`
 
 export const UserNick = styled.p`
   font-size: 3.2rem;
+
+  @media (max-width: 1100px) {
+    font-size: 2.6rem;
+  }
 `;
 
 export const UserName = styled.p`
   font-size: 1.6rem;
+
+  @media (max-width: 1100px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const ContentBottom = styled.div`
@@ -278,6 +346,10 @@ export const ContentBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media (max-width: 1100px) {
+    justify-content: center;
+  }
 `;
 
 export const ContentBottomLeft = styled.div`
@@ -287,6 +359,10 @@ export const ContentBottomLeft = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 export const StatusContainer = styled.div`
@@ -319,6 +395,10 @@ export const ContentBottomRight = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   flex-direction: column;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 export const InfoBottom = styled.div`
