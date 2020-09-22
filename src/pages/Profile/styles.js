@@ -428,10 +428,8 @@ export const MainSection = styled.section`
 `;
 
 export const Main = styled.main`
-  height: 100vh;
   margin-right: 1.5rem;
   border-radius: 0.8rem;
-  background: var(--color-dark);
 
   display: flex;
   flex-direction: column;
@@ -440,6 +438,25 @@ export const Main = styled.main`
   @media (max-width: 1100px) {
     width: 100%;
     margin: 0%;
+  }
+`;
+
+export const PostList = styled.div`
+  width: 100%;
+  padding: 2rem 1rem;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(55rem, 1fr));
+  grid-gap: 2rem;
+  grid-row-gap: 0rem;
+
+  @media (max-width: 610px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 

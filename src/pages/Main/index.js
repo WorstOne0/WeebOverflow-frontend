@@ -30,12 +30,21 @@ const Main = () => {
               <S.PostTitle>Posts</S.PostTitle>
 
               <S.PostList>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <S.CarpWrapper>
+                  <Card />
+                </S.CarpWrapper>
+                <S.CarpWrapper>
+                  <Card />
+                </S.CarpWrapper>
+                <S.CarpWrapper>
+                  <Card />
+                </S.CarpWrapper>
+                <S.CarpWrapper>
+                  <Card />
+                </S.CarpWrapper>
+                <S.CarpWrapper>
+                  <Card />
+                </S.CarpWrapper>
               </S.PostList>
             </S.PostContainer>
           </S.Article>

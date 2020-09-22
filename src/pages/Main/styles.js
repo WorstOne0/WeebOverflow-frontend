@@ -23,6 +23,10 @@ export const Content = styled.div`
   align-items: flex-start;
 
   transition: all 0.3s ease-out;
+
+  @media (max-width: 610px) {
+    padding: 0;
+  }
 `;
 
 export const Article = styled.div`
@@ -35,6 +39,7 @@ export const Article = styled.div`
 
   @media (max-width: 1050px) {
     width: 100%;
+    margin: 0;
   }
 `;
 
@@ -91,6 +96,10 @@ export const PostContainer = styled.div`
   margin-top: 1.5rem;
   background: var(--color-dark);
   border-radius: 0.5rem;
+
+  @media (max-width: 610px) {
+    padding: 1.5rem 0;
+  }
 `;
 
 export const PostTitle = styled.h1`
@@ -108,9 +117,20 @@ export const PostList = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(55rem, 1fr));
   grid-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-row-gap: 0rem;
+
+  @media (max-width: 610px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+`;
+
+export const CarpWrapper = styled.div`
+  margin-bottom: 2rem;
 `;
 
 export const TEMP_SideBarRight = styled.div`
@@ -119,7 +139,7 @@ export const TEMP_SideBarRight = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 28rem;
+  flex: 0 0 35rem;
 
   @media (max-width: 1100px) {
     display: none;

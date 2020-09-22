@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+  background: var(--color-dark);
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Wrapper = styled.div`
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -38,9 +46,6 @@ export const TabItem = styled.div`
 export const Track = styled.div`
   height: 0.3rem;
   width: 100%;
-
-  transform: translateX(${(props) => `${props.transform}%`});
-  transition: transform 0.25s ease-out;
 `;
 
 export const Scroll = styled.div`
@@ -48,4 +53,33 @@ export const Scroll = styled.div`
   width: ${(props) => `${props.width}%`};
   border-radius: 0.8rem;
   background: var(--color-primary);
+
+  transform: translateX(${(props) => `${props.transform}%`});
+  transition: transform 0.25s ease-out;
+`;
+
+export const MainContainer = styled.section`
+  width: 100%;
+
+  overflow: hidden;
+  position: relative;
+`;
+
+export const Main = styled.main`
+  width: ${(props) => `${props.width}%`};
+
+  display: flex;
+  flex-direction: row;
+
+  transform: translateX(${(props) => `calc(-${props.translate}%)`});
+
+  transition: transform ease-out 0.2s;
+`;
+
+export const MainWrapper = styled.div`
+  height: auto;
+  width: ${(props) => `${props.width}%`};
+
+  display: flex;
+  flex-direction: column;
 `;

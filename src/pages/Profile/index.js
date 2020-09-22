@@ -20,7 +20,7 @@ import { FaTwitch } from "react-icons/fa";
 import { RiCake3Line } from "react-icons/ri";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { NavBar, TabBar } from "../../components";
+import { NavBar, TabBar, Card } from "../../components";
 
 function Profile() {
   const tempImg = require("../../assets/704387.png");
@@ -109,7 +109,16 @@ function Profile() {
                   text: "Posts",
                 },
               ]}
-            />
+            >
+              <h1>Info</h1>
+
+              <S.PostList>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+              </S.PostList>
+            </TabBar>
           </S.Main>
 
           <S.SideBar></S.SideBar>

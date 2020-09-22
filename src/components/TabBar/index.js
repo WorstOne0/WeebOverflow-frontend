@@ -1,31 +1,50 @@
 import React, { useState } from "react";
 
-import { Container, TabContainer, TabItem, Track, Scroll } from "./styles";
+import * as S from "./styles";
 
 import { AiFillInfoCircle } from "react-icons/ai";
 import { IoMdPaper } from "react-icons/io";
 
-function TabBar({ options }) {
+function TabBar({ options, children }) {
   const [index, setIndex] = useState(0);
 
   return (
-    <Container>
-      <TabContainer>
-        {options.map((item, indexItem) => (
-          <TabItem
-            index={index === indexItem}
-            onClick={() => setIndex(indexItem)}
-          >
-            {item.icon}
-            {item.text}
-          </TabItem>
-        ))}
-      </TabContainer>
-      {console.log(index * (100 / options.length))}
-      <Track transform={index * (100 / options.length)}>
-        <Scroll width={100 / options.length} />
-      </Track>
-    </Container>
+    <S.Container>
+      <S.Wrapper>
+        <S.TabContainer>
+          {options.map((item, indexItem) => (
+            <S.TabItem
+              index={index === indexItem}
+              onClick={() => setIndex(indexItem)}
+            >
+              {item.icon}
+              {item.text}
+            </S.TabItem>
+          ))}
+        </S.TabContainer>
+
+        <S.Track>
+          <S.Scroll width={100 / options.length} transform={index * 100} />
+        </S.Track>
+      </S.Wrapper>
+
+      <S.MainContainer>
+        <S.Main
+          height={index * 100 + 10}
+          width={100 * options.length}
+          translate={index * (100 / options.length)}
+        >
+          {children.map((item, indexItem) => (
+            <S.MainWrapper
+              visibility={index === indexItem}
+              width={100 / options.length}
+            >
+              {item}
+            </S.MainWrapper>
+          ))}
+        </S.Main>
+      </S.MainContainer>
+    </S.Container>
   );
 }
 
