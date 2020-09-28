@@ -22,14 +22,14 @@ export const Input = styled.input`
   height: 100%;
   width: 100%;
   padding: 0 2rem;
-  border: 1px solid var(--color-darker);
+  border: 1px solid ${(props) => props.borderColor};
   border-radius: 0.8rem;
   background: transparent;
 
   font-size: 1.6rem;
 
   :focus {
-    border-color: var(--color-primary);
+    border-color: ${(props) => props.borderColorHover};
   }
 `;
 
