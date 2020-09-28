@@ -10,12 +10,12 @@ import {
   LogoText,
   NavBarContainer,
   UserImg,
+  Login,
   OptionsContainer,
   Options,
 } from "./styles";
 
 import {
-  AiOutlineUser,
   AiOutlineLogin,
   AiOutlineSetting,
   AiOutlinePlus,
@@ -24,10 +24,9 @@ import {
 } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 
-function NavBarMobile({ children }) {
-  const [isLogged, setIsLogged] = useState(true);
-
+function NavBarMobile({ children, isLogged }) {
   const UserImgTemp = require("../../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
+
   return (
     <Container>
       <NavBarContainerTop>
@@ -35,12 +34,24 @@ function NavBarMobile({ children }) {
           <LogoImg />
           <LogoText>Weeb Overflow</LogoText>
         </LogoContainer>
-        <Link
-          to="/profile"
-          style={{ height: "auto", width: "auto", textDecoration: "none" }}
-        >
-          <UserImg url={UserImgTemp} />
-        </Link>
+
+        {isLogged ? (
+          <Link
+            to="/profile"
+            style={{ height: "auto", width: "auto", textDecoration: "none" }}
+          >
+            <UserImg url={UserImgTemp} />
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            style={{ height: "auto", width: "auto", textDecoration: "none" }}
+          >
+            <Login>
+              Login <AiOutlineLogin className="Icon" />
+            </Login>
+          </Link>
+        )}
       </NavBarContainerTop>
 
       {children}

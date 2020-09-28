@@ -10,7 +10,7 @@ export const Container = styled.div`
   .Input:focus + .Label,
   .Input:valid + .Label {
     padding: 0 0.7rem;
-    background: var(--color-dark);
+    background: ${(props) => props.backgroundName};
 
     top: 0;
 

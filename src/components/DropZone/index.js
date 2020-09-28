@@ -28,18 +28,23 @@ const DropZone = ({
   multiple = false,
   text = "",
   light = false,
+  accept = "image",
 }) => {
   const handleInputChange = (event) => {
-    setUploadedFiles([
-      ...uploadedFiles,
-      ...Array.from(event.target.files).map((file) => ({
-        file,
-        id: uniqueId(),
-        size: filesize(file.size),
-        preview: URL.createObjectURL(file),
-      })),
-    ]);
-    setUpload(true);
+    try {
+      setUploadedFiles([
+        ...uploadedFiles,
+        ...Array.from(event.target.files).map((file) => ({
+          file,
+          id: uniqueId(),
+          size: filesize(file.size),
+          preview: URL.createObjectURL(file),
+        })),
+      ]);
+      setUpload(true);
+    } catch (erro) {
+      console.log(erro);
+    }
   };
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -65,7 +70,7 @@ const DropZone = ({
     isDragReject,
   } = useDropzone({
     onDrop,
-    accept: "image/*",
+    accept: `${accept}/*`,
     multiple,
   });
 
@@ -99,6 +104,7 @@ const DropZone = ({
             type="file"
             onChange={handleInputChange}
             multiple={multiple}
+            accept={`${accept}/*`}
           />
         </ContentLight>
       ) : (

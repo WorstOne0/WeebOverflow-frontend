@@ -19,13 +19,12 @@ export const HeaderContainer = styled.div`
 
   position: relative;
 
-  @media (max-width: 1100px) {
-    /*height: calc(100vh - 10rem);*/
-    height: calc(55vh + 41.5vh - 8rem);
+  @media screen and (max-width: 1100px) {
+    height: calc(55vh + 26rem - 8rem);
     margin-bottom: 1.5rem;
 
-    @media (min-height: 720px) {
-      height: calc(55vh + 26rem - 8rem);
+    @media screen and (max-height: 630px) {
+      height: calc(55vh + 41.5vh - 8rem);
     }
   }
 `;
@@ -35,7 +34,7 @@ export const HeaderImg = styled.img`
   width: 100%;
   background: purple;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     height: 55vh;
   }
 `;
@@ -65,7 +64,7 @@ export const HalfCircle = styled.div`
 
   z-index: 1;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     height: 41.5vh;
     max-height: 26rem;
     width: 100%;
@@ -99,7 +98,7 @@ export const UserContainer = styled.div`
 
   transform: translate(-50%);
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     height: 41.5vh;
     max-height: 26rem;
     width: 100%;
@@ -136,7 +135,7 @@ export const UserImg = styled.div`
   transform: translate(-50%, -50%);
   z-index: 2;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     height: 14rem;
     width: 14rem;
   }
@@ -149,7 +148,7 @@ export const ContentTop = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     height: 9rem;
   }
 `;
@@ -162,7 +161,7 @@ export const ContentTopLeft = styled.div`
   display: flex;
   align-items: flex-start;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;
@@ -282,7 +281,7 @@ export const ContentTopRight = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     width: 100%;
     padding: 0;
 
@@ -305,7 +304,7 @@ export const OptionsContainer = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     width: 100%;
     padding: 1.5rem;
 
@@ -325,7 +324,7 @@ export const UserTitleContainer = styled.div`
 export const UserNick = styled.p`
   font-size: 3.2rem;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     font-size: 2.6rem;
   }
 `;
@@ -333,7 +332,7 @@ export const UserNick = styled.p`
 export const UserName = styled.p`
   font-size: 1.6rem;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     font-size: 1.4rem;
   }
 `;
@@ -347,7 +346,7 @@ export const ContentBottom = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     justify-content: center;
   }
 `;
@@ -360,7 +359,7 @@ export const ContentBottomLeft = styled.div`
   justify-content: flex-start;
   align-items: flex-end;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;
@@ -396,7 +395,7 @@ export const ContentBottomRight = styled.div`
   align-items: flex-end;
   flex-direction: column;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;
@@ -422,7 +421,7 @@ export const MainSection = styled.section`
 
   display: flex;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     padding: 0;
   }
 `;
@@ -435,7 +434,7 @@ export const Main = styled.main`
   flex-direction: column;
   flex: 1;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     width: 100%;
     margin: 0%;
   }
@@ -450,13 +449,15 @@ export const PostList = styled.div`
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(55rem, 1fr));
   grid-gap: 2rem;
-  grid-row-gap: 0rem;
+  grid-row-gap: 1.5rem;
 
-  @media (max-width: 610px) {
+  @media screen and (max-width: 610px) {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    grid-row-gap: 0;
   }
 `;
 
@@ -468,7 +469,7 @@ export const SideBar = styled.div`
   display: flex;
   flex: 0 0 36rem;
 
-  @media (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
 `;

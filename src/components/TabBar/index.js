@@ -30,14 +30,13 @@ function TabBar({ options, children }) {
 
       <S.MainContainer>
         <S.Main
-          height={index * 100 + 10}
-          width={100 * options.length}
-          translate={index * (100 / options.length)}
+          width={100 * children.length}
+          translate={index * (100 / children.length)}
         >
           {children.map((item, indexItem) => (
             <S.MainWrapper
               visibility={index === indexItem}
-              width={100 / options.length}
+              width={100 / children.length}
             >
               {item}
             </S.MainWrapper>

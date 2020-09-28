@@ -63,6 +63,28 @@ export const UserImg = styled.div`
   cursor: pointer;
 `;
 
+export const Login = styled.div`
+  padding: 0.7rem 1.5rem;
+  border-radius: 5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-white);
+  font-size: 1.6rem;
+
+  .Icon {
+    margin-left: 0.5rem;
+
+    font-size: 2.2rem;
+  }
+
+  :hover {
+    background: var(--color-primary-dark);
+  }
+`;
+
 export const NavBarContainer = styled.div`
   height: 5rem;
   width: 100%;

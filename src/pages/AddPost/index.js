@@ -106,18 +106,30 @@ const AddPost = () => {
                       </S.PostBlock>
                     );
 
+                  case "Video":
+                    return (
+                      <S.PostBlock key={post.id}>
+                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
+                          <FiDelete />
+                        </S.PostDelete>
+                        <VideoTemplate ref={post.ref} id={post.id} />
+                      </S.PostBlock>
+                    );
+
                   default:
                     return;
                 }
               })}
 
-              {/*<button
-          onClick={() =>
-            post.map((post) => console.log(post.ref.current.getValue()))
-          }
-        >
-          Clicl me
-        </button>*/}
+              <button
+                onClick={() =>
+                  post.content.map((post) =>
+                    console.log(post.ref.current.getValue())
+                  )
+                }
+              >
+                Clicl me
+              </button>
 
               <PostInput post={post} setPost={setPost} />
             </S.PostContainer>
@@ -253,6 +265,43 @@ const CodeTemplate = forwardRef((props, ref) => {
     <S.CodeContaiener>
       <VsCodeEditor />
     </S.CodeContaiener>
+  );
+});
+
+const VideoTemplate = forwardRef(({ id }, ref) => {
+  const [uploaded, setUpload] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const getValue = () => {
+    return {
+      type: "Code",
+      value: uploadedFiles,
+    };
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      getValue,
+    };
+  });
+
+  return uploaded ? (
+    <S.Wrapper>
+      <Gallery
+        uploadedFiles={uploadedFiles}
+        setUploadedFiles={setUploadedFiles}
+      />
+    </S.Wrapper>
+  ) : (
+    <DropZone
+      uploadedFiles={uploadedFiles}
+      setUploadedFiles={setUploadedFiles}
+      setUpload={setUpload}
+      id={id}
+      multiple={true}
+      text="Arraste suas imagens aqui"
+      accept="video"
+    />
   );
 });
 

@@ -110,7 +110,7 @@ function Profile() {
                 },
               ]}
             >
-              <h1>Info</h1>
+              <div style={{ height: "10rem", width: "100%" }}></div>
 
               <S.PostList>
                 <Card />

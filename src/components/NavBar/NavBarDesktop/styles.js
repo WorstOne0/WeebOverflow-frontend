@@ -47,13 +47,22 @@ export const LogoText = styled.p`
 `;
 
 export const Login = styled.div`
-  height: 20rem;
-  width: 100%;
+  height: 8rem;
+  width: 8rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  color: var(--color-white);
+  font-size: 1.6rem;
+
+  .Icon {
+    margin-bottom: 0.5rem;
+
+    font-size: 2.2rem;
+  }
 `;
 
 export const User = styled.div`

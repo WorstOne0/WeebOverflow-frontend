@@ -26,23 +26,16 @@ import {
   BottomBar,
 } from "./styles";
 
-import { GiHamburgerMenu } from "react-icons/gi";
 import {
-  AiOutlineUser,
-  AiOutlineHeart,
   AiOutlineLogin,
   AiOutlineSetting,
   AiOutlinePlus,
   AiOutlineHome,
   AiOutlineSearch,
 } from "react-icons/ai";
-import { IoMdPaper } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
-import { DiJsBadge, DiPython, DiReact } from "react-icons/di";
 
-const NavBarDesktop = ({ children }) => {
-  const [isLogged, setIsLogged] = useState(true);
-
+const NavBarDesktop = ({ children, isLogged }) => {
   const isOpenNavBar = useSelector((state) => state.NavBar.isOpenNavBar);
   const dispatch = useDispatch();
 
@@ -93,7 +86,11 @@ const NavBarDesktop = ({ children }) => {
             <UserImg url={UserImgTemp} />
           </Link>
         ) : (
-          <Login></Login>
+          <Link to="/login" style={{ width: "auto", textDecoration: "none" }}>
+            <Login>
+              <AiOutlineLogin className="Icon" /> Login
+            </Login>
+          </Link>
         )}
       </NavBarContainer>
       {children}

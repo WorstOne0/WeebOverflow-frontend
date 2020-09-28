@@ -77,7 +77,7 @@ export const Main = styled.main`
 `;
 
 export const MainWrapper = styled.div`
-  height: auto;
+  height: ${(props) => (props.visibility ? "auto" : 0)};
   width: ${(props) => `${props.width}%`};
 
   display: flex;

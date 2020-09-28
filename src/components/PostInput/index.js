@@ -11,6 +11,7 @@ import {
   BsImages,
   BsCodeSlash,
   BsListCheck,
+  BsFillCameraVideoFill,
 } from "react-icons/bs";
 
 const PostInput = ({ post, setPost }) => {
@@ -87,6 +88,25 @@ const PostInput = ({ post, setPost }) => {
       >
         <BsCodeSlash className="Icon" />
         <p>Code</p>
+      </S.Type>
+
+      <S.Type
+        onClick={() =>
+          setPost({
+            ...post,
+            content: [
+              ...post.content,
+              {
+                id: uniqueId(),
+                type: "Video",
+                ref: createRef(),
+              },
+            ],
+          })
+        }
+      >
+        <BsFillCameraVideoFill className="Icon" />
+        <p>Video</p>
       </S.Type>
       <S.Type>
         <BsListCheck className="Icon" />
