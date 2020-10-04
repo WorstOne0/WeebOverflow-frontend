@@ -24,8 +24,6 @@ const NavBar = ({ children }) => {
     if (!error && !loading) data.getLoggedUser && setIsLogged(true);
   }, [loading, error, data]);
 
-  console.log(data);
-
   return width > 1100 ? (
     <NavBarDesktop isLogged={isLogged}>{children}</NavBarDesktop>
   ) : (

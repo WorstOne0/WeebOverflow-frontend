@@ -50,7 +50,11 @@ const Login = () => {
           <S.InputWrapper>
             <InputText
               value={email}
-              setValue={setEmail}
+              setValue={(event) => {
+                event.preventDefault();
+
+                setEmail(event.target.value);
+              }}
               name="E-mail"
               borderColor={"var(--color-hover-darker)"}
             />
@@ -58,7 +62,11 @@ const Login = () => {
           <S.InputWrapper>
             <InputText
               value={password}
-              setValue={setPassword}
+              setValue={(event) => {
+                event.preventDefault();
+
+                setPassword(event.target.value);
+              }}
               name="Password"
               type="password"
               borderColor={"var(--color-hover-darker)"}

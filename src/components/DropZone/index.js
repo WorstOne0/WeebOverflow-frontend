@@ -36,11 +36,14 @@ const DropZone = ({
         ...uploadedFiles,
         ...Array.from(event.target.files).map((file) => ({
           file,
+          name: file.name,
           id: uniqueId(),
           size: filesize(file.size),
           preview: URL.createObjectURL(file),
+          url: null,
         })),
       ]);
+
       setUpload(true);
     } catch (erro) {
       console.log(erro);
@@ -73,8 +76,6 @@ const DropZone = ({
     accept: `${accept}/*`,
     multiple,
   });
-
-  console.log(uploadedFiles, light);
 
   return (
     <Container {...getRootProps()}>

@@ -12,10 +12,6 @@ const InputText = ({
   borderColor = "var(--color-darker)",
   borderColorHover = "var(--color-primary)",
 }) => {
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
   return (
     <Container margin={margin} backgroundName={backgroundName}>
       <Input
@@ -24,7 +20,7 @@ const InputText = ({
         className="Input"
         autoComplete="off"
         required
-        onChange={handleChange}
+        onChange={setValue}
         borderColor={borderColor}
         borderColorHover={borderColorHover}
       />

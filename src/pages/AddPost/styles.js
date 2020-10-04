@@ -33,12 +33,13 @@ export const Hero = styled.div`
   background: var(--color-dark);
 `;
 
-export const PostContainer = styled.div`
+export const PostContainer = styled.form`
   padding: 2rem;
   border-radius: 0.5rem;
   background: var(--color-dark);
 
   display: flex;
+  align-items: center;
   flex-direction: column;
   flex: 1;
 
@@ -104,6 +105,32 @@ export const Wrapper = styled.div`
 export const CodeContaiener = styled.div`
   height: 30rem;
   width: 100%;
+`;
+
+export const SendButton = styled.button`
+  height: 5rem;
+  width: 80%;
+  margin-top: 2rem;
+  border: 1px solid var(--color-darker);
+  border-radius: 0.8rem;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-primary-light);
+  font-size: 1.8rem;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  :hover {
+    background: var(--color-primary-light);
+
+    color: var(--color-dark);
+  }
 `;
 
 export const SideBar = styled.div`
