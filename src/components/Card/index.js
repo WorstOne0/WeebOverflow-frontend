@@ -5,7 +5,7 @@ import * as S from "./styles";
 import { BsStopwatchFill, BsStopwatch } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart, AiOutlineComment } from "react-icons/ai";
 
-const Card = () => {
+const Card = ({ post }) => {
   const [like, setLike] = useState(false);
   const [readLater, setReadLater] = useState(false);
 
@@ -34,28 +34,32 @@ const Card = () => {
 
       <S.TopContainer>
         <S.TagContainer>
-          <S.Tag>#react</S.Tag>
-          <S.Tag>#javascript</S.Tag>
-          <S.Tag>#anime</S.Tag>
-          <S.Tag>#pudim</S.Tag>
+          {post.tags.length === 0 ? (
+            <>
+              <S.Tag>#There</S.Tag>
+              <S.Tag>#Is</S.Tag>
+              <S.Tag>#No</S.Tag>
+              <S.Tag>#Tags</S.Tag>
+            </>
+          ) : (
+            post.tags.map((tag) => <S.Tag>{`#${tag}`}</S.Tag>)
+          )}
         </S.TagContainer>
 
         <S.ReactionsContainer>
           <S.Reactions>
             <AiOutlineHeart className="Icon" />
-            1.2k
+            {post.likes}
           </S.Reactions>
           <S.Reactions>
             <AiOutlineComment className="Icon" />
-            500
+            {post.comments}
           </S.Reactions>
         </S.ReactionsContainer>
       </S.TopContainer>
 
-      <S.Title>
-        Typography basics and best practices for software developers and write
-        more and more to try to break a line
-      </S.Title>
+      {console.log(post)}
+      <S.Title>{post.title}</S.Title>
 
       <S.DetailsContainer>
         <S.AuthorContainer>
@@ -63,7 +67,7 @@ const Card = () => {
             <S.AuthorImg url={UserImgTemp} />
           </S.AuthorImgBorder>
 
-          <S.AuthorName>Worst One</S.AuthorName>
+          <S.AuthorName>{post.user.screenName}</S.AuthorName>
         </S.AuthorContainer>
 
         <S.Date>January 4th, 2020</S.Date>
@@ -72,11 +76,11 @@ const Card = () => {
       <S.ReactionsContainer id="mobile">
         <S.Reactions>
           <AiOutlineHeart className="Icon" />
-          1.2k
+          {post.likes}
         </S.Reactions>
         <S.Reactions>
           <AiOutlineComment className="Icon" />
-          500
+          {post.comments}
         </S.Reactions>
       </S.ReactionsContainer>
     </S.Container>

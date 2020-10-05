@@ -1,10 +1,32 @@
 import React, { useState } from "react";
+import { useQuery, gql } from "@apollo/client";
 
 import * as S from "./styles";
 
 import { NavBar, Card, SmallCard } from "../../components";
 
+const POSTS = gql`
+  query {
+    posts {
+      id
+      thumbnail
+      tags
+      text {
+        type
+        value
+      }
+      likes
+      comments
+      user {
+        screenName
+      }
+    }
+  }
+`;
+
 const Main = () => {
+  const { loading, error, data } = useQuery(POSTS);
+
   return (
     <NavBar>
       <S.Container>
@@ -29,23 +51,17 @@ const Main = () => {
             <S.PostContainer>
               <S.PostTitle>Posts</S.PostTitle>
 
-              <S.PostList>
-                <S.CarpWrapper>
-                  <Card />
-                </S.CarpWrapper>
-                <S.CarpWrapper>
-                  <Card />
-                </S.CarpWrapper>
-                <S.CarpWrapper>
-                  <Card />
-                </S.CarpWrapper>
-                <S.CarpWrapper>
-                  <Card />
-                </S.CarpWrapper>
-                <S.CarpWrapper>
-                  <Card />
-                </S.CarpWrapper>
-              </S.PostList>
+              {loading ? (
+                <h1>loading</h1>
+              ) : (
+                <S.PostList>
+                  {data.posts.map((post) => (
+                    <S.CarpWrapper>
+                      <Card post={post} />
+                    </S.CarpWrapper>
+                  ))}
+                </S.PostList>
+              )}
             </S.PostContainer>
           </S.Article>
 

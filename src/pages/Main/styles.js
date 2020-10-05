@@ -92,7 +92,7 @@ export const SpotlightList = styled.div`
 
 export const PostContainer = styled.div`
   width: 100%;
-  padding: 1.5rem 0.5rem;
+  padding: 1.5rem 0.5rem 0 0.5rem;
   margin-top: 1.5rem;
   background: var(--color-dark);
   border-radius: 0.5rem;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery, gql } from "@apollo/client";
 
 import * as S from "./styles";
 
@@ -22,7 +23,39 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 import { NavBar, TabBar, Card } from "../../components";
 
+const POSTS = gql`
+  query {
+    posts {
+      id
+      title
+      thumbnail
+      tags
+      text {
+        type
+        value
+      }
+      likes
+      comments
+      user {
+        screenName
+      }
+    }
+  }
+`;
+
+const GET_LOGGED_USER = gql`
+  query {
+    getLoggedUser {
+      userName
+      screenName
+    }
+  }
+`;
+
 function Profile() {
+  const { loading, error, data } = useQuery(POSTS);
+  const { loading: loadingUser, data: dataUser } = useQuery(GET_LOGGED_USER);
+
   const tempImg = require("../../assets/704387.png");
   const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
@@ -60,8 +93,12 @@ function Profile() {
               </S.ContentTop>
 
               <S.UserTitleContainer>
-                <S.UserNick>Worst One</S.UserNick>
-                <S.UserName>@worstone</S.UserName>
+                <S.UserNick>
+                  {loadingUser ? "" : dataUser.getLoggedUser.screenName}
+                </S.UserNick>
+                <S.UserName>
+                  {loadingUser ? "" : `@${dataUser.getLoggedUser.userName}`}
+                </S.UserName>
               </S.UserTitleContainer>
 
               <S.ContentBottom>
@@ -113,10 +150,11 @@ function Profile() {
               <div style={{ height: "10rem", width: "100%" }}></div>
 
               <S.PostList>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {loading ? (
+                  <h1>loading</h1>
+                ) : (
+                  data.posts.map((post) => <Card post={post} />)
+                )}
               </S.PostList>
             </TabBar>
           </S.Main>

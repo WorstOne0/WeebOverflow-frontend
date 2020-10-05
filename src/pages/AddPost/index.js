@@ -30,7 +30,7 @@ import {
 const ADD_POST = gql`
   mutation AddPost(
     $title: String!
-    $thumbnail: String
+    $thumbnail: [Anything]
     $text: [TextInput!]!
     $tags: [String]!
   ) {
@@ -51,9 +51,10 @@ const AddPost = () => {
 
   const [addPost] = useMutation(ADD_POST);
 
+  const [thumbnail, setThumbnail] = useState([]);
+  const [uploadedThumb, setUploadThumb] = useState(false);
   const [post, setPost] = useState({
     title: "",
-    thumbnail: "",
     content: [
       {
         id: uniqueId(),
@@ -61,7 +62,7 @@ const AddPost = () => {
         ref: useRef(null),
       },
     ],
-    tags: [],
+    tags: ["anime", "react"],
   });
 
   const handleRemovePost = (id) => {
@@ -73,6 +74,12 @@ const AddPost = () => {
 
   const uploadToS3 = async () => {
     const { content } = post;
+
+    const res = await s3.uploadFile(
+      thumbnail[0].file,
+      `${Date.now()}${thumbnail[0].name}`
+    );
+    thumbnail[0].url = res.location;
 
     return await Promise.all(
       content.map(async (post) => {
@@ -98,7 +105,7 @@ const AddPost = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { title, content, thumbnail, tags } = post;
+    const { title, content, tags } = post;
 
     await uploadToS3();
     console.log("Finished AWS S3");
@@ -125,7 +132,18 @@ const AddPost = () => {
               <S.PostTitle>Criar um Post</S.PostTitle>
 
               <S.PostBlock>
-                <DropZone text="Arraste sua imagem aqui" />
+                {uploadedThumb ? (
+                  <Image src={thumbnail.map((file) => file.preview)} />
+                ) : (
+                  <DropZone
+                    uploadedFiles={thumbnail}
+                    setUploadedFiles={setThumbnail}
+                    setUpload={setUploadThumb}
+                    id={uniqueId()}
+                    text="Arraste sua imagem aqui"
+                  />
+                )}
+
                 <InputText
                   margin="3rem 0"
                   name="Titulo"
