@@ -16,6 +16,7 @@ import {
   Friends,
   Profile,
   Search,
+  SignUp,
 } from "./pages";
 
 export default class Routes extends Component {
@@ -26,7 +27,8 @@ export default class Routes extends Component {
           <BrowserRouter>
             <Route path="/" exact component={Main} />
             <Route path="/login" component={Login} />
-            <Route path="/post" component={Post} />
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/post/:id" component={Post} />
             <Route path="/addPost" component={AddPost} />
             <Route path="/settings" component={Settings} />
             <Route path="/friends" component={Friends} />

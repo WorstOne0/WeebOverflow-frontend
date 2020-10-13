@@ -128,7 +128,7 @@ const AddPost = () => {
         <S.Content>
           <S.Hero />
           <div className="Split">
-            <S.PostContainer onSubmit={handleSubmit}>
+            <S.PostContainer>
               <S.PostTitle>Criar um Post</S.PostTitle>
 
               <S.PostBlock>
@@ -217,7 +217,7 @@ const AddPost = () => {
 
               <PostInput post={post} setPost={setPost} />
 
-              <S.SendButton type="submit">Enviar</S.SendButton>
+              <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
             </S.PostContainer>
             <S.SideBar></S.SideBar>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 import { useHistory } from "react-router-dom";
 
@@ -76,7 +77,7 @@ const Login = () => {
           <S.Button type="submit">Entrar</S.Button>
         </S.LoginContainer>
 
-        <S.SignUp>
+        <S.SignIn>
           <S.LabelOr>OU</S.LabelOr>
           <S.GoogleButton>
             <AiOutlineGoogle className="Icon" />
@@ -86,7 +87,11 @@ const Login = () => {
             <FaFacebookF className="Icon" />
             Login com o Facebook
           </S.FaceButton>
-        </S.SignUp>
+        </S.SignIn>
+
+        <Link to="/signUp" style={{ width: "100%", textDecoration: "none" }}>
+          <S.SignUp>Novo por aqui? Crie sua conta!</S.SignUp>
+        </Link>
       </S.Content>
     </S.Container>
   );

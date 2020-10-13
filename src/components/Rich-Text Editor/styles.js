@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const RichTextContainer = styled.div`
   width: 100%;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: ${(props) => (props.padding ? "1rem 2rem 2rem 2rem" : "0")};
   background: var(${(props) => props.background});
 `;
 

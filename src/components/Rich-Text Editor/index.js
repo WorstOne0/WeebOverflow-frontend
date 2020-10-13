@@ -38,6 +38,8 @@ const RichText = ({
   value = initialState,
   setValue,
   toolbar = true,
+  readOnly = false,
+  padding = true,
   background = "--color-darker",
 }) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
@@ -157,12 +159,13 @@ const RichText = ({
           </Toolbar>
         )}
 
-        <RichTextContainer background={background}>
+        <RichTextContainer background={background} padding={padding}>
           <Editable
             renderElement={renderElement}
             renderLeaf={renderLeaf}
             onKeyDown={onKeyDown}
             placeholder="Enter some rich text…"
+            readOnly={readOnly}
           />
         </RichTextContainer>
       </Slate>

@@ -130,6 +130,7 @@ export const PostList = styled.div`
 `;
 
 export const CarpWrapper = styled.div`
+  width: 100%;
   margin-bottom: 2rem;
 `;
 

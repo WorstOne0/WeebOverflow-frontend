@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import * as S from "./styles";
 
@@ -14,23 +15,29 @@ const Card = ({ post }) => {
 
   return (
     <S.Container>
-      <S.ImageWrapper>
-        <S.IconContainer
-          top="1rem"
-          right="1rem"
-          onClick={() => setReadLater((read) => !read)}
-        >
-          {readLater ? <BsStopwatchFill /> : <BsStopwatch />}
-        </S.IconContainer>
-        <S.Image src={tempImg} />
-        <S.IconContainer
-          bottom="1rem"
-          left="1rem"
-          onClick={() => setLike((like) => !like)}
-        >
-          {like ? <AiFillHeart /> : <AiOutlineHeart />}
-        </S.IconContainer>
-      </S.ImageWrapper>
+      <Link
+        to={`/post/${post.id}`}
+        style={{ width: "auto", textDecoration: "none" }}
+      >
+        <S.ImageWrapper>
+          <S.IconContainer
+            top="1rem"
+            right="1rem"
+            onClick={() => setReadLater((read) => !read)}
+          >
+            {readLater ? <BsStopwatchFill /> : <BsStopwatch />}
+          </S.IconContainer>
+
+          <S.Image src={post.thumbnail ? post.thumbnail[0].url : tempImg} />
+          <S.IconContainer
+            bottom="1rem"
+            left="1rem"
+            onClick={() => setLike((like) => !like)}
+          >
+            {like ? <AiFillHeart /> : <AiOutlineHeart />}
+          </S.IconContainer>
+        </S.ImageWrapper>
+      </Link>
 
       <S.TopContainer>
         <S.TagContainer>
@@ -58,19 +65,23 @@ const Card = ({ post }) => {
         </S.ReactionsContainer>
       </S.TopContainer>
 
-      {console.log(post)}
       <S.Title>{post.title}</S.Title>
 
       <S.DetailsContainer>
         <S.AuthorContainer>
           <S.AuthorImgBorder>
-            <S.AuthorImg url={UserImgTemp} />
+            <S.AuthorImg
+              url={post.user.profile ? post.user.profile[0].url : UserImgTemp}
+            />
           </S.AuthorImgBorder>
 
           <S.AuthorName>{post.user.screenName}</S.AuthorName>
         </S.AuthorContainer>
 
-        <S.Date>January 4th, 2020</S.Date>
+        <S.Date>
+          {/*January 4th, 2020*/}
+          {post.createdAt}
+        </S.Date>
       </S.DetailsContainer>
 
       <S.ReactionsContainer id="mobile">

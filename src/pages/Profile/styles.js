@@ -84,6 +84,25 @@ export const HalfCircle = styled.div`
   }
 `;
 
+export const Logout = styled.button`
+  padding: 1rem;
+  border: 1px solid var(--color-dark);
+  border-radius: 0.8rem;
+  background: var(--color-dark);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 49%;
+  right: 0;
+  transform: translate(-50%, -50%);
+
+  color: var(--color-white);
+  font-size: 1.8rem;
+`;
+
 export const UserContainer = styled.div`
   height: 45%;
   max-height: 30rem;

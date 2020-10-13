@@ -1,5 +1,6 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
+import { useHistory } from "react-router-dom";
 
 import * as S from "./styles";
 
@@ -15,6 +16,7 @@ import {
   AiOutlineUser,
   AiTwotoneCalendar,
   AiFillInfoCircle,
+  AiOutlineLogout,
 } from "react-icons/ai";
 import { IoMdPaper } from "react-icons/io";
 import { FaTwitch } from "react-icons/fa";
@@ -23,41 +25,50 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 import { NavBar, TabBar, Card } from "../../components";
 
-const POSTS = gql`
-  query {
-    posts {
-      id
-      title
-      thumbnail
-      tags
-      text {
-        type
-        value
-      }
-      likes
-      comments
-      user {
-        screenName
-      }
-    }
-  }
-`;
-
 const GET_LOGGED_USER = gql`
   query {
     getLoggedUser {
       userName
       screenName
+      posts {
+        id
+        title
+        thumbnail
+        tags
+        text {
+          type
+          value
+        }
+        likes
+        comments
+        user {
+          screenName
+        }
+        createdAt
+      }
     }
   }
 `;
 
+export const LOGOUT = gql`
+  mutation {
+    logout
+  }
+`;
+
 function Profile() {
-  const { loading, error, data } = useQuery(POSTS);
-  const { loading: loadingUser, data: dataUser } = useQuery(GET_LOGGED_USER);
+  const { loading, data, error } = useQuery(GET_LOGGED_USER);
+  const [logout] = useMutation(LOGOUT);
+  const history = useHistory();
 
   const tempImg = require("../../assets/704387.png");
   const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
+
+  const handleLogout = async () => {
+    const { data } = await logout();
+
+    if (data.logout) history.push("/");
+  };
 
   return (
     <NavBar>
@@ -66,6 +77,10 @@ function Profile() {
           <S.HeaderImg src={tempImg} />
 
           <S.HalfCircle />
+
+          <S.Logout onClick={() => handleLogout()}>
+            <AiOutlineLogout />
+          </S.Logout>
 
           <S.UserContainer>
             <S.UserContent>
@@ -94,10 +109,10 @@ function Profile() {
 
               <S.UserTitleContainer>
                 <S.UserNick>
-                  {loadingUser ? "" : dataUser.getLoggedUser.screenName}
+                  {loading ? "" : data.getLoggedUser.screenName}
                 </S.UserNick>
                 <S.UserName>
-                  {loadingUser ? "" : `@${dataUser.getLoggedUser.userName}`}
+                  {loading ? "" : `@${data.getLoggedUser.userName}`}
                 </S.UserName>
               </S.UserTitleContainer>
 
@@ -153,7 +168,7 @@ function Profile() {
                 {loading ? (
                   <h1>loading</h1>
                 ) : (
-                  data.posts.map((post) => <Card post={post} />)
+                  data.getLoggedUser.posts.map((post) => <Card post={post} />)
                 )}
               </S.PostList>
             </TabBar>

@@ -68,7 +68,7 @@ export const Button = styled.button`
   }
 `;
 
-export const SignUp = styled.div`
+export const SignIn = styled.div`
   width: 100%;
   margin-top: 4rem;
   padding-top: 1rem;
@@ -133,5 +133,23 @@ export const FaceButton = styled.button`
     margin-right: 1rem;
 
     font-size: 1.8rem;
+  }
+`;
+
+export const SignUp = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-hover-primary-lighter);
+  font-size: 1.6rem;
+
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
   }
 `;

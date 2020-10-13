@@ -7,10 +7,13 @@ export const Container = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 
   position: relative;
+
+  cursor: pointer;
 
   @media (min-width: 1366px) {
     flex-direction: column;

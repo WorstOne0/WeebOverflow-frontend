@@ -50,7 +50,7 @@ function Gallery({
                     <AiFillDelete />
                   </S.DeleteImg>
                 )}
-                <S.Image src={image.preview} />
+                <S.Image src={readOnly ? image.url : image.preview} />
               </S.WrapperImg>
             </S.ImageContainer>
           ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 import * as S from "./styles";
@@ -10,6 +10,7 @@ const POSTS = gql`
     posts {
       id
       thumbnail
+      title
       tags
       text {
         type
@@ -20,12 +21,16 @@ const POSTS = gql`
       user {
         screenName
       }
+      createdAt
     }
   }
 `;
 
 const Main = () => {
-  const { loading, error, data } = useQuery(POSTS);
+  const { loading, error, data, refetch } = useQuery(POSTS);
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <NavBar>
