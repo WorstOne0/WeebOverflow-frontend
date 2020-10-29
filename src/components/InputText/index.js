@@ -11,6 +11,8 @@ const InputText = ({
   backgroundName = "var(--color-dark)",
   borderColor = "var(--color-darker)",
   borderColorHover = "var(--color-primary)",
+  onFocus,
+  onBlur,
 }) => {
   return (
     <Container margin={margin} backgroundName={backgroundName}>
@@ -23,6 +25,8 @@ const InputText = ({
         onChange={setValue}
         borderColor={borderColor}
         borderColorHover={borderColorHover}
+        onFocus={onFocus ? onFocus : () => {}}
+        onBlur={onBlur ? onBlur : () => {}}
       />
       <Label className="Label">{name}</Label>
     </Container>

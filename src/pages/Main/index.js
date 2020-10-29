@@ -58,6 +58,8 @@ const Main = () => {
 
               {loading ? (
                 <h1>loading</h1>
+              ) : error ? (
+                <h1>erro</h1>
               ) : (
                 <S.PostList>
                   {data.posts.map((post) => (

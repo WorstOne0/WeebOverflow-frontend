@@ -10,6 +10,7 @@ import InputText from "./InputText";
 import Loading from "./Loading";
 import Gallery from "./Gallery";
 import TabBar from "./TabBar";
+import Select from "./Select";
 
 export {
   Card,
@@ -24,4 +25,5 @@ export {
   Loading,
   Gallery,
   TabBar,
+  Select,
 };

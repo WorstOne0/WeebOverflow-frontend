@@ -25,6 +25,7 @@ export const Back = styled.div`
 export const Content = styled.div`
   min-height: 100vh;
   width: 40rem;
+  padding: 6rem 0;
 
   display: flex;
   justify-content: flex-start;
@@ -43,7 +44,65 @@ export const Title = styled.h1`
 
 export const InputWrapper = styled.div`
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 4rem;
+
+  position: relative;
+`;
+
+export const InputMessage = styled.div`
+  width: 100%;
+  padding: 0.5rem 2rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: absolute;
+
+  font-size: 1.4rem;
+`;
+
+export const InputBlock = styled.div`
+  width: 20rem;
+  padding: 2rem 0;
+  border-radius: 0.8rem;
+  background: var(--color-hover-darker);
+
+  display: ${(props) => (props.display ? "flex" : "none")};
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  position: absolute;
+  top: -2rem;
+  right: -23rem;
+
+  color: #fff;
+
+  h1 {
+    margin-bottom: 3rem;
+
+    font-size: 1.6rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+
+    font-size: 1.4rem;
+  }
+`;
+
+export const InputBlockArrow = styled.div`
+  height: 0;
+  width: 0;
+  border-top: 10px solid transparent;
+  border-right: 10px solid var(--color-hover-darker);
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+
+  position: absolute;
+  top: 3rem;
+  left: -2rem;
 `;
 
 export const Button = styled.button`
@@ -65,7 +124,6 @@ export const Button = styled.button`
 export const GoogleButton = styled.button`
   height: 5rem;
   width: 100%;
-  margin-top: 6rem;
   border: 1px solid var(--color-white);
   border-radius: 0.8rem;
   background: transparent;
