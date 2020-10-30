@@ -1,15 +1,15 @@
 import React from "react";
 
-import { Container, Content } from "./styles";
+import { Container, Content, Img } from "./styles";
 
-const Loading = ({ type = "default" }) => {
+const Loading = ({ type = "" }) => {
   const typeLoading = () => {
     switch (type) {
-      case "default":
-        return <LoadingAnime />;
+      case "running":
+        return <AnimeRunning />;
 
       default:
-        return;
+        return <LoadingAnime />;
     }
   };
 
@@ -18,6 +18,16 @@ const Loading = ({ type = "default" }) => {
 
 const LoadingAnime = () => {
   return <Content></Content>;
+};
+
+const AnimeRunning = () => {
+  const imgSrc = require("../../assets/OptimalSleepyBluebottlejellyfish-small.gif");
+
+  return (
+    <Content>
+      <Img src={imgSrc} />
+    </Content>
+  );
 };
 
 export default Loading;
