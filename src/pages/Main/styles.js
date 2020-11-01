@@ -30,6 +30,7 @@ export const Content = styled.div`
 `;
 
 export const Article = styled.div`
+  min-height: 100vh;
   width: 100%;
   margin-left: 1.5rem;
 
@@ -91,6 +92,7 @@ export const SpotlightList = styled.div`
 `;
 
 export const PostContainer = styled.div`
+  height: 100%;
   width: 100%;
   padding: 1.5rem 0.5rem 0 0.5rem;
   margin-top: 1.5rem;

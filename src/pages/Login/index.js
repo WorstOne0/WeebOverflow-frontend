@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 import { useHistory } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import * as S from "./styles";
 
@@ -13,8 +14,18 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { FaFacebookF } from "react-icons/fa";
 
 const LOGIN = gql`
-  mutation Login($email: String!, $password: String!, $thirdParty: String!) {
-    login(email: $email, password: $password, thirdParty: $thirdParty) {
+  mutation Login(
+    $email: String!
+    $password: String!
+    $thirdParty: String!
+    $reCaptchaToken: String!
+  ) {
+    login(
+      email: $email
+      password: $password
+      thirdParty: $thirdParty
+      reCaptchaToken: $reCaptchaToken
+    ) {
       id
       email
     }
@@ -24,18 +35,36 @@ const LOGIN = gql`
 const Login = () => {
   const [login] = useMutation(LOGIN);
   const history = useHistory();
+  const reRef = useRef();
 
+  const [control, setControl] = useState({
+    loading: false,
+    error: false,
+    errorMsg: "",
+  });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setControl({ ...control, loading: true });
+
+    const token = await reRef.current.executeAsync();
+    reRef.current.reset();
+
     const { data } = await login({
-      variables: { email, password, thirdParty: "None" },
+      variables: { email, password, thirdParty: "None", reCaptchaToken: token },
     });
 
-    if (data) history.push("/");
+    data.login
+      ? history.push("/")
+      : setControl({
+          ...control,
+          laoding: false,
+          error: true,
+          errorMsg: "Login Invalido",
+        });
   };
 
   return (
@@ -73,6 +102,12 @@ const Login = () => {
               borderColor={"var(--color-hover-darker)"}
             />
           </S.InputWrapper>
+
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+            size="invisible"
+            ref={reRef}
+          />
 
           <S.Button type="submit">Entrar</S.Button>
         </S.LoginContainer>

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useQuery, gql } from "@apollo/client";
 
 import * as S from "./styles";
 
-import { NavBar, Card, SmallCard } from "../../components";
+import { NavBar, Card, SmallCard, Loading } from "../../components";
 
 const POSTS = gql`
   query {
@@ -28,6 +28,9 @@ const POSTS = gql`
 
 const Main = () => {
   const { loading, error, data, refetch } = useQuery(POSTS);
+
+  const postRef = useRef();
+
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -53,11 +56,11 @@ const Main = () => {
                 <SmallCard />
               </S.SpotlightList>
             </S.SpotlightContainer>
-            <S.PostContainer>
+            <S.PostContainer ref={postRef}>
               <S.PostTitle>Posts</S.PostTitle>
 
               {loading ? (
-                <h1>loading</h1>
+                <Loading height="60vh" />
               ) : error ? (
                 <h1>erro</h1>
               ) : (

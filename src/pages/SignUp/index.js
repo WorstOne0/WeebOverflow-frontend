@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 import * as S from "./styles";
+
 import { BsArrowLeft } from "react-icons/bs";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { FaFacebookF } from "react-icons/fa";
@@ -16,6 +19,7 @@ const SIGN_UP = gql`
     $userName: String!
     $screenName: String!
     $thirdParty: String!
+    $reCaptchaToken: String!
   ) {
     createUser(
       email: $email
@@ -23,6 +27,7 @@ const SIGN_UP = gql`
       userName: $userName
       screenName: $screenName
       thirdParty: $thirdParty
+      reCaptchaToken: $reCaptchaToken
     ) {
       id
       email
@@ -59,16 +64,13 @@ const SignUp = () => {
     finished: false,
   });
 
+  const reRef = useRef();
   const [email, setEmail] = useState(initialState);
   const [password, setPassword] = useState(initialState);
   const [confirmPassword, setConfirmPassword] = useState(initialState);
   const [userName, setUsername] = useState(initialState);
 
-  const validateEmail = () => {
-    if (email.value.length === 0) return 0;
-
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) return 2;
-
+  useEffect(() => {
     !email.validate.error &&
       emailExists({
         variables: { email: email.value },
@@ -83,6 +85,12 @@ const SignUp = () => {
             },
           });
       });
+  }, [email, emailExists]);
+
+  const validateEmail = () => {
+    if (email.value.length === 0) return 0;
+
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) return 2;
 
     if (email.validate.error) return 2;
 
@@ -111,13 +119,7 @@ const SignUp = () => {
     return 1;
   };
 
-  const validateUserName = () => {
-    if (userName.value.length === 0) return 0;
-
-    if (userName.value.length <= 5 || userName.value.length > 20) return 2;
-
-    if (!/^[a-z0-9_-]*$/.test(userName.value)) return 2;
-
+  useEffect(() => {
     !userName.validate.error &&
       userNameExists({
         variables: { userName: userName.value },
@@ -132,6 +134,14 @@ const SignUp = () => {
             },
           });
       });
+  }, [userName, userNameExists]);
+
+  const validateUserName = () => {
+    if (userName.value.length === 0) return 0;
+
+    if (userName.value.length <= 5 || userName.value.length > 20) return 2;
+
+    if (!/^[a-z0-9_-]*$/.test(userName.value)) return 2;
 
     if (userName.validate.error) return 2;
 
@@ -157,10 +167,9 @@ const SignUp = () => {
         userName: userName.value,
         screenName: "",
         thirdParty: "None",
+        reCaptchaToken: "",
       },
     });
-
-    console.log(res);
 
     !res.data.createUser
       ? setControl({ ...control, loading: false, error: true })
@@ -176,7 +185,7 @@ const SignUp = () => {
       </S.Back>
 
       {control.loading ? (
-        <h1>loading</h1>
+        <Loading height="100vh" size="120" />
       ) : control.error ? (
         <h1>error</h1>
       ) : control.finished ? (
@@ -306,6 +315,12 @@ const SignUp = () => {
           </S.InputWrapper>
           {/* Genero */}
           {/* Aniversario */}
+
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+            size="invisible"
+            ref={reRef}
+          />
 
           <S.Button onClick={() => handleSubmit()}>Criar conta</S.Button>
         </S.Content>
