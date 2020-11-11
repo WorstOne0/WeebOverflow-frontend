@@ -38,14 +38,28 @@ const Post = (props) => {
     <NavBar>
       {loading ? (
         <h1>Loading</h1>
+      ) : error ? (
+        <h1>erro</h1>
       ) : (
         <S.Container>
           <S.Content>
             <S.PostContainer>
-              <Image src={data.getPost.thumbnail[0].url} cover={true} />
+              <Image
+                src={data.getPost.thumbnail[0].url}
+                cover={true}
+                style={{ borderRadius: "0.8rem 0.8rem 0 0" }}
+              />
 
               <S.Main>
-                <S.Title>{data.getPost.title}</S.Title>
+                <S.PostHeader>
+                  <S.Title>{data.getPost.title}</S.Title>
+
+                  <S.TagContainer>
+                    {data.getPost.tags.map((tag) => (
+                      <S.Tag>{tag}</S.Tag>
+                    ))}
+                  </S.TagContainer>
+                </S.PostHeader>
 
                 {data.getPost.text.map((block) => {
                   switch (block.type) {
@@ -84,6 +98,8 @@ const Post = (props) => {
                   }
                 })}
               </S.Main>
+
+              <S.UserContainer></S.UserContainer>
             </S.PostContainer>
             <S.SideBar></S.SideBar>
           </S.Content>

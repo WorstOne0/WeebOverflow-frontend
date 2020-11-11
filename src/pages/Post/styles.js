@@ -30,7 +30,7 @@ export const PostContainer = styled.div`
 
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   flex: 1;
 
@@ -39,12 +39,42 @@ export const PostContainer = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const PostHeader = styled.div`
+  width: 100%;
+  margin-bottom: 3.5rem;
   padding: 0 1.5rem;
 
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Title = styled.h1`
   color: var(--color-white);
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: bold;
+`;
+
+export const TagContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  padding-top: 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  :last-child {
+    margin: 0;
+  }
+`;
+
+export const Tag = styled.div`
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.8rem;
+  margin-right: 1rem;
+  background: var(--color-primary);
+
+  color: var(--color-white);
+  font-size: 1.2rem;
 `;
 
 export const Main = styled.main`
@@ -58,7 +88,7 @@ export const Main = styled.main`
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: ${(props) => (props.type ? "0 1.5rem" : "1.5rem")};
+  padding: ${(props) => (props.type ? "0 1.5rem" : "2.5rem 1.5rem")};
 `;
 
 export const SideBar = styled.div`
@@ -72,4 +102,12 @@ export const SideBar = styled.div`
   @media (max-width: 1100px) {
     display: none;
   }
+`;
+
+export const UserContainer = styled.div`
+  height: 25rem;
+  width: calc(100% - 3rem);
+  margin-bottom: 1.5rem;
+  border-radius: 0.8rem;
+  background: var(--color-darker);
 `;
