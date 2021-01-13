@@ -11,6 +11,7 @@ import Loading from "./Loading";
 import Gallery from "./Gallery";
 import TabBar from "./TabBar";
 import Select from "./Select";
+import ProfileGadgets from "./ProfileGadgets";
 
 export {
   Card,
@@ -26,4 +27,5 @@ export {
   Gallery,
   TabBar,
   Select,
+  ProfileGadgets,
 };

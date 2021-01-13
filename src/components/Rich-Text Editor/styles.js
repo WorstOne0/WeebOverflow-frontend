@@ -13,6 +13,8 @@ export const RichTextContainer = styled.div`
   width: 100%;
   padding: ${(props) => (props.padding ? "1rem 2rem 2rem 2rem" : "0")};
   background: var(${(props) => props.background});
+
+  font-size: 1.8rem;
 `;
 
 export const Toolbar = styled.div`
@@ -57,12 +59,12 @@ export const Button = styled.button`
 `;
 
 export const StyledTitle = styled.p`
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   font-size: 2.8rem;
 `;
 
 export const StyledSubTitle = styled.p`
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   font-size: 2.4rem;
 `;
 

@@ -166,6 +166,7 @@ const RichText = ({
             onKeyDown={onKeyDown}
             placeholder="Enter some rich text…"
             readOnly={readOnly}
+            className="Editor"
           />
         </RichTextContainer>
       </Slate>
@@ -489,6 +490,7 @@ const MarkButton = ({ format, children }) => {
   return (
     <Button
       isActive={isMarkActive(editor, format)}
+      type="button"
       onMouseDown={(event) => {
         event.preventDefault();
         toggleMark(editor, format);
@@ -557,7 +559,7 @@ const JustfyElement = (props) => {
   return (
     <p
       {...props.attributes}
-      style={{ marginTop: "1rem", textAlign: "justify" }}
+      style={{ marginTop: "2rem", textAlign: "justify" }}
     >
       {props.children}
     </p>

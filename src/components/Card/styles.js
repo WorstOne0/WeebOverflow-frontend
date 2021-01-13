@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: auto;
   width: 100%;
-  padding: 0.5rem 0;
+  padding-bottom: 1.5rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--color-darker);
   background: var(--color-dark);
 
   display: flex;
@@ -14,6 +16,10 @@ export const Container = styled.div`
   position: relative;
 
   cursor: pointer;
+
+  :hover {
+    border: 1px solid var(--color-primary-darker);
+  }
 
   @media (min-width: 1366px) {
     flex-direction: column;

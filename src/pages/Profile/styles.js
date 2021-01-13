@@ -459,6 +459,15 @@ export const Main = styled.main`
   }
 `;
 
+export const Info = styled.div`
+  width: 100%;
+  padding: 1.5rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const PostList = styled.div`
   width: 100%;
   padding: 2rem 1rem;

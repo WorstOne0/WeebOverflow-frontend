@@ -23,7 +23,7 @@ import { FaTwitch } from "react-icons/fa";
 import { RiCake3Line } from "react-icons/ri";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { NavBar, TabBar, Card } from "../../components";
+import { NavBar, TabBar, Card, ProfileGadgets } from "../../components";
 
 const GET_LOGGED_USER = gql`
   query {
@@ -162,7 +162,9 @@ function Profile() {
                 },
               ]}
             >
-              <div style={{ height: "10rem", width: "100%" }}></div>
+              <S.Info>
+                <ProfileGadgets type="Work At" />
+              </S.Info>
 
               <S.PostList>
                 {loading ? (
