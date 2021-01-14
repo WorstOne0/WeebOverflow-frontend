@@ -64,7 +64,10 @@ const Post = (props) => {
               <Image
                 src={data.getPost.thumbnail[0].url}
                 cover={true}
-                style={{ borderRadius: "0.8rem 0.8rem 0 0" }}
+                style={{
+                  borderRadius: "0.8rem 0.8rem 0 0",
+                  maxHeight: "70rem",
+                }}
               />
 
               <S.Main>

@@ -68,7 +68,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 35rem;
+  height: 40rem;
   width: 100%;
   border: none;
   border-radius: 0.8rem;

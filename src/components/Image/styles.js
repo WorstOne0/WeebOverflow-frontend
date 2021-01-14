@@ -10,8 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 40rem;
-  max-height: 80rem;
+  height: 100%;
+  max-height: 50rem;
   width: ${(props) => (props.cover ? "100%" : "auto")};
   max-width: 100%;
 `;
