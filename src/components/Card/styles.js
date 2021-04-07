@@ -15,10 +15,17 @@ export const Container = styled.div`
 
   position: relative;
 
+  //All-sides Shadow
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  //Floating Shadow
+  //box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+
+  transition: all 0.3s;
   cursor: pointer;
 
   :hover {
-    border: 1px solid var(--color-primary-darker);
+    border: 1px solid var(--color-hover-darker);
   }
 
   @media (min-width: 1366px) {
@@ -68,7 +75,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 35rem;
+  height: 50vh;
   width: 100%;
   border: none;
   border-radius: 0.8rem;

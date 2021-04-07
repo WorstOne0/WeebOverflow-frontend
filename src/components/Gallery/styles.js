@@ -57,6 +57,7 @@ export const WrapperImg = styled.div`
 
 export const Image = styled.img`
   height: 100%;
+  max-height: 50rem;
   width: ${(props) => (props.cover ? "100%" : "auto")};
   max-width: 100%;
 `;

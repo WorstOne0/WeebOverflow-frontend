@@ -78,11 +78,11 @@ function Profile() {
 
           <S.HalfCircle />
 
-          <S.Logout onClick={() => handleLogout()}>
-            <AiOutlineLogout />
-          </S.Logout>
-
           <S.UserContainer>
+            <S.Logout onClick={() => handleLogout()}>
+              <AiOutlineLogout />
+            </S.Logout>
+
             <S.UserContent>
               <S.UserImg url={UserImgTemp} />
 
@@ -170,7 +170,11 @@ function Profile() {
                 {loading ? (
                   <h1>loading</h1>
                 ) : (
-                  data.getLoggedUser.posts.map((post) => <Card post={post} />)
+                  data.getLoggedUser.posts.map((post) => (
+                    <S.CarpWrapper>
+                      <Card post={post} />
+                    </S.CarpWrapper>
+                  ))
                 )}
               </S.PostList>
             </TabBar>

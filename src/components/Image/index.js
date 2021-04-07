@@ -2,10 +2,17 @@ import React from "react";
 
 import { Container, Img, Subtitles } from "./styles";
 
-function Image({ src, subtitles, cover = false, style }) {
+function Image({
+  src,
+  subtitles,
+  height = "50vh",
+  width = "100%",
+  cover = false,
+  style,
+}) {
   return (
     <Container>
-      <Img src={src} cover={cover} style={style} />
+      <Img src={src} height={height} cover={cover} style={style} />
       <Subtitles>{subtitles}</Subtitles>
     </Container>
   );

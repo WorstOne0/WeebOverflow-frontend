@@ -13,9 +13,14 @@ const InputText = ({
   borderColorHover = "var(--color-primary)",
   onFocus,
   onBlur,
+  boxShadow,
 }) => {
   return (
-    <Container margin={margin} backgroundName={backgroundName}>
+    <Container
+      margin={margin}
+      backgroundName={backgroundName}
+      boxShadow={boxShadow}
+    >
       <Input
         value={value}
         type={type}

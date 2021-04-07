@@ -147,7 +147,11 @@ const Post = (props) => {
                       are most satisfied with. The last decade on the web has
                       proved that blogging is a sustainable method of expressing
                       oneself, as well as consuming content in a variety of
-                      different ways.
+                      different ways. A blog is still a website, with its own
+                      set of elements and features that create the kind of web
+                      design that we are most satisfied with. Design that we are
+                      most satisfied with. Design that we are most satisfied
+                      with. Design that we are most satisfied
                     </S.UserInfoText>
 
                     <S.UserFooter>

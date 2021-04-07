@@ -147,15 +147,16 @@ export const SideBar = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 28rem;
+  flex: 0 0 30rem;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `;
 
 export const UserContainer = styled.div`
-  height: 25rem;
+  height: auto;
+  min-height: 25rem;
   width: calc(100% - 3rem);
   margin-bottom: 1.5rem;
   border-radius: 0.8rem;
@@ -175,6 +176,10 @@ export const UserHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 810px) {
+    flex-direction: column;
+  }
 `;
 
 export const UserImgWrapper = styled.div`
@@ -253,6 +258,7 @@ export const UserInfoText = styled.p`
 
 export const UserFooter = styled.div`
   height: 5rem;
+  margin-bottom: 1.5rem;
   width: 100%;
 
   display: flex;

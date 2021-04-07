@@ -95,9 +95,9 @@ export const Logout = styled.button`
   align-items: center;
 
   position: absolute;
-  top: 49%;
+  top: -5rem;
   right: 0;
-  transform: translate(-50%, -50%);
+  //transform: translate(-50%, -50%);
 
   color: var(--color-white);
   font-size: 1.8rem;
@@ -470,14 +470,19 @@ export const Info = styled.div`
 
 export const PostList = styled.div`
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 2rem;
+  padding-bottom: 0;
 
-  display: grid;
+  /*display: grid;
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(55rem, 1fr));
   grid-gap: 2rem;
-  grid-row-gap: 1.5rem;
+  grid-row-gap: 1.5rem;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   @media screen and (max-width: 610px) {
     display: flex;
@@ -489,13 +494,18 @@ export const PostList = styled.div`
   }
 `;
 
+export const CarpWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 2rem;
+`;
+
 export const SideBar = styled.div`
   height: 100vh;
   border-radius: 0.8rem;
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 36rem;
+  flex: 0 0 25vw;
 
   @media screen and (max-width: 1100px) {
     display: none;

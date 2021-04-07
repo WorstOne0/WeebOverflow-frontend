@@ -15,7 +15,9 @@ const ALL_USERS = gql`
 `;
 
 const NavBar = ({ children }) => {
-  const { loading, error, data } = useQuery(ALL_USERS);
+  const { loading, error, data } = useQuery(ALL_USERS, {
+    fetchPolicy: "network-only",
+  });
 
   const [isLogged, setIsLogged] = useState(false);
   const { width } = useWindowDimensions();

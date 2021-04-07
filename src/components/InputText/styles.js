@@ -7,6 +7,9 @@ export const Container = styled.div`
 
   position: relative;
 
+  box-shadow: ${(props) =>
+    props.boxShadow ? "0 5px 15px rgba(0, 0, 0, 0.3)" : "none"};
+
   .Input:focus + .Label,
   .Input:valid + .Label {
     padding: 0 0.7rem;

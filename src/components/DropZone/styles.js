@@ -5,7 +5,7 @@ export const Container = styled.section`
 `;
 
 export const Content = styled.div`
-  height: 32vh;
+  height: 40vh;
   width: 100%;
   border-radius: 0.8rem;
   border: 0.2rem dashed

@@ -108,20 +108,26 @@ export const PostTitle = styled.h1`
   padding: 0 2rem;
 
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   font-weight: bold;
 `;
 
 export const PostList = styled.div`
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 1.5rem;
+  padding-bottom: 0;
 
-  display: grid;
+  /*display: grid;
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(55rem, 1fr));
   grid-gap: 2rem;
-  grid-row-gap: 0rem;
+  grid-row-gap: 0rem;*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   @media (max-width: 610px) {
     display: flex;
@@ -142,7 +148,7 @@ export const TEMP_SideBarRight = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 35rem;
+  flex: 0 0 25vw;
 
   @media (max-width: 1100px) {
     display: none;
