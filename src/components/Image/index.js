@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Img, Subtitles } from "./styles";
+import { Container, Wrapper, Img, Subtitles } from "./styles";
 
 function Image({
   src,
