@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from "react";
-import { useMutation, gql } from "@apollo/client";
+import { useQuery, useMutation, gql } from "@apollo/client";
 
 import s3 from "../../services/aws-s3";
 import { uniqueId, isEmpty, reject } from "lodash";
@@ -26,6 +26,15 @@ import {
   Loading,
   Gallery,
 } from "../../components";
+
+const USER = gql`
+  query {
+    getLoggedUser {
+      id
+      role
+    }
+  }
+`;
 
 const ADD_POST = gql`
   mutation AddPost(
@@ -49,6 +58,9 @@ const AddPost = () => {
     document.documentElement.scrollTop = 0;
   }, []);
 
+  const { loading, error, data } = useQuery(USER, {
+    fetchPolicy: "network-only",
+  });
   const [addPost] = useMutation(ADD_POST);
 
   const [thumbnail, setThumbnail] = useState([]);
@@ -123,107 +135,129 @@ const AddPost = () => {
   };
 
   return (
-    <NavBar>
-      <S.Container>
-        <S.Content>
-          <S.Hero />
-          <div className="Split">
-            <S.PostContainer>
-              <S.PostTitle>Criar um Post</S.PostTitle>
+    <>
+      {loading ? (
+        <p>loading</p>
+      ) : data.getLoggedUser == null ? (
+        <p style={{ color: "#111" }}>No Permission</p>
+      ) : error ? (
+        <p>error</p>
+      ) : data.getLoggedUser.role === "Guest" ? (
+        <p style={{ color: "#111" }}>No Permission</p>
+      ) : (
+        <NavBar>
+          <S.Container>
+            <S.Content>
+              <S.Hero />
+              <div className="Split">
+                <S.PostContainer>
+                  <S.PostTitle>Criar um Post</S.PostTitle>
 
-              <S.PostBlock>
-                {uploadedThumb ? (
-                  <Image src={thumbnail.map((file) => file.preview)} />
-                ) : (
-                  <DropZone
-                    uploadedFiles={thumbnail}
-                    setUploadedFiles={setThumbnail}
-                    setUpload={setUploadThumb}
-                    id={uniqueId()}
-                    text="Arraste sua imagem aqui"
-                  />
-                )}
+                  <S.PostBlock>
+                    {uploadedThumb ? (
+                      <Image src={thumbnail.map((file) => file.preview)} />
+                    ) : (
+                      <DropZone
+                        uploadedFiles={thumbnail}
+                        setUploadedFiles={setThumbnail}
+                        setUpload={setUploadThumb}
+                        id={uniqueId()}
+                        text="Arraste sua imagem aqui"
+                      />
+                    )}
 
-                <InputText
-                  margin="3rem 0"
-                  name="Titulo"
-                  value={post.title}
-                  setValue={(event) => {
-                    event.preventDefault();
+                    <InputText
+                      margin="3rem 0"
+                      name="Titulo"
+                      value={post.title}
+                      setValue={(event) => {
+                        event.preventDefault();
 
-                    setPost({ ...post, title: event.target.value });
-                  }}
-                  valueNested={"title"}
-                  valueSource={post}
-                />
-              </S.PostBlock>
+                        setPost({ ...post, title: event.target.value });
+                      }}
+                      valueNested={"title"}
+                      valueSource={post}
+                    />
+                  </S.PostBlock>
 
-              {post.content.map((post) => {
-                switch (post.type) {
-                  case "Rich-Text":
-                    return (
-                      <S.PostBlock key={post.id}>
-                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                          <FiDelete />
-                        </S.PostDelete>
-                        <RichTextTemplate ref={post.ref} />
-                      </S.PostBlock>
-                    );
+                  {post.content.map((post) => {
+                    switch (post.type) {
+                      case "Rich-Text":
+                        return (
+                          <S.PostBlock key={post.id}>
+                            <S.PostDelete
+                              onClick={() => handleRemovePost(post.id)}
+                            >
+                              <FiDelete />
+                            </S.PostDelete>
+                            <RichTextTemplate ref={post.ref} />
+                          </S.PostBlock>
+                        );
 
-                  case "Single Image":
-                    return (
-                      <S.PostBlock key={post.id}>
-                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                          <FiDelete />
-                        </S.PostDelete>
-                        <ImagemTemplate ref={post.ref} id={post.id} />
-                      </S.PostBlock>
-                    );
+                      case "Single Image":
+                        return (
+                          <S.PostBlock key={post.id}>
+                            <S.PostDelete
+                              onClick={() => handleRemovePost(post.id)}
+                            >
+                              <FiDelete />
+                            </S.PostDelete>
+                            <ImagemTemplate ref={post.ref} id={post.id} />
+                          </S.PostBlock>
+                        );
 
-                  case "Gallery":
-                    return (
-                      <S.PostBlock key={post.id}>
-                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                          <FiDelete />
-                        </S.PostDelete>
-                        <GalleryTemplate ref={post.ref} id={post.id} />
-                      </S.PostBlock>
-                    );
+                      case "Gallery":
+                        return (
+                          <S.PostBlock key={post.id}>
+                            <S.PostDelete
+                              onClick={() => handleRemovePost(post.id)}
+                            >
+                              <FiDelete />
+                            </S.PostDelete>
+                            <GalleryTemplate ref={post.ref} id={post.id} />
+                          </S.PostBlock>
+                        );
 
-                  case "Code":
-                    return (
-                      <S.PostBlock key={post.id}>
-                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                          <FiDelete />
-                        </S.PostDelete>
-                        <CodeTemplate ref={post.ref} />
-                      </S.PostBlock>
-                    );
+                      case "Code":
+                        return (
+                          <S.PostBlock key={post.id}>
+                            <S.PostDelete
+                              onClick={() => handleRemovePost(post.id)}
+                            >
+                              <FiDelete />
+                            </S.PostDelete>
+                            <CodeTemplate ref={post.ref} />
+                          </S.PostBlock>
+                        );
 
-                  case "Video":
-                    return (
-                      <S.PostBlock key={post.id}>
-                        <S.PostDelete onClick={() => handleRemovePost(post.id)}>
-                          <FiDelete />
-                        </S.PostDelete>
-                        <VideoTemplate ref={post.ref} id={post.id} />
-                      </S.PostBlock>
-                    );
+                      case "Video":
+                        return (
+                          <S.PostBlock key={post.id}>
+                            <S.PostDelete
+                              onClick={() => handleRemovePost(post.id)}
+                            >
+                              <FiDelete />
+                            </S.PostDelete>
+                            <VideoTemplate ref={post.ref} id={post.id} />
+                          </S.PostBlock>
+                        );
 
-                  default:
-                    return;
-                }
-              })}
+                      default:
+                        return;
+                    }
+                  })}
 
-              <PostInput post={post} setPost={setPost} />
+                  <PostInput post={post} setPost={setPost} />
 
-              <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
-            </S.PostContainer>
-            <S.SideBar></S.SideBar>
-          </div>
-        </S.Content>
-      </S.Container>
-    </NavBar>
+                  <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
+                </S.PostContainer>
+                <S.SideBar></S.SideBar>
+              </div>
+            </S.Content>
+          </S.Container>
+        </NavBar>
+      )}
+    </>
   );
 };
 

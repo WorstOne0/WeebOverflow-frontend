@@ -105,6 +105,14 @@ export const InputBlockArrow = styled.div`
   left: -2rem;
 `;
 
+export const ReCaptchaWrapper = styled.div`
+  width: 100%;
+  margin-top: 4rem;
+
+  display: flex;
+  justify-content: center;
+`;
+
 export const Button = styled.button`
   height: 5rem;
   width: 100%;

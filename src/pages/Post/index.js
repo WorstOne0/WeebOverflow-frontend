@@ -11,6 +11,7 @@ import {
   AiFillLinkedin,
   AiFillYoutube,
   AiFillRedditCircle,
+  AiOutlineUser,
 } from "react-icons/ai";
 import { FaTwitch } from "react-icons/fa";
 import { IoMdPaper } from "react-icons/io";
@@ -135,10 +136,16 @@ const Post = (props) => {
 
                     <S.UserName>Worst One</S.UserName>
 
-                    <S.IconShelter style={{ marginTop: "1.5rem" }}>
-                      <IoMdPaper className="Icon" />
-                      21
-                    </S.IconShelter>
+                    <S.WrapperIcon>
+                      <S.IconShelter>
+                        <IoMdPaper className="Icon" />
+                        21
+                      </S.IconShelter>
+                      <S.IconShelter>
+                        <AiOutlineUser className="Icon" />
+                        20
+                      </S.IconShelter>
+                    </S.WrapperIcon>
                   </S.UserImgWrapper>
 
                   <S.UserInfo>

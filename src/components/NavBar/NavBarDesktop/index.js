@@ -35,7 +35,7 @@ import {
 } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 
-const NavBarDesktop = ({ children, isLogged }) => {
+const NavBarDesktop = ({ children, isLogged, role }) => {
   const isOpenNavBar = useSelector((state) => state.NavBar.isOpenNavBar);
   const dispatch = useDispatch();
 
@@ -61,11 +61,16 @@ const NavBarDesktop = ({ children, isLogged }) => {
               <AiOutlineSearch className="Icon" />
             </Options>
           </Link>
-          <Link to="/addPost" style={{ width: "100%", textDecoration: "none" }}>
-            <Options>
-              <AiOutlinePlus className="Icon" />
-            </Options>
-          </Link>
+          {role !== "Guest" && (
+            <Link
+              to="/addPost"
+              style={{ width: "100%", textDecoration: "none" }}
+            >
+              <Options>
+                <AiOutlinePlus className="Icon" />
+              </Options>
+            </Link>
+          )}
           <Link to="/friends" style={{ width: "100%", textDecoration: "none" }}>
             <Options>
               <FaUserFriends className="Icon" />

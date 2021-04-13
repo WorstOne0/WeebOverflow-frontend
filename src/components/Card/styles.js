@@ -75,11 +75,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Image = styled.img`
-<<<<<<< HEAD
   height: 50vh;
-=======
-  height: 40rem;
->>>>>>> 185450598cb97c9516c13383f1a3e1f97a38e5e8
   width: 100%;
   border: none;
   border-radius: 0.8rem;

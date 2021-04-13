@@ -5,11 +5,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 
 function Gallery({
-<<<<<<< HEAD
-  height = "50vh",
-=======
   height = "50rem",
->>>>>>> 185450598cb97c9516c13383f1a3e1f97a38e5e8
   width = "100%",
   uploadedFiles,
   setUploadedFiles,

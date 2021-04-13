@@ -139,7 +139,7 @@ export const SideBar = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 28rem;
+  flex: 0 0 30rem;
 
   @media (max-width: 1100px) {
     display: none;

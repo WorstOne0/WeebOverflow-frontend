@@ -103,6 +103,8 @@ const Login = () => {
             />
           </S.InputWrapper>
 
+          <S.Error opacity={control.error ? 1 : 0}>{control.errorMsg}</S.Error>
+
           <ReCAPTCHA
             sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
             size="invisible"

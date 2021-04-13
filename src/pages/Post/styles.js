@@ -190,6 +190,10 @@ export const UserImgWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 810px) {
+    padding-top: 2rem;
+  }
 `;
 
 export const UserImgBorder = styled.div`
@@ -201,6 +205,11 @@ export const UserImgBorder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 530px) {
+    height: 11.5rem;
+    width: 11.5rem;
+  }
 `;
 
 export const UserImg = styled.div`
@@ -212,6 +221,11 @@ export const UserImg = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 530px) {
+    height: 10rem;
+    width: 10rem;
+  }
 `;
 
 export const UserName = styled.div`
@@ -220,6 +234,10 @@ export const UserName = styled.div`
   color: var(--color-white);
   font-size: 2.2rem;
   font-weight: bold;
+
+  @media (max-width: 530px) {
+    font-size: 2rem;
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -244,6 +262,10 @@ export const UserInfoTitle = styled.p`
   color: var(--color-primary);
   font-size: 2.2rem;
   font-weight: bold;
+
+  @media (max-width: 810px) {
+    display: none;
+  }
 `;
 
 export const UserInfoText = styled.p`
@@ -254,6 +276,10 @@ export const UserInfoText = styled.p`
   color: var(--color-white);
   font-size: 1.6rem;
   text-align: justify;
+
+  @media (max-width: 810px) {
+    display: none;
+  }
 `;
 
 export const UserFooter = styled.div`
@@ -264,6 +290,25 @@ export const UserFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 530px) {
+    height: 100%;
+    flex-direction: column;
+  }
+`;
+
+export const WrapperIcon = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+
+  > * {
+    &:nth-child(1) {
+      margin-right: 1rem;
+    }
+  }
 `;
 
 export const IconShelter = styled.div`
@@ -273,7 +318,7 @@ export const IconShelter = styled.div`
   font-size: 1.6rem;
 
   .Icon {
-    margin-right: 1rem;
+    margin-right: 0.8rem;
 
     color: var(--color-primary-lighter);
     font-size: 2.4rem;
@@ -296,6 +341,10 @@ export const UserFooterFollow = styled.button`
 
   .Icon {
     margin-right: 0.7rem;
+  }
+
+  @media (max-width: 530px) {
+    margin: 0 0 2rem 0;
   }
 `;
 

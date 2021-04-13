@@ -24,7 +24,7 @@ import {
 } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 
-function NavBarMobile({ children, isLogged }) {
+function NavBarMobile({ children, isLogged, role }) {
   const UserImgTemp = require("../../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
   return (
@@ -74,14 +74,18 @@ function NavBarMobile({ children, isLogged }) {
               <AiOutlineSearch className="Icon" />
             </Options>
           </Link>
-          <Link
-            to="/addPost"
-            style={{ height: "100%", width: "100%", textDecoration: "none" }}
-          >
-            <Options>
-              <AiOutlinePlus className="Icon" />
-            </Options>
-          </Link>
+
+          {role !== "Guest" && (
+            <Link
+              to="/addPost"
+              style={{ height: "100%", width: "100%", textDecoration: "none" }}
+            >
+              <Options>
+                <AiOutlinePlus className="Icon" />
+              </Options>
+            </Link>
+          )}
+
           <Link
             to="/friends"
             style={{ height: "100%", width: "100%", textDecoration: "none" }}

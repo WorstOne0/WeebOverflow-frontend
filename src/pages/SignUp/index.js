@@ -160,6 +160,9 @@ const SignUp = () => {
 
     setControl({ ...control, loading: true });
 
+    const token = await reRef.current.getValue();
+    //reRef.current.reset();
+
     const res = await signUp({
       variables: {
         email: email.value,
@@ -167,7 +170,7 @@ const SignUp = () => {
         userName: userName.value,
         screenName: "",
         thirdParty: "None",
-        reCaptchaToken: "",
+        reCaptchaToken: token,
       },
     });
 
@@ -316,11 +319,13 @@ const SignUp = () => {
           {/* Genero */}
           {/* Aniversario */}
 
-          <ReCAPTCHA
-            sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
-            size="invisible"
-            ref={reRef}
-          />
+          <S.ReCaptchaWrapper>
+            <ReCAPTCHA
+              sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+              size="normal"
+              ref={reRef}
+            />
+          </S.ReCaptchaWrapper>
 
           <S.Button onClick={() => handleSubmit()}>Criar conta</S.Button>
         </S.Content>
