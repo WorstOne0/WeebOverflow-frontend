@@ -357,13 +357,14 @@ export const UserName = styled.p`
 `;
 
 export const ContentBottom = styled.div`
-  height: 100%;
+  height: auto;
   width: 100%;
   padding: 3rem;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex: 1;
 
   @media screen and (max-width: 1100px) {
     justify-content: center;

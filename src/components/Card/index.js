@@ -17,7 +17,7 @@ const Card = ({ post }) => {
     <S.Container>
       <Link
         to={`/post/${post.id}`}
-        style={{ width: "auto", textDecoration: "none" }}
+        style={{ width: "100%", textDecoration: "none" }}
       >
         <S.ImageWrapper>
           <S.IconContainer
