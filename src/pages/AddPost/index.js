@@ -20,7 +20,7 @@ import {
   RichText,
   Image,
   PostInput,
-  VsCodeEditor,
+  SyntaxHighlighter,
   DropZone,
   InputText,
   Loading,
@@ -135,7 +135,7 @@ const AddPost = () => {
   };
 
   return (
-    <>
+    <S.ContainerWrapper>
       {loading ? (
         <p>loading</p>
       ) : data.getLoggedUser == null ? (
@@ -257,7 +257,7 @@ const AddPost = () => {
           </S.Container>
         </NavBar>
       )}
-    </>
+    </S.ContainerWrapper>
   );
 };
 
@@ -387,7 +387,7 @@ const CodeTemplate = forwardRef((props, ref) => {
 
   return (
     <S.CodeContaiener>
-      <VsCodeEditor />
+      <SyntaxHighlighter />
     </S.CodeContaiener>
   );
 });

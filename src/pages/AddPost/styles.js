@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const ContainerWrapper = styled.div`
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+`;
+
 export const Container = styled.div`
   height: auto;
   width: 100%;
@@ -22,6 +28,7 @@ export const Content = styled.div`
     width: 100%;
 
     display: flex;
+    flex: 1 0 auto;
   }
 `;
 
@@ -103,7 +110,6 @@ export const Wrapper = styled.div`
 `;
 
 export const CodeContaiener = styled.div`
-  height: 30rem;
   width: 100%;
 `;
 

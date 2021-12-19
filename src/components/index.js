@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import RichText from "./Rich-Text Editor";
 import Image from "./Image";
 import PostInput from "./PostInput";
-import VsCodeEditor from "./VsCode Editor";
+import SyntaxHighlighter from "./SyntaxHighlighter";
 import DropZone from "./DropZone";
 import InputText from "./InputText";
 import Loading from "./Loading";
@@ -20,7 +20,7 @@ export {
   RichText,
   Image,
   PostInput,
-  VsCodeEditor,
+  SyntaxHighlighter,
   DropZone,
   InputText,
   Loading,

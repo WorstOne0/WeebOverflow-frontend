@@ -11,10 +11,16 @@ export const Container = styled.div`
 
 export const RichTextContainer = styled.div`
   width: 100%;
+  max-width: 100%;
   padding: ${(props) => (props.padding ? "1rem 2rem 2rem 2rem" : "0")};
   background: var(${(props) => props.background});
 
   font-size: 1.8rem;
+
+  .Editor {
+    width: 100%;
+    max-width: 100%;
+  }
 `;
 
 export const Toolbar = styled.div`
