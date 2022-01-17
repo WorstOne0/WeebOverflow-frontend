@@ -24,6 +24,7 @@ import {
   Loading,
   Gallery,
   YTVideo,
+  VsCodeEditor,
 } from "../../components";
 
 const GET_POST = gql`
@@ -124,6 +125,18 @@ const Post = (props) => {
                           <Gallery
                             uploadedFiles={block.value}
                             readOnly={true}
+                          />
+                        </S.Wrapper>
+                      );
+
+                    case "Code":
+                      return (
+                        <S.Wrapper type={false}>
+                          <VsCodeEditor
+                            code={block.value[0].code}
+                            language={block.value[0].language}
+                            theme={block.value[0].theme}
+                            readOnly
                           />
                         </S.Wrapper>
                       );

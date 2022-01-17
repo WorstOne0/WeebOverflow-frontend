@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 5.5rem;
-  width: 100%;
+  width: ${(props) => props.width};
   margin: ${(props) => props.margin};
 
   position: relative;
@@ -69,7 +69,7 @@ export const Icon = styled.div`
 
 export const OptionsContainer = styled.div`
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0rem;
   padding: 0.5rem 0;
   border: 1px solid var(--color-hover-darker);
   border-radius: 0.8rem;
@@ -79,6 +79,8 @@ export const OptionsContainer = styled.div`
 
   display: ${(props) => (props.display ? "flex" : "none")};
   flex-direction: column;
+
+  z-index: 100;
 `;
 
 export const Options = styled.div`

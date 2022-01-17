@@ -15,6 +15,7 @@ const Select = ({
   value = "",
   options = [],
   setValue,
+  width = "100%",
   margin = "0",
   name,
   type = "text",
@@ -26,7 +27,7 @@ const Select = ({
 
   return (
     <>
-      <Container margin={margin} backgroundName={backgroundName}>
+      <Container margin={margin} backgroundName={backgroundName} width={width}>
         <Input
           value={value}
           type={type}
@@ -35,28 +36,27 @@ const Select = ({
           required
           borderColor={borderColor}
           borderColorHover={borderColorHover}
-          onFocus={() => setToggle((state) => !state)}
+          onClick={() => setToggle((state) => !state)}
         />
         <Label className="Label">{name}</Label>
-        <Icon>
+        <Icon onClick={() => setToggle((state) => !state)}>
           <IoMdArrowDropdown />
         </Icon>
-      </Container>
-      {console.log(value)}
 
-      <OptionsContainer display={toggle} className="Options">
-        {options.map((option) => (
-          <Options
-            onClick={() => {
-              console.log("O", option);
-              setValue(option);
-              setToggle(false);
-            }}
-          >
-            {option}
-          </Options>
-        ))}
-      </OptionsContainer>
+        <OptionsContainer display={toggle} className="Options">
+          {options.map((option) => (
+            <Options
+              onClick={() => {
+                console.log("O", option);
+                setValue(option);
+                setToggle(false);
+              }}
+            >
+              {option}
+            </Options>
+          ))}
+        </OptionsContainer>
+      </Container>
     </>
   );
 };

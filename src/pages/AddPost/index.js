@@ -25,6 +25,7 @@ import {
   InputText,
   Loading,
   Gallery,
+  Select,
 } from "../../components";
 import styled from "styled-components";
 
@@ -377,12 +378,16 @@ const GalleryTemplate = forwardRef(({ id }, ref) => {
 });
 
 const CodeTemplate = forwardRef((props, ref) => {
-  const [value, setValue] = useState(null);
+  const [code, setCode] = useState("");
+  const [options, setOptions] = useState({
+    language: "javascript",
+    theme: "dark",
+  });
 
   const getValue = () => {
     return {
       type: "Code",
-      value: value,
+      value: { code, language: options.language, theme: options.theme },
       files: [],
     };
   };
@@ -394,9 +399,45 @@ const CodeTemplate = forwardRef((props, ref) => {
   });
 
   return (
-    <S.CodeContaiener>
-      <VsCodeEditor />
-    </S.CodeContaiener>
+    <S.Wrapper>
+      <S.SelectContainer>
+        <Select
+          width="30%"
+          options={[
+            "javascript",
+            "jsx",
+            "c/c++",
+            "html",
+            "java",
+            "php",
+            "css",
+            "python",
+            "sass",
+            "sql",
+            "typescript",
+            "tsx",
+            "lua",
+            "matlab",
+          ].sort()}
+          value={options.language}
+          setValue={(language) => setOptions({ ...options, language })}
+        />
+        <Select
+          width="30%"
+          options={["dark", "light"]}
+          value={options.theme}
+          setValue={(theme) => setOptions({ ...options, theme })}
+        />
+      </S.SelectContainer>
+      <S.CodeContainer>
+        <VsCodeEditor
+          code={code}
+          setCode={setCode}
+          language={options.language}
+          theme={options.theme}
+        />
+      </S.CodeContainer>
+    </S.Wrapper>
   );
 });
 

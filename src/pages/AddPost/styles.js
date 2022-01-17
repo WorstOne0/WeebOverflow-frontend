@@ -102,8 +102,21 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const CodeContaiener = styled.div`
-  height: 30rem;
+export const SelectContainer = styled.div`
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .Space {
+    width: 100%;
+  }
+`;
+
+export const CodeContainer = styled.div`
+  height: 45rem;
   width: 100%;
 `;
 
