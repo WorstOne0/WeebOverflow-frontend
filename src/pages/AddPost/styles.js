@@ -91,7 +91,7 @@ export const PostDelete = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 100%;
+  height: ${(props) => (props.height == "auto" ? "auto" : "100%")};
   width: 100%;
 
   display: flex;
