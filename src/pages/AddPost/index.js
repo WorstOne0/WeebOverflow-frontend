@@ -78,6 +78,7 @@ const AddPost = () => {
     ],
     tags: ["anime", "react"],
   });
+  const [uploading, setUploading] = useState(false);
 
   const handleRemovePost = (id) => {
     setPost({
@@ -156,226 +157,230 @@ const AddPost = () => {
       ) : (
         <NavBar>
           <S.Container>
-            <S.Content>
-              <S.Hero />
-              <div className="Split">
-                <S.PostContainer>
-                  <S.PostTitle>Criar um Post</S.PostTitle>
+            {uploading ? (
+              <S.UploadContainer></S.UploadContainer>
+            ) : (
+              <S.Content>
+                <S.Hero />
+                <div className="Split">
+                  <S.PostContainer>
+                    <S.PostTitle>Criar um Post</S.PostTitle>
 
-                  <S.PostBlock>
-                    {uploadedThumb ? (
-                      <Image src={thumbnail.map((file) => file.preview)} />
-                    ) : (
-                      <DropZone
-                        uploadedFiles={thumbnail}
-                        setUploadedFiles={setThumbnail}
-                        setUpload={setUploadThumb}
-                        id={uniqueId()}
-                        text="Arraste sua imagem aqui"
-                      />
-                    )}
-
-                    <InputText
-                      margin="3rem 0"
-                      name="Titulo"
-                      value={post.title}
-                      setValue={(event) => {
-                        event.preventDefault();
-
-                        setPost({ ...post, title: event.target.value });
-                      }}
-                      valueNested={"title"}
-                      valueSource={post}
-                    />
-                  </S.PostBlock>
-
-                  <DragDropContext
-                    onDragEnd={(result) => {
-                      const { destination, source } = result;
-
-                      console.log(result);
-
-                      if (!destination) return;
-                      post.content.splice(
-                        destination.index,
-                        0,
-                        post.content.splice(source.index, 1)[0]
-                      );
-                      console.log(post.content);
-                    }}
-                  >
-                    <Droppable droppableId={uniqueId()}>
-                      {(provided) => (
-                        <S.Wrapper
-                          height={"auto"}
-                          ref={provided.innerRef}
-                          {...provided.droppableProps}
-                        >
-                          {console.log("A", post.content)}
-                          {post.content.map((post, index) => {
-                            switch (post.type) {
-                              case "Rich-Text":
-                                return (
-                                  <Draggable
-                                    draggableId={post.id.toString()}
-                                    index={index}
-                                    isDragDisabled={false}
-                                  >
-                                    {(provided) => (
-                                      <S.PostBlock
-                                        key={post.id}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                      >
-                                        <S.PostDelete
-                                          onClick={() =>
-                                            handleRemovePost(post.id)
-                                          }
-                                        >
-                                          <FiDelete />
-                                        </S.PostDelete>
-                                        <RichTextTemplate ref={post.ref} />
-                                      </S.PostBlock>
-                                    )}
-                                  </Draggable>
-                                );
-
-                              case "Single Image":
-                                return (
-                                  <Draggable
-                                    draggableId={post.id.toString()}
-                                    index={index}
-                                    isDragDisabled={false}
-                                  >
-                                    {(provided) => (
-                                      <S.PostBlock
-                                        key={post.id}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                      >
-                                        <S.PostDelete
-                                          onClick={() =>
-                                            handleRemovePost(post.id)
-                                          }
-                                        >
-                                          <FiDelete />
-                                        </S.PostDelete>
-                                        <ImagemTemplate
-                                          ref={post.ref}
-                                          id={post.id}
-                                        />
-                                      </S.PostBlock>
-                                    )}
-                                  </Draggable>
-                                );
-
-                              case "Gallery":
-                                return (
-                                  <Draggable
-                                    draggableId={post.id.toString()}
-                                    index={index}
-                                    isDragDisabled={false}
-                                  >
-                                    {(provided) => (
-                                      <S.PostBlock
-                                        key={post.id}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                      >
-                                        <S.PostDelete
-                                          onClick={() =>
-                                            handleRemovePost(post.id)
-                                          }
-                                        >
-                                          <FiDelete />
-                                        </S.PostDelete>
-                                        <GalleryTemplate
-                                          ref={post.ref}
-                                          id={post.id}
-                                        />
-                                      </S.PostBlock>
-                                    )}
-                                  </Draggable>
-                                );
-
-                              case "Code":
-                                return (
-                                  <Draggable
-                                    draggableId={post.id.toString()}
-                                    index={index}
-                                    isDragDisabled={false}
-                                  >
-                                    {(provided) => (
-                                      <S.PostBlock
-                                        key={post.id}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                      >
-                                        <S.PostDelete
-                                          onClick={() =>
-                                            handleRemovePost(post.id)
-                                          }
-                                        >
-                                          <FiDelete />
-                                        </S.PostDelete>
-                                        <CodeTemplate ref={post.ref} />
-                                      </S.PostBlock>
-                                    )}
-                                  </Draggable>
-                                );
-
-                              case "Video":
-                                return (
-                                  <Draggable
-                                    draggableId={post.id.toString()}
-                                    index={index}
-                                    isDragDisabled={false}
-                                  >
-                                    {(provided) => (
-                                      <S.PostBlock
-                                        key={post.id}
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                      >
-                                        <S.PostDelete
-                                          onClick={() =>
-                                            handleRemovePost(post.id)
-                                          }
-                                        >
-                                          <FiDelete />
-                                        </S.PostDelete>
-                                        <VideoTemplate
-                                          ref={post.ref}
-                                          id={post.id}
-                                        />
-                                      </S.PostBlock>
-                                    )}
-                                  </Draggable>
-                                );
-
-                              default:
-                                return;
-                            }
-                          })}
-
-                          {provided.placeholder}
-                        </S.Wrapper>
+                    <S.PostBlock>
+                      {uploadedThumb ? (
+                        <Image src={thumbnail.map((file) => file.preview)} />
+                      ) : (
+                        <DropZone
+                          uploadedFiles={thumbnail}
+                          setUploadedFiles={setThumbnail}
+                          setUpload={setUploadThumb}
+                          id={uniqueId()}
+                          text="Arraste sua imagem aqui"
+                        />
                       )}
-                    </Droppable>
-                  </DragDropContext>
 
-                  <PostInput post={post} setPost={setPost} />
+                      <InputText
+                        margin="3rem 0"
+                        name="Titulo"
+                        value={post.title}
+                        setValue={(event) => {
+                          event.preventDefault();
 
-                  <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
-                </S.PostContainer>
-                <S.SideBar></S.SideBar>
-              </div>
-            </S.Content>
+                          setPost({ ...post, title: event.target.value });
+                        }}
+                        valueNested={"title"}
+                        valueSource={post}
+                      />
+                    </S.PostBlock>
+
+                    <DragDropContext
+                      onDragEnd={(result) => {
+                        const { destination, source } = result;
+
+                        console.log(result);
+
+                        if (!destination) return;
+                        post.content.splice(
+                          destination.index,
+                          0,
+                          post.content.splice(source.index, 1)[0]
+                        );
+                        console.log(post.content);
+                      }}
+                    >
+                      <Droppable droppableId={uniqueId()}>
+                        {(provided) => (
+                          <S.Wrapper
+                            height={"auto"}
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                          >
+                            {console.log("A", post.content)}
+                            {post.content.map((post, index) => {
+                              switch (post.type) {
+                                case "Rich-Text":
+                                  return (
+                                    <Draggable
+                                      draggableId={post.id.toString()}
+                                      index={index}
+                                      isDragDisabled={false}
+                                      key={post.id}
+                                    >
+                                      {(provided) => (
+                                        <S.PostBlock
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                        >
+                                          <S.PostDelete
+                                            onClick={() =>
+                                              handleRemovePost(post.id)
+                                            }
+                                          >
+                                            <FiDelete />
+                                          </S.PostDelete>
+                                          <RichTextTemplate ref={post.ref} />
+                                        </S.PostBlock>
+                                      )}
+                                    </Draggable>
+                                  );
+
+                                case "Single Image":
+                                  return (
+                                    <Draggable
+                                      draggableId={post.id.toString()}
+                                      index={index}
+                                      isDragDisabled={false}
+                                      key={post.id}
+                                    >
+                                      {(provided) => (
+                                        <S.PostBlock
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                        >
+                                          <S.PostDelete
+                                            onClick={() =>
+                                              handleRemovePost(post.id)
+                                            }
+                                          >
+                                            <FiDelete />
+                                          </S.PostDelete>
+                                          <ImagemTemplate
+                                            ref={post.ref}
+                                            id={post.id}
+                                          />
+                                        </S.PostBlock>
+                                      )}
+                                    </Draggable>
+                                  );
+
+                                case "Gallery":
+                                  return (
+                                    <Draggable
+                                      draggableId={post.id.toString()}
+                                      index={index}
+                                      isDragDisabled={false}
+                                      key={post.id}
+                                    >
+                                      {(provided) => (
+                                        <S.PostBlock
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                        >
+                                          <S.PostDelete
+                                            onClick={() =>
+                                              handleRemovePost(post.id)
+                                            }
+                                          >
+                                            <FiDelete />
+                                          </S.PostDelete>
+                                          <GalleryTemplate
+                                            ref={post.ref}
+                                            id={post.id}
+                                          />
+                                        </S.PostBlock>
+                                      )}
+                                    </Draggable>
+                                  );
+
+                                case "Code":
+                                  return (
+                                    <Draggable
+                                      draggableId={post.id.toString()}
+                                      index={index}
+                                      isDragDisabled={false}
+                                      key={post.id}
+                                    >
+                                      {(provided) => (
+                                        <S.PostBlock
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                        >
+                                          <S.PostDelete
+                                            onClick={() =>
+                                              handleRemovePost(post.id)
+                                            }
+                                          >
+                                            <FiDelete />
+                                          </S.PostDelete>
+                                          <CodeTemplate ref={post.ref} />
+                                        </S.PostBlock>
+                                      )}
+                                    </Draggable>
+                                  );
+
+                                case "Video":
+                                  return (
+                                    <Draggable
+                                      draggableId={post.id.toString()}
+                                      index={index}
+                                      isDragDisabled={false}
+                                      key={post.id}
+                                    >
+                                      {(provided) => (
+                                        <S.PostBlock
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                        >
+                                          <S.PostDelete
+                                            onClick={() =>
+                                              handleRemovePost(post.id)
+                                            }
+                                          >
+                                            <FiDelete />
+                                          </S.PostDelete>
+                                          <VideoTemplate
+                                            ref={post.ref}
+                                            id={post.id}
+                                          />
+                                        </S.PostBlock>
+                                      )}
+                                    </Draggable>
+                                  );
+
+                                default:
+                                  return;
+                              }
+                            })}
+
+                            {provided.placeholder}
+                          </S.Wrapper>
+                        )}
+                      </Droppable>
+                    </DragDropContext>
+
+                    <PostInput post={post} setPost={setPost} />
+
+                    <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
+                  </S.PostContainer>
+                  <S.SideBar></S.SideBar>
+                </div>
+              </S.Content>
+            )}
           </S.Container>
         </NavBar>
       )}

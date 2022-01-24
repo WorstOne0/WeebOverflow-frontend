@@ -212,3 +212,8 @@ export const SideBar = styled.div`
     display: none;
   }
 `;
+
+export const UploadContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+`;
