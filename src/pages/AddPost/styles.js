@@ -216,4 +216,52 @@ export const SideBar = styled.div`
 export const UploadContainer = styled.div`
   height: 100vh;
   width: 100%;
+  background: var(--color-background-dark);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const UploadIcon = styled.div`
+  height: 20rem;
+  width: 20rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const UploadMessages = styled.div`
+  max-width: 70%;
+
+  color: var(--color-white);
+  font-size: 2.5rem;
+`;
+
+export const UploadButton = styled.button`
+  height: 7rem;
+  width: 30rem;
+  margin-top: 2rem;
+  border: 1px solid var(--color-darker);
+  border-radius: 0.8rem;
+  background: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-primary-light);
+  font-size: 1.8rem;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  :hover {
+    background: var(--color-primary-light);
+
+    color: var(--color-dark);
+  }
 `;

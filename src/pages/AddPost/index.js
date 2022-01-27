@@ -78,7 +78,10 @@ const AddPost = () => {
     ],
     tags: ["anime", "react"],
   });
-  const [uploading, setUploading] = useState(false);
+  const [uploading, setUploading] = useState({
+    uploading: true,
+    finished: true,
+  });
 
   const handleRemovePost = (id) => {
     setPost({
@@ -157,15 +160,33 @@ const AddPost = () => {
       ) : (
         <NavBar>
           <S.Container>
-            {uploading ? (
-              <S.UploadContainer></S.UploadContainer>
+            {uploading.uploading ? (
+              <S.UploadContainer>
+                {uploading.finished ? (
+                  <>
+                    <S.UploadIcon>Icon</S.UploadIcon>
+                    <S.UploadMessages>
+                      Post enviado com sucesso
+                    </S.UploadMessages>
+
+                    <S.UploadButton>
+                      Voltar para a pagina inicial
+                    </S.UploadButton>
+                  </>
+                ) : (
+                  <>
+                    <Loading height="20rem" width="20rem" size={100} />
+                    <S.UploadMessages>Mensagem</S.UploadMessages>
+                  </>
+                )}
+              </S.UploadContainer>
             ) : (
               <S.Content>
                 <S.Hero />
                 <div className="Split">
                   <S.PostContainer>
+                    cs
                     <S.PostTitle>Criar um Post</S.PostTitle>
-
                     <S.PostBlock>
                       {uploadedThumb ? (
                         <Image src={thumbnail.map((file) => file.preview)} />
@@ -192,7 +213,6 @@ const AddPost = () => {
                         valueSource={post}
                       />
                     </S.PostBlock>
-
                     <DragDropContext
                       onDragEnd={(result) => {
                         const { destination, source } = result;
@@ -372,9 +392,7 @@ const AddPost = () => {
                         )}
                       </Droppable>
                     </DragDropContext>
-
                     <PostInput post={post} setPost={setPost} />
-
                     <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
                   </S.PostContainer>
                   <S.SideBar></S.SideBar>
