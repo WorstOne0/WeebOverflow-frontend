@@ -31,13 +31,21 @@ const NavBar = ({ children }) => {
   }, [loading, error, data]);
 
   return width > 1100 ? (
-    <NavBarDesktop isLogged={isLogged.logged} role={isLogged.role}>
-      {children}
-    </NavBarDesktop>
+    <>
+      {!loading && (
+        <NavBarDesktop isLogged={isLogged.logged} role={isLogged.role}>
+          {children}
+        </NavBarDesktop>
+      )}
+    </>
   ) : (
-    <NavBarMobile isLogged={isLogged.logged} role={isLogged.role}>
-      {children}
-    </NavBarMobile>
+    <>
+      {!loading && (
+        <NavBarMobile isLogged={isLogged.logged} role={isLogged.role}>
+          {children}
+        </NavBarMobile>
+      )}
+    </>
   );
 };
 

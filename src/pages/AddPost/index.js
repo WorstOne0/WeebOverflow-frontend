@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from "react";
+import { useHistory } from "react-router-dom";
 import { useQuery, useMutation, gql } from "@apollo/client";
 
 import s3 from "../../services/aws-s3";
@@ -56,6 +57,9 @@ const ADD_POST = gql`
 `;
 
 const AddPost = () => {
+  const imageSuccess = require("../../assets/507-5073089_menhera-chan-animegirl-menhera-chan-sticker-hd-png-removebg-preview.png");
+
+  const history = useHistory();
   useEffect(() => {
     document.documentElement.scrollTop = 0;
   }, []);
@@ -72,15 +76,16 @@ const AddPost = () => {
     content: [
       {
         id: uniqueId(),
+        dragId: uniqueId(),
         type: "Rich-Text",
         ref: useRef(null),
       },
     ],
     tags: ["anime", "react"],
-  });
-  const [uploading, setUploading] = useState({
-    uploading: true,
-    finished: true,
+    upload: {
+      uploading: false,
+      finished: false,
+    },
   });
 
   const handleRemovePost = (id) => {
@@ -90,9 +95,7 @@ const AddPost = () => {
     });
   };
 
-  const uploadToS3 = async () => {
-    const { content } = post;
-
+  const uploadToS3 = async (content) => {
     const res = await s3.uploadFile(
       thumbnail[0].file,
       `${Date.now()}${thumbnail[0].name}`
@@ -100,9 +103,7 @@ const AddPost = () => {
     thumbnail[0].url = res.location;
 
     return await Promise.all(
-      content.map(async (post) => {
-        const block = post.ref.current.getValue();
-
+      content.map(async (block) => {
         if (
           block.type === "Rich-Text" ||
           block.type === "Code" ||
@@ -130,18 +131,25 @@ const AddPost = () => {
 
     const { title, content, tags } = post;
 
-    await uploadToS3();
-    console.log("Finished AWS S3");
+    const values = content.map((post) => post.ref.current.getValue());
 
-    console.log(content.map((post) => post.ref.current.getValue()));
+    setPost({ ...post, upload: { uploading: true, finished: false } });
+
+    await uploadToS3(values);
+    console.log("Finished AWS S3");
 
     const { data } = await addPost({
       variables: {
         title,
         thumbnail,
-        text: content.map((post) => post.ref.current.getValue()),
+        text: values,
         tags,
       },
+    });
+
+    setPost({
+      ...post,
+      upload: { uploading: true, finished: true },
     });
 
     console.log("Data", data);
@@ -160,16 +168,22 @@ const AddPost = () => {
       ) : (
         <NavBar>
           <S.Container>
-            {uploading.uploading ? (
+            {post.upload.uploading ? (
               <S.UploadContainer>
-                {uploading.finished ? (
+                {post.upload.finished ? (
                   <>
-                    <S.UploadIcon>Icon</S.UploadIcon>
-                    <S.UploadMessages>
-                      Post enviado com sucesso
-                    </S.UploadMessages>
+                    <S.Wrapper height="auto">
+                      <S.UploadIcon src={imageSuccess} />
+                      <S.UploadMessages>
+                        Post enviado com sucesso
+                      </S.UploadMessages>
+                    </S.Wrapper>
 
-                    <S.UploadButton>
+                    <S.UploadButton
+                      onClick={() => {
+                        history.push("/");
+                      }}
+                    >
                       Voltar para a pagina inicial
                     </S.UploadButton>
                   </>
@@ -185,7 +199,6 @@ const AddPost = () => {
                 <S.Hero />
                 <div className="Split">
                   <S.PostContainer>
-                    cs
                     <S.PostTitle>Criar um Post</S.PostTitle>
                     <S.PostBlock>
                       {uploadedThumb ? (
@@ -225,7 +238,6 @@ const AddPost = () => {
                           0,
                           post.content.splice(source.index, 1)[0]
                         );
-                        console.log(post.content);
                       }}
                     >
                       <Droppable droppableId={uniqueId()}>
@@ -244,7 +256,7 @@ const AddPost = () => {
                                       draggableId={post.id.toString()}
                                       index={index}
                                       isDragDisabled={false}
-                                      key={post.id}
+                                      key={post.dragId}
                                     >
                                       {(provided) => (
                                         <S.PostBlock
@@ -259,7 +271,10 @@ const AddPost = () => {
                                           >
                                             <FiDelete />
                                           </S.PostDelete>
-                                          <RichTextTemplate ref={post.ref} />
+                                          <RichTextTemplate
+                                            ref={post.ref}
+                                            key={post.id}
+                                          />
                                         </S.PostBlock>
                                       )}
                                     </Draggable>
@@ -271,7 +286,7 @@ const AddPost = () => {
                                       draggableId={post.id.toString()}
                                       index={index}
                                       isDragDisabled={false}
-                                      key={post.id}
+                                      key={post.dragId}
                                     >
                                       {(provided) => (
                                         <S.PostBlock
@@ -289,6 +304,7 @@ const AddPost = () => {
                                           <ImagemTemplate
                                             ref={post.ref}
                                             id={post.id}
+                                            key={post.id}
                                           />
                                         </S.PostBlock>
                                       )}
@@ -301,7 +317,7 @@ const AddPost = () => {
                                       draggableId={post.id.toString()}
                                       index={index}
                                       isDragDisabled={false}
-                                      key={post.id}
+                                      key={post.dragId}
                                     >
                                       {(provided) => (
                                         <S.PostBlock
@@ -319,6 +335,7 @@ const AddPost = () => {
                                           <GalleryTemplate
                                             ref={post.ref}
                                             id={post.id}
+                                            key={post.id}
                                           />
                                         </S.PostBlock>
                                       )}
@@ -331,7 +348,7 @@ const AddPost = () => {
                                       draggableId={post.id.toString()}
                                       index={index}
                                       isDragDisabled={false}
-                                      key={post.id}
+                                      key={post.dragId}
                                     >
                                       {(provided) => (
                                         <S.PostBlock
@@ -346,7 +363,10 @@ const AddPost = () => {
                                           >
                                             <FiDelete />
                                           </S.PostDelete>
-                                          <CodeTemplate ref={post.ref} />
+                                          <CodeTemplate
+                                            ref={post.ref}
+                                            key={post.id}
+                                          />
                                         </S.PostBlock>
                                       )}
                                     </Draggable>
@@ -358,7 +378,7 @@ const AddPost = () => {
                                       draggableId={post.id.toString()}
                                       index={index}
                                       isDragDisabled={false}
-                                      key={post.id}
+                                      key={post.dragId}
                                     >
                                       {(provided) => (
                                         <S.PostBlock
@@ -376,6 +396,7 @@ const AddPost = () => {
                                           <VideoTemplate
                                             ref={post.ref}
                                             id={post.id}
+                                            key={post.id}
                                           />
                                         </S.PostBlock>
                                       )}
