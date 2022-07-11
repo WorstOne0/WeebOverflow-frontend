@@ -23,6 +23,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
     "react-spinners-kit": "^1.9.1",
+    "react-toggle": "^4.1.2",
     "redux": "^4.0.5",
     "slate": "^0.58.4",
     "slate-history": "^0.58.4",

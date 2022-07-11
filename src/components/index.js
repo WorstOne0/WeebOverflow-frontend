@@ -13,6 +13,7 @@ import TabBar from "./TabBar";
 import Select from "./Select";
 import ProfileGadgets from "./ProfileGadgets";
 import YTVideo from "./YTVideo";
+import Comments from "./Comments";
 
 export {
   Card,
@@ -30,4 +31,5 @@ export {
   Select,
   ProfileGadgets,
   YTVideo,
+  Comments,
 };

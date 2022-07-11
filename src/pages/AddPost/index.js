@@ -12,6 +12,8 @@ import s3 from "../../services/aws-s3";
 import { uniqueId, isEmpty, reject, result } from "lodash";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { filesize } from "filesize";
+import Toggle from "react-toggle";
+import "react-toggle/style.css";
 
 import * as S from "./styles";
 
@@ -86,6 +88,9 @@ const AddPost = () => {
       uploading: false,
       finished: false,
     },
+  });
+  const [options, setOptions] = useState({
+    dragAndDrop: false,
   });
 
   const handleRemovePost = (id) => {
@@ -255,7 +260,7 @@ const AddPost = () => {
                                     <Draggable
                                       draggableId={post.id.toString()}
                                       index={index}
-                                      isDragDisabled={false}
+                                      isDragDisabled={!options.dragAndDrop}
                                       key={post.dragId}
                                     >
                                       {(provided) => (
@@ -285,7 +290,7 @@ const AddPost = () => {
                                     <Draggable
                                       draggableId={post.id.toString()}
                                       index={index}
-                                      isDragDisabled={false}
+                                      isDragDisabled={!options.dragAndDrop}
                                       key={post.dragId}
                                     >
                                       {(provided) => (
@@ -316,7 +321,7 @@ const AddPost = () => {
                                     <Draggable
                                       draggableId={post.id.toString()}
                                       index={index}
-                                      isDragDisabled={false}
+                                      isDragDisabled={!options.dragAndDrop}
                                       key={post.dragId}
                                     >
                                       {(provided) => (
@@ -347,7 +352,7 @@ const AddPost = () => {
                                     <Draggable
                                       draggableId={post.id.toString()}
                                       index={index}
-                                      isDragDisabled={false}
+                                      isDragDisabled={!options.dragAndDrop}
                                       key={post.dragId}
                                     >
                                       {(provided) => (
@@ -377,7 +382,7 @@ const AddPost = () => {
                                     <Draggable
                                       draggableId={post.id.toString()}
                                       index={index}
-                                      isDragDisabled={false}
+                                      isDragDisabled={!options.dragAndDrop}
                                       key={post.dragId}
                                     >
                                       {(provided) => (
@@ -416,7 +421,27 @@ const AddPost = () => {
                     <PostInput post={post} setPost={setPost} />
                     <S.SendButton onClick={handleSubmit}>Enviar</S.SendButton>
                   </S.PostContainer>
-                  <S.SideBar></S.SideBar>
+
+                  <S.SideBar>
+                    <S.SideBarTitle>Opções</S.SideBarTitle>
+
+                    <S.SideContainerToggle>
+                      <S.SideContainerToggleTitle>
+                        Habilitar Drag and Drop
+                      </S.SideContainerToggleTitle>
+                      <S.SideContainerToggleContent>
+                        <Toggle
+                          checked={options.dragAndDrop}
+                          onChange={(event) =>
+                            setOptions({
+                              ...options,
+                              dragAndDrop: event.target.checked,
+                            })
+                          }
+                        />
+                      </S.SideContainerToggleContent>
+                    </S.SideContainerToggle>
+                  </S.SideBar>
                 </div>
               </S.Content>
             )}

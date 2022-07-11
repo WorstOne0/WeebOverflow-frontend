@@ -206,11 +206,53 @@ export const SideBar = styled.div`
   background: var(--color-dark);
 
   display: flex;
-  flex: 0 0 30rem;
+  align-items: center;
+  flex-direction: column;
+  flex: 0 0 35rem;
 
   @media (max-width: 1100px) {
     display: none;
   }
+`;
+
+export const SideBarTitle = styled.div`
+  padding: 1.5rem;
+
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: bold;
+`;
+
+export const SideContainer = styled.div``;
+
+export const SideContainerTitle = styled.div``;
+
+export const SideContainerContent = styled.div``;
+
+export const SideContainerToggle = styled.div`
+  height: 6rem;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0 1rem;
+
+  display: flex;
+`;
+
+export const SideContainerToggleTitle = styled.div`
+  width: 80%;
+  padding: 0 0.5rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const SideContainerToggleContent = styled.div`
+  width: 20%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const UploadContainer = styled.div`

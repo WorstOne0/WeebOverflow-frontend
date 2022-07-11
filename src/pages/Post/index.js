@@ -25,6 +25,7 @@ import {
   Gallery,
   YTVideo,
   VsCodeEditor,
+  Comments,
 } from "../../components";
 
 const GET_POST = gql`
@@ -192,7 +193,6 @@ const Post = (props) => {
                     </S.UserInfoText>
 
                     <S.UserFooter>
-                      {/** */}
                       <S.UserFooterFollow
                         follower={a}
                         onClick={() => setA((value) => !value)}
@@ -221,6 +221,10 @@ const Post = (props) => {
                   </S.UserInfo>
                 </S.UserHeader>
               </S.UserContainer>
+
+              <S.CommentsContainer>
+                <Comments />
+              </S.CommentsContainer>
             </S.PostContainer>
             <S.SideBar></S.SideBar>
           </S.Content>

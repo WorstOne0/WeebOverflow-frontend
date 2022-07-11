@@ -459,3 +459,7 @@ export const UserFooterMedia = styled.div`
     }
   }
 `;
+
+export const CommentsContainer = styled.div`
+  width: 100%;
+`;
