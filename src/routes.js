@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "./services/apollo";
@@ -37,7 +37,7 @@ export default class Routes extends Component {
               <Route path="/profile" exact component={Profile} />
               <Route path="/search" exact component={Search} />
 
-              <Route path="*" component={NotFound} />
+              {/*<Route path="*" component={NotFound} />*/}
             </Switch>
           </BrowserRouter>
         </Provider>
