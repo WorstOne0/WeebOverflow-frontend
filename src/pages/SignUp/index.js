@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useMutation, gql } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -54,7 +54,7 @@ const initialState = {
 };
 
 const SignUp = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const [signUp] = useMutation(SIGN_UP);
   const [emailExists] = useMutation(EMAIL_EXISTS);
   const [userNameExists] = useMutation(USERNAME_EXISTS);
@@ -178,12 +178,12 @@ const SignUp = () => {
       ? setControl({ ...control, loading: false, error: true })
       : setControl({ ...control, loading: false, finished: true });
 
-    history.push("/login");
+    history("/login");
   };
 
   return (
     <S.Container>
-      <S.Back onClick={() => history.goBack()}>
+      <S.Back onClick={() => history(-1)}>
         <BsArrowLeft />
       </S.Back>
 

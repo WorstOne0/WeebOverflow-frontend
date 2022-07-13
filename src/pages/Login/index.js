@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import * as S from "./styles";
@@ -34,7 +34,7 @@ const LOGIN = gql`
 
 const Login = () => {
   const [login] = useMutation(LOGIN);
-  const history = useHistory();
+  const history = useNavigate();
   const reRef = useRef();
 
   const [control, setControl] = useState({
@@ -58,7 +58,7 @@ const Login = () => {
     });
 
     data.login
-      ? history.push("/")
+      ? history("/")
       : setControl({
           ...control,
           laoding: false,
@@ -71,7 +71,7 @@ const Login = () => {
     <S.Container>
       <S.Content>
         <S.LoginContainer onSubmit={handleSubmit}>
-          <S.Back onClick={() => history.goBack()}>
+          <S.Back onClick={() => history(-1)}>
             <BsArrowLeft />
           </S.Back>
 

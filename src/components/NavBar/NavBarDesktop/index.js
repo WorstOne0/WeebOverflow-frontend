@@ -7,23 +7,11 @@ import { toggleNavBar } from "../../../Store/actions/NavBar";
 import {
   Container,
   NavBarContainer,
-  LogoContainer,
-  IconShelter,
   LogoImg,
-  LogoText,
   Login,
-  User,
   UserImg,
-  UserHeader,
-  UserNameDisplay,
-  UserName,
-  UserStats,
-  UserStatsBox,
-  BadgesContainer,
   OptionsContainer,
   Options,
-  OptionsText,
-  BottomBar,
 } from "./styles";
 
 import {

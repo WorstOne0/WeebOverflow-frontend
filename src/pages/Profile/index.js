@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, gql, useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./styles";
 
@@ -59,7 +59,7 @@ export const LOGOUT = gql`
 function Profile() {
   const { loading, data, error } = useQuery(GET_LOGGED_USER);
   const [logout] = useMutation(LOGOUT);
-  const history = useHistory();
+  const history = useNavigate();
 
   const tempImg = require("../../assets/704387.png");
   const UserImgTemp = require("../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
@@ -67,7 +67,7 @@ function Profile() {
   const handleLogout = async () => {
     const { data } = await logout();
 
-    if (data.logout) history.push("/");
+    if (data.logout) history("/");
   };
 
   return (

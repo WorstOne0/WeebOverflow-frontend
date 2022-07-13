@@ -34,18 +34,6 @@ export const LogoImg = styled.img`
   background: var(--color-dark);
 `;
 
-export const LogoText = styled.p`
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: bold;
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      display: none;
-    `};
-`;
-
 export const Login = styled.div`
   height: 8rem;
   width: 8rem;
@@ -63,16 +51,6 @@ export const Login = styled.div`
 
     font-size: 2.2rem;
   }
-`;
-
-export const User = styled.div`
-  width: 100%;
-  padding: 1rem 2rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 `;
 
 export const UserImg = styled.div`
@@ -93,63 +71,6 @@ export const UserImg = styled.div`
       height: 5rem;
       width: 5rem;
     `}
-`;
-
-export const UserHeader = styled.div`
-  padding: 1rem 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  ${(props) =>
-    !props.isOpenNavBar &&
-    css`
-      display: none;
-    `}
-`;
-
-export const UserNameDisplay = styled.p`
-  color: #fff;
-  font-size: 2rem;
-
-  cursor: pointer;
-`;
-
-export const UserName = styled.p`
-  color: #d4d4d4;
-  font-size: 1.4rem;
-
-  cursor: default;
-`;
-
-export const UserStats = styled.div`
-  height: auto;
-  width: 100%;
-  padding: 1rem 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  cursor: default;
-`;
-
-export const UserStatsBox = styled.div`
-  padding: 0.7rem 1rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #d4d4d4;
-  font-size: 1.4rem;
-
-  .Icon {
-    margin-right: 0.5rem;
-  }
 `;
 
 export const OptionsContainer = styled.div`

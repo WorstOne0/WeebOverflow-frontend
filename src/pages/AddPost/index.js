@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, gql } from "@apollo/client";
 
 import s3 from "../../services/aws-s3";
@@ -61,7 +61,7 @@ const ADD_POST = gql`
 const AddPost = () => {
   const imageSuccess = require("../../assets/507-5073089_menhera-chan-animegirl-menhera-chan-sticker-hd-png-removebg-preview.png");
 
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     document.documentElement.scrollTop = 0;
   }, []);
@@ -186,7 +186,7 @@ const AddPost = () => {
 
                     <S.UploadButton
                       onClick={() => {
-                        history.push("/");
+                        history("/");
                       }}
                     >
                       Voltar para a pagina inicial
