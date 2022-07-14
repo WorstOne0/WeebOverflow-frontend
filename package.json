@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://master--glowing-kulfi-5b7ad9.netlify.app/",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.1",
