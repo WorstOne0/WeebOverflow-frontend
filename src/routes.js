@@ -5,7 +5,9 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./services/apollo";
 
 import { Provider } from "react-redux";
-import store from "./Store/store";
+import { store } from "./store/store";
+
+import { NavBar } from "./components";
 
 import {
   Main,
@@ -35,7 +37,6 @@ const MyRoutes = () => {
             <Route path="/friends" element={<Friends />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
-
             {/*<Route path="*" component={NotFound} />*/}
           </Routes>
         </BrowserRouter>

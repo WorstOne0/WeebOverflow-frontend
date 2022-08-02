@@ -1,7 +1,9 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-import reducers from "./reducers";
+import userSlice from "./user";
 
-const store = createStore(reducers);
-
-export default store;
+export const store = configureStore({
+  reducer: {
+    gameState: userSlice,
+  },
+});

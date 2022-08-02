@@ -27,7 +27,6 @@ const NavBar = ({ children }) => {
     if (!error && !loading)
       data.getLoggedUser &&
         setIsLogged({ logged: true, role: data.getLoggedUser.role });
-    data && console.log(data.getLoggedUser);
   }, [loading, error, data]);
 
   return width > 1100 ? (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
 import * as S from "./styles";
@@ -52,9 +53,11 @@ const GET_POST = gql`
   }
 `;
 
-const Post = (props) => {
+const Post = () => {
+  const { id } = useParams();
+
   const { loading, error, data } = useQuery(GET_POST, {
-    variables: { postId: props.match.params.id },
+    variables: { postId: id },
   });
 
   const [a, setA] = useState(false);

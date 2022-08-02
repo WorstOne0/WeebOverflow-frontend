@@ -252,7 +252,6 @@ const AddPost = () => {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                           >
-                            {console.log("A", post.content)}
                             {post.content.map((post, index) => {
                               switch (post.type) {
                                 case "Rich-Text":

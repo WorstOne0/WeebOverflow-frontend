@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleNavBar } from "../../../Store/actions/NavBar";
 
 import {
   Container,
@@ -24,13 +22,6 @@ import {
 import { FaUserFriends } from "react-icons/fa";
 
 const NavBarDesktop = ({ children, isLogged, role }) => {
-  const isOpenNavBar = useSelector((state) => state.NavBar.isOpenNavBar);
-  const dispatch = useDispatch();
-
-  const handleToggleNavBar = () => {
-    dispatch(toggleNavBar());
-  };
-
   const UserImgTemp = require("../../../assets/no_game_no_life-01-sora-older_brother-cloak-games-different.jpg");
 
   return (
